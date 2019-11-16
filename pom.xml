@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.bardframework</groupId>
+        <artifactId>bardframework-parent</artifactId>
+        <version>1398.08.17</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>org.bardframework.commons</groupId>
+    <artifactId>commons</artifactId>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common-jackson</module>
+        <module>common-monitoring</module>
+        <module>common-qr</module>
+        <module>common-querydsl</module>
+        <module>common-redis</module>
+        <module>common-security</module>
+        <module>common-security-redis</module>
+        <module>common-spring-boot</module>
+        <module>common-swagger</module>
+        <module>common-utils</module>
+        <module>common-waf</module>
+        <module>common-web</module>
+    </modules>
+    <dependencies>
+
+    </dependencies>
+</project>
