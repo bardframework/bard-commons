@@ -15,7 +15,7 @@ public final class EncodingUtils {
     public static String hexEncode(byte[] data) {
         StringBuilder stringBuilder = new StringBuilder();
         try (Formatter formatter = new Formatter(stringBuilder)) {
-            IntStream.range(0, data.length).forEach(i -> formatter.format("%02x", Byte.valueOf(data[i])));
+            IntStream.range(0, data.length).forEach(i -> formatter.format("%02x", data[i]));
             return stringBuilder.toString();
         }
     }

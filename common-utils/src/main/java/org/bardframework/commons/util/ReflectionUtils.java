@@ -17,7 +17,7 @@ public final class ReflectionUtils extends org.springframework.util.ReflectionUt
     private ReflectionUtils() {
     }
 
-    public static Field getDeclaredField(Class clazz, String name)
+    public static Field getDeclaredField(Class<?> clazz, String name)
             throws NoSuchFieldException {
         try {
             return clazz.getDeclaredField(name);
@@ -31,13 +31,7 @@ public final class ReflectionUtils extends org.springframework.util.ReflectionUt
     }
 
     /**
-     * @param root
-     * @param propertyPath
      * @return value of property path of root object
-     * @throws IllegalAccessException
-     * @throws IllegalArgumentException
-     * @throws InvocationTargetException
-     * @throws NoSuchMethodException
      */
     public static Object getPropertyValue(final Object root, String propertyPath)
             throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
@@ -174,7 +168,7 @@ public final class ReflectionUtils extends org.springframework.util.ReflectionUt
         return current;
     }
 
-    public static Method getSetter(Class aClass, final String property, Class<?>... parameterType)
+    public static Method getSetter(Class<?> aClass, final String property, Class<?>... parameterType)
             throws NoSuchMethodException {
         if (aClass == null) {
             throw new IllegalArgumentException("null _class not accepted");
@@ -185,7 +179,7 @@ public final class ReflectionUtils extends org.springframework.util.ReflectionUt
         return aClass.getMethod(getSetterName(property.trim()), parameterType);
     }
 
-    public static Method getGetter(Class aClass, final String property)
+    public static Method getGetter(Class<?> aClass, final String property)
             throws NoSuchMethodException {
         if (aClass == null) {
             throw new IllegalArgumentException("null _class not accepted");
@@ -200,12 +194,6 @@ public final class ReflectionUtils extends org.springframework.util.ReflectionUt
         }
     }
 
-    /**
-     * @param stackTraceElement
-     * @return
-     * @throws ClassNotFoundException
-     * @throws NoSuchMethodException  getCurrentMethod(Thread.currentThread().getStackTrace()[1])
-     */
     public static Method getCurrentMethod(StackTraceElement stackTraceElement)
             throws ClassNotFoundException, NoSuchMethodException {
         return Class.forName(stackTraceElement.getClassName()).getMethod(stackTraceElement.getMethodName());
@@ -215,9 +203,8 @@ public final class ReflectionUtils extends org.springframework.util.ReflectionUt
      * @param property, Class type
      * @return getter of the given property, if the given property has boolean
      * type add is to its first else add get
-     * @throws
      */
-    public static String getGetterName(String property, Class type) {
+    public static String getGetterName(String property, Class<?> type) {
         property = property.trim();
         return (boolean.class.equals(type) || Boolean.class.equals(type) ? "is" : "get") + property.substring(0, 1).toUpperCase() + property.substring(1);
     }

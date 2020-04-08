@@ -15,6 +15,9 @@ public class RequestCookieKeyDetector implements RequestKeyDetector {
 
     @Override
     public String getUniqueKey(HttpServletRequest request, HttpServletResponse response) {
+        if (null == request.getCookies()) {
+            return null;
+        }
         for (Cookie cookie : request.getCookies()) {
             if (Objects.equals(cookie.getName(), cookieName)) {
                 return cookie.getValue();

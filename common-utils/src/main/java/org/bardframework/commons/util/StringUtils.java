@@ -37,7 +37,7 @@ public final class StringUtils extends org.springframework.util.StringUtils {
             zero.append(num);
             return zero.toString();
         }
-        return (minus ? "-" : Constants.EMPTY_STRING) + Double.valueOf(num / Math.pow(10.00, -1.00 * diff));
+        return (minus ? "-" : Constants.EMPTY_STRING) + num / Math.pow(10.00, -1.00 * diff);
     }
 
     /**

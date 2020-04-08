@@ -50,8 +50,7 @@ class FileToClassConverter {
      */
     private String removeClassPathBase(String fileName) {
         String classPart = fileName.substring(classPathRoot.length() + 1);
-        String className = classPart.replace(File.separatorChar, '.');
-        return className;
+        return classPart.replace(File.separatorChar, '.');
     }
 
 

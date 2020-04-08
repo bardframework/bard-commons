@@ -1,6 +1,5 @@
 package org.bardframework.commons.web.utils;
 
-import org.apache.commons.lang3.CharEncoding;
 import org.springframework.util.FileCopyUtils;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,18 +11,10 @@ import java.nio.charset.StandardCharsets;
  * Created by Vahid Zafari on 6/10/2016.
  */
 public final class WebUtils {
-
-    /**
-     * @param response
-     * @param data
-     * @param contentType
-     * @param name
-     * @throws IOException
-     */
     public static void fillResponse(HttpServletResponse response, byte[] data, String contentType, String name)
             throws IOException {
         response.setContentType(contentType);
-        response.setCharacterEncoding(CharEncoding.UTF_8);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
 
         String fileName = URLEncoder.encode(name, StandardCharsets.UTF_8.name()).replace("+", "%20");
         /* "Content-Disposition : inline" will show viewable types [like images/text/pdf/anything viewable by browser] right on browser

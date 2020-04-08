@@ -32,7 +32,7 @@ public class ExceptionHandlerFilter implements Filter {
         try {
             chain.doFilter(req, res);
         } catch (Throwable ex) {
-            if (ex instanceof ServletException) {
+            if (ex instanceof ServletException && null != ex.getCause()) {
                 this.handle((HttpServletResponse) res, ex.getCause());
             } else {
                 this.handle((HttpServletResponse) res, ex);

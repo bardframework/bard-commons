@@ -1,6 +1,6 @@
 package org.bardframework.commons.jackson.converter;
 
-import org.bardframework.jalalidate.JalaliDateTime;
+import org.bardframework.time.JalaliDateTime;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

@@ -56,29 +56,6 @@ public final class ArrayUtils {
     }
 
     /**
-     * @param original, int splitSize
-     * @return split given collection to small collection with split size length
-     * @throws
-     */
-    public static <T> List<List<T>> collectionSplit(List original, int splitSize) {
-        List<List<T>> result = new ArrayList<>();
-        if (original == null) {
-            return result;
-        }
-        int currentPosition = 0;
-        while (currentPosition < original.size()) {
-            int remaining = original.size() - currentPosition + 1;
-            if (remaining <= splitSize) {
-                result.add(new ArrayList(Arrays.asList(Arrays.copyOfRange(original.toArray(), currentPosition, original.size()))));
-            } else {
-                result.add(new ArrayList(Arrays.asList(Arrays.copyOfRange(original.toArray(), currentPosition, currentPosition + splitSize))));
-            }
-            currentPosition += splitSize;
-        }
-        return result;
-    }
-
-    /**
      * @param nums
      * @return List of numbers in Long format
      */

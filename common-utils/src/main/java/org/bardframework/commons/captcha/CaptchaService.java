@@ -1,12 +1,16 @@
 package org.bardframework.commons.captcha;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.bardframework.commons.util.LetterConverterUtility;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
@@ -14,31 +18,46 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CaptchaService {
 
-    private final Map<String, CaptchaLanguageData> localeChars = new ConcurrentHashMap<>();
+    private final Map<CaptchaType, CaptchaLanguageData> localeChars = new ConcurrentHashMap<>();
     private Random random = new Random();
 
     public CaptchaService() {
-        localeChars.put("fa", new CaptchaLanguageData("0123456789بتجحخدرژسشضظعفقکلمنوهی", true, new Font("Tahoma", Font.PLAIN, 40)));
-        localeChars.put("ar", new CaptchaLanguageData("0123456789ابتثجحخدذرزسشصضطظفقعغکلمنوهی", true, new Font("Tahoma", Font.PLAIN, 40)));
-        localeChars.put("en", new CaptchaLanguageData("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", false, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.PERSIAN_NUMBER_TEXT, new CaptchaLanguageData("0123456789", false, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.ENGLISH_NUMBER, new CaptchaLanguageData("0123456789", false, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.PERSIAN_CHAR, new CaptchaLanguageData("بتجحخدرژسشضظعفقکلمنوهی", true, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.PERSIAN_NUMBER_CHAR, new CaptchaLanguageData("0123456789بتجحخدرژسشضظعفقکلمنوهی", true, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.ARABIC_CHAR, new CaptchaLanguageData("ابتثجحخدذرزسشصضطظفقعغکلمنوهی", true, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.ARABIC_NUMBER_CHAR, new CaptchaLanguageData("0123456789ابتثجحخدذرزسشصضطظفقعغکلمنوهی", true, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.ENGLISH_CHAR, new CaptchaLanguageData("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", false, new Font("Tahoma", Font.PLAIN, 40)));
+        localeChars.put(CaptchaType.ENGLISH_NUMBER_CHAR, new CaptchaLanguageData("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", false, new Font("Tahoma", Font.PLAIN, 40)));
     }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 20; i++) {
-            String random = RandomStringUtils.random(10, "3234545657676765");
-            System.out.println(random + " -> " + new CaptchaService().removeContinuousNumbers(random, "0123456789آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی"));
+    public static void main(String[] args) throws Exception {
+        for (int i = 0; i < 100; i++) {
+            Captcha captcha = new CaptchaService().generateCaptcha(CaptchaType.ENGLISH_CHAR, 5);
+            FileUtils.writeByteArrayToFile(new File("D:\\captcha\\persian\\" + captcha.text + ".png"), captcha.image);
         }
     }
 
-    public Captcha generateCaptcha(String locale, int maxChars) throws IOException {
-        CaptchaLanguageData captchaLanguageData = this.getCaptchaData(locale);
+    public Captcha generateCaptcha(CaptchaType captchaType, int maxChars) throws IOException {
+        CaptchaLanguageData captchaLanguageData = this.getCaptchaData(captchaType);
         if (null == captchaLanguageData) {
-            throw new IllegalStateException(String.format("no chars specify for locale %s to generate captcha", locale));
+            throw new IllegalStateException(String.format("no chars specify for type %s to generate captcha", captchaType));
         }
-        StringBuilder captchaText = this.removeContinuousNumbers(RandomStringUtils.random(maxChars, captchaLanguageData.getChars()), captchaLanguageData.getChars());
+        StringBuilder captchaText;
+        if (StringUtils.isNumeric(captchaLanguageData.getChars())) {
+            captchaText = new StringBuilder(RandomStringUtils.random(maxChars, captchaLanguageData.getChars()));
+        } else {
+            captchaText = this.removeContinuousNumbers(RandomStringUtils.random(maxChars, captchaLanguageData.getChars()), captchaLanguageData.getChars());
+        }
         String text = captchaText.toString();
-        String textForImage = captchaLanguageData.isRtl() ? captchaText.reverse().toString() : captchaText.toString();
-        return new Captcha(text, this.generateImage(textForImage, this.getFont(locale, captchaLanguageData)));
+        String textForImage;
+        if (captchaType == CaptchaType.PERSIAN_NUMBER_TEXT) {
+            textForImage = LetterConverterUtility.convertDigitToFarsiLetter(Long.valueOf(text));
+        } else {
+            textForImage = captchaLanguageData.isRtl() ? captchaText.reverse().toString() : captchaText.toString();
+        }
+        return new Captcha(text, this.generateImage(captchaType, textForImage, this.getFont(captchaType, captchaLanguageData)));
     }
 
     /**
@@ -47,8 +66,7 @@ public class CaptchaService {
      * @param text expects string size eight (8) characters.
      * @return byte array that is a PNG image generated with text displayed.
      */
-    private byte[] generateImage(String text, Font font) throws IOException {
-        text = text.replaceAll(" ", "");
+    private byte[] generateImage(CaptchaType type, String text, Font font) throws IOException {
         int height = 40;
         int width = height * text.length();
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -62,12 +80,18 @@ public class CaptchaService {
         graphics.setFont(font);
         graphics.setColor(this.getRandomColor());
         int start = 10;
-        for (int i = 0; i < text.length(); i++) {
-            graphics.drawString(text.substring(i, i + 1), start + (i * 20), random.nextInt(15) + 25);
+        if (type != CaptchaType.PERSIAN_NUMBER_TEXT) {
+            for (int i = 0; i < text.length(); i++) {
+                graphics.drawString(text.substring(i, i + 1), start + (i * 20), random.nextInt(15) + 25);
+            }
+        } else {
+            String[] parts = text.split(" ");
+            for (int i = 0; i < parts.length; i++) {
+                graphics.drawString(parts[i], start + (i * 20), random.nextInt(15) + 25);
+            }
         }
-        for (int i = 0; i < random.nextInt(text.length()); i++) {
-            graphics.setColor(this.getRandomColor());
-            graphics.drawOval(random.nextInt(height), random.nextInt(height), random.nextInt(1000), random.nextInt(1000));
+        for (int i = 0; i < random.nextInt(20); i++) {
+            graphics.drawOval(random.nextInt(height), random.nextInt(height), random.nextInt(500), random.nextInt(100));
         }
         graphics.dispose();
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
@@ -106,11 +130,11 @@ public class CaptchaService {
         return new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
     }
 
-    protected CaptchaLanguageData getCaptchaData(String locale) {
-        return localeChars.get(locale);
+    protected CaptchaLanguageData getCaptchaData(CaptchaType type) {
+        return localeChars.get(type);
     }
 
-    protected Font getFont(String locale, CaptchaLanguageData data) {
+    protected Font getFont(CaptchaType type, CaptchaLanguageData data) {
         return data.getFont();
     }
 
@@ -154,5 +178,9 @@ public class CaptchaService {
         public Font getFont() {
             return font;
         }
+    }
+
+    public enum CaptchaType {
+        ENGLISH_CHAR, ENGLISH_NUMBER_CHAR, ENGLISH_NUMBER, PERSIAN_CHAR, PERSIAN_NUMBER_CHAR, PERSIAN_NUMBER_TEXT, ARABIC_CHAR, ARABIC_NUMBER_CHAR
     }
 }

@@ -4,6 +4,7 @@ import org.bardframework.commons.waf.exception.CallLimitExceedException;
 import org.bardframework.commons.waf.extractor.RequestKeyDetector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,19 +22,11 @@ public class RequestLimitChecker {
     private final AntPathRequestMatcher requestMatcher;
     private final RequestCallCounter requestCallCounter;
     private final RequestKeyDetector requestKeyDetector;
+    private final HttpMethod httpMethod;
     private final int limit;
     private final int period;
     private final TimeUnit periodUnit;
     private Set<String> whiteList = new HashSet<>();
-
-    public RequestLimitChecker(AntPathRequestMatcher requestMatcher, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
-        this.requestMatcher = requestMatcher;
-        this.requestCallCounter = requestCallCounter;
-        this.requestKeyDetector = requestKeyDetector;
-        this.limit = limit;
-        this.period = period;
-        this.periodUnit = periodUnit;
-    }
 
     /**
      * post method
@@ -46,7 +39,18 @@ public class RequestLimitChecker {
      * @param periodUnit
      */
     public RequestLimitChecker(String url, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
-        this.requestMatcher = new AntPathRequestMatcher(url, "POST");
+        this.httpMethod = null;
+        this.requestMatcher = new AntPathRequestMatcher(url);
+        this.requestCallCounter = requestCallCounter;
+        this.requestKeyDetector = requestKeyDetector;
+        this.limit = limit;
+        this.period = period;
+        this.periodUnit = periodUnit;
+    }
+
+    public RequestLimitChecker(HttpMethod httpMethod, String url, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
+        this.httpMethod = httpMethod;
+        this.requestMatcher = new AntPathRequestMatcher(url, httpMethod.name());
         this.requestCallCounter = requestCallCounter;
         this.requestKeyDetector = requestKeyDetector;
         this.limit = limit;
@@ -64,7 +68,7 @@ public class RequestLimitChecker {
             LOGGER.debug("request [{} {}] with unique key[{}] not checked, unique key is in white list", request.getMethod(), request.getRequestURI(), key);
             return;
         }
-        key = PREFIX + key + "@" + requestMatcher.getPattern();
+        key = PREFIX + key + (null == httpMethod ? "" : "@" + httpMethod) + "@" + requestMatcher.getPattern();
         long count = requestCallCounter.increment(key);
         if (count > limit) {
             throw new CallLimitExceedException(key);

@@ -72,6 +72,9 @@ class FileWalker {
      */
     protected void walk(File currentDir) {
         File[] files = currentDir.listFiles();
+        if (null == files) {
+            return;
+        }
         for (File file : files) {
             if (file.isDirectory()) {
                 walk(file);

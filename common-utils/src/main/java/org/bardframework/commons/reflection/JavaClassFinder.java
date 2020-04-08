@@ -65,9 +65,8 @@ public class JavaClassFinder {
         } else {
             classPath = System.getProperty(JAVA_CLASS_PATH_PROPERTY);
         }
-        String[] pathElements = classPath.split(File.pathSeparator);
         //		LOG.debug("getClassPathRoots(): classPath roots=" + StringUtil.dumpArray(pathElements));
-        return pathElements;
+        return classPath.split(File.pathSeparator);
     }
 
     private void handleClass(Class<?> clazz) {
