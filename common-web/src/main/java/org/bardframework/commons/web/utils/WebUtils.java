@@ -11,6 +11,14 @@ import java.nio.charset.StandardCharsets;
  * Created by Vahid Zafari on 6/10/2016.
  */
 public final class WebUtils {
+
+    /**
+     * @param response
+     * @param data
+     * @param contentType
+     * @param name
+     * @throws IOException
+     */
     public static void fillResponse(HttpServletResponse response, byte[] data, String contentType, String name)
             throws IOException {
         response.setContentType(contentType);

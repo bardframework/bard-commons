@@ -2,7 +2,7 @@ package org.bardframework.commons.security.context;
 
 import org.bardframework.commons.security.token.AuthenticationAbstract;
 import org.bardframework.commons.security.token.manager.TokenManager;
-import org.bardframework.commons.util.StringUtils;
+import org.bardframework.commons.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;

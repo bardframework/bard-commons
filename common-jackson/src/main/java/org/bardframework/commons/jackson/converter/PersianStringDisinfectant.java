@@ -1,6 +1,6 @@
 package org.bardframework.commons.jackson.converter;
 
-import org.bardframework.commons.util.PersianStringUtils;
+import org.bardframework.commons.utils.persian.PersianStringUtils;
 import org.springframework.stereotype.Component;
 
 /**

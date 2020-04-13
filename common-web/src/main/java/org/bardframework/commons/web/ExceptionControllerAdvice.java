@@ -1,6 +1,5 @@
 package org.bardframework.commons.web;
 
-import org.bardframework.commons.exception.ImportDataValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +38,6 @@ public abstract class ExceptionControllerAdvice {
 
     /**
      * handle exception occur in @Validated annotation in RequestMapping methods
-     *
-     * @param ex
-     * @return
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
@@ -49,12 +45,5 @@ public abstract class ExceptionControllerAdvice {
     public List<String> handle(MethodArgumentNotValidException ex, Locale locale) {
         LOGGER.debug("method argument not valid, [{}]", ex.getMessage());
         return ex.getBindingResult().getAllErrors().stream().map(error -> messageSource.getMessage(error.getCode(), error.getArguments(), locale)).collect(Collectors.toList());
-    }
-
-    @ExceptionHandler(ImportDataValidationException.class)
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public String handle(ImportDataValidationException ex, Locale locale) {
-        return messageSource.getMessage("invalid_row_data", new Integer[]{ex.getRowNumber()}, locale);
     }
 }

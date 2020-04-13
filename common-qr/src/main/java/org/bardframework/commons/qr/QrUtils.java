@@ -7,7 +7,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.datamatrix.encoder.SymbolShapeHint;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import org.bardframework.commons.util.AssertionUtils;
+import org.bardframework.commons.utils.AssertionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

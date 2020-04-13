@@ -5,8 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public class RequestCallCounterInMemory implements RequestCallCounter {
-    private Map<String, Long> callCounts = new ConcurrentHashMap<>();
-    private Map<String, Long> expireTimes = new ConcurrentHashMap<>();
+    private final Map<String, Long> callCounts = new ConcurrentHashMap<>();
+    private final Map<String, Long> expireTimes = new ConcurrentHashMap<>();
 
     @Override
     public Long increment(String key) {

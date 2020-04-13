@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.bardframework.commons</groupId>
         <artifactId>commons</artifactId>
-        <version>1399.01.07</version>
+        <version>1399.01.20</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -31,6 +31,10 @@
         <dependency>
             <groupId>org.bardframework.commons</groupId>
             <artifactId>common-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.bardframework.commons</groupId>
+            <artifactId>common-config</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>

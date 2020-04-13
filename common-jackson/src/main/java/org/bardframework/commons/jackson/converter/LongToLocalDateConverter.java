@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,8 +23,7 @@ public class LongToLocalDateConverter extends JsonDeserializer<LocalDate> implem
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public LocalDate deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
-            throws IOException {
+    public LocalDate deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) {
         try {
             return this.convert(jsonParser.getValueAsLong());
         } catch (Exception e) {

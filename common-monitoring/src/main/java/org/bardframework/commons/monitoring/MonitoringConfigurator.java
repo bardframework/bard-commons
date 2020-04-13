@@ -1,6 +1,6 @@
 package org.bardframework.commons.monitoring;
 
-import org.bardframework.commons.Configurator;
+import org.bardframework.commons.config.Configurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

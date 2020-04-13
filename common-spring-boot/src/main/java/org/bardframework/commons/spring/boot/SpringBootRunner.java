@@ -1,5 +1,6 @@
 package org.bardframework.commons.spring.boot;
 
+import org.bardframework.commons.utils.CharsetUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -48,7 +49,7 @@ public interface SpringBootRunner {
 
         StreamSupport.stream(sources.spliterator(), false)
                 .filter(propertySource -> propertySource instanceof EnumerablePropertySource)
-                .map(propertySource -> ((EnumerablePropertySource) propertySource).getPropertyNames())
+                .map(propertySource -> ((EnumerablePropertySource<?>) propertySource).getPropertyNames())
                 .flatMap(Arrays::stream)
                 .forEach(property -> {
                     configs.append(property);

@@ -1,11 +1,10 @@
 package org.bardframework.commons.waf.extractor;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.assertj.core.api.Assertions;
+import org.bardframework.commons.utils.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 
 class RequestHeaderKeyDetectorTest {
 

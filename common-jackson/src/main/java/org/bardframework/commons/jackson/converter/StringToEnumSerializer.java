@@ -1,6 +1,6 @@
 package org.bardframework.commons.jackson.converter;
 
-import org.bardframework.commons.util.AssertionUtils;
+import org.bardframework.commons.utils.AssertionUtils;
 
 /**
  * Created by Vahid Zafari on 1/29/2016.

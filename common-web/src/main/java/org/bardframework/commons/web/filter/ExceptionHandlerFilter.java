@@ -40,7 +40,7 @@ public class ExceptionHandlerFilter implements Filter {
         }
     }
 
-    public void handle(HttpServletResponse response, Throwable ex) throws IOException {
+    public void handle(HttpServletResponse response, Throwable ex) {
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         Method method = exceptionHandlerMethodResolver.resolveMethodByExceptionType(ex.getClass());
         if (null == method) {

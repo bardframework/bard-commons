@@ -18,7 +18,7 @@ public class DataManagerRedisImpl implements DataManager {
     /**
      * must not failed on unknown properties
      */
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public DataManagerRedisImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;

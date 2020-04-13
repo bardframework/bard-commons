@@ -1,6 +1,6 @@
 package org.bardframework.commons.web.cookie;
 
-import org.apache.commons.lang3.StringUtils;
+import org.bardframework.commons.utils.StringUtils;
 import org.springframework.web.util.CookieGenerator;
 import org.springframework.web.util.WebUtils;
 
@@ -46,10 +46,6 @@ public class CookieHandler extends CookieGenerator {
      * @param response    the HTTP response to add the cookie to
      * @param cookieValue the value of the cookie to add
      * @param maxAge      max age value of the cookie to add
-     * @see #setCookieName
-     * @see #setCookieDomain
-     * @see #setCookiePath
-     * @see #setCookieMaxAge
      */
     public void addCookie(HttpServletResponse response, String cookieValue, Integer maxAge) {
         Cookie cookie = this.createCookie(cookieValue);

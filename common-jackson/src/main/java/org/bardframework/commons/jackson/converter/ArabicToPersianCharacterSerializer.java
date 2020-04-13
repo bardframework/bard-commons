@@ -4,16 +4,13 @@ package org.bardframework.commons.jackson.converter;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import org.bardframework.commons.util.LetterConverterUtility;
+import org.bardframework.commons.utils.persian.LetterConverterUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-/**
- * @see LetterConverterUtility#convertArabicCharacters(String)
- */
 @Component
 public class ArabicToPersianCharacterSerializer extends JsonSerializer<String> {
 

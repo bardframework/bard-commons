@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -22,8 +21,7 @@ public class LongToLocalDateTimeConverter extends JsonDeserializer<LocalDateTime
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
-            throws IOException {
+    public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) {
         try {
             return null == jsonParser.getValueAsString() ? null : LocalDateTime.ofInstant(Instant.ofEpochMilli(jsonParser.getValueAsLong()), ZoneOffset.UTC);
         } catch (Exception e) {

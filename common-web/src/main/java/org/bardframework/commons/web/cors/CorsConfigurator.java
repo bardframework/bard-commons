@@ -1,6 +1,6 @@
 package org.bardframework.commons.web.cors;
 
-import org.bardframework.commons.Configurator;
+import org.bardframework.commons.config.Configurator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
