@@ -11,7 +11,7 @@
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>commons</artifactId>
-    <version>1399.01.25</version>
+    <version>0.2</version>
 
     <packaging>pom</packaging>
 
@@ -38,7 +38,7 @@
     <properties>
         <jackson.version>2.10.3</jackson.version>
         <jackson-bom.version>${jackson.version}</jackson-bom.version>
-        <jalali-date.version>1399.01.25</jalali-date.version>
+        <jalali-date.version>0.2</jalali-date.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
         <google.zxing.version>3.4.0</google.zxing.version>
         <guava.version>28.2-jre</guava.version>
