@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.bardframework.commons</groupId>
         <artifactId>commons</artifactId>
-        <version>1399.01.20</version>
+        <version>1399.01.25</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
