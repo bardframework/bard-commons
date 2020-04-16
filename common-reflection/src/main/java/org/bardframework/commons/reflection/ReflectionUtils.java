@@ -1178,6 +1178,34 @@ public final class ReflectionUtils {
         return new JavaClassFinder().findAllMatchingTypes(clazz);
     }
 
+    public static List<Class<?>> getSupersOf(Class<?> clazz, boolean includeInterface, boolean includeAbstractClasses, boolean includeObjectClass) {
+        List<Class<?>> supers = new ArrayList<>();
+        if (null == clazz || clazz.equals(Object.class)) {
+            return supers;
+        }
+        if (includeObjectClass) {
+            supers.add(Object.class);
+        }
+        Class<?> parent = clazz.getSuperclass();
+        if (null != parent && !Object.class.equals(parent)) {
+            if (Modifier.isAbstract(parent.getModifiers())) {
+                if (includeAbstractClasses) {
+                    supers.add(parent);
+                }
+            } else {
+                supers.add(parent);
+            }
+            supers.addAll(ReflectionUtils.getSupersOf(parent, includeInterface, includeAbstractClasses, false));
+        }
+        if (includeInterface) {
+            for (Class<?> anInterface : clazz.getInterfaces()) {
+                supers.add(anInterface);
+                supers.addAll(ReflectionUtils.getSupersOf(anInterface, includeInterface, includeAbstractClasses, false));
+            }
+        }
+        return supers;
+    }
+
     /**
      * A {@link FieldFilter} that has a description.
      *

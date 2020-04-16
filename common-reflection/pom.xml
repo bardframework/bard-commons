@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.bardframework.commons</groupId>
-        <artifactId>commons</artifactId>
+        <artifactId>bard-commons</artifactId>
         <version>0.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>org.bardframework.commons</groupId>
-    <artifactId>commons</artifactId>
+    <artifactId>bard-commons</artifactId>
     <version>0.2</version>
 
     <packaging>pom</packaging>
