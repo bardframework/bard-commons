@@ -21,7 +21,6 @@
         <module>common-jackson</module>
         <module>common-monitoring</module>
         <module>common-qr</module>
-        <module>common-querydsl</module>
         <module>common-redis</module>
         <module>common-reflection</module>
         <module>common-security</module>
@@ -46,7 +45,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <querydsl.version>4.3.1</querydsl.version>
         <reflection.version>0.9.12</reflection.version>
         <spring-framework.version>5.2.5.RELEASE</spring-framework.version>
         <spring-security.version>5.2.2.RELEASE</spring-security.version>
