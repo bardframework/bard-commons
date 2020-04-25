@@ -5,6 +5,7 @@ import org.bardframework.commons.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -82,7 +83,28 @@ public abstract class SmsSenderHttpCallAbstract implements SmsSender {
             }
             return SendResult.SUCCESS;
         } catch (Exception e) {
-            LOGGER.error("error sending sms", e);
+            /*
+              in some cases, sensitive data exist in url, prevent log those in INFO log (but also exist in DEBUG level)
+             */
+            String errorDetails = "more details in debug mode";
+            String responseCode = "unknown";
+            if (null != connection) {
+                try {
+                    responseCode = String.valueOf(connection.getResponseCode());
+                } catch (IOException ex) {
+                    LOGGER.debug("error reading response code", ex);
+                }
+                if (null != connection.getErrorStream()) {
+                    try {
+                        errorDetails = IOUtils.toString(connection.getErrorStream(), StandardCharsets.UTF_8);
+                    } catch (IOException ex) {
+                        LOGGER.debug("error reading error stream", ex);
+                    }
+                }
+            }
+
+            LOGGER.error("error sending sms, response code: [{}], details: [{}]", responseCode, errorDetails);
+            LOGGER.debug("error sending sms", e);
             return SendResult.ERROR;
         } finally {
             if (null != connection) {
