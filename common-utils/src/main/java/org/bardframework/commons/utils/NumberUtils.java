@@ -112,4 +112,56 @@ public final class NumberUtils {
         }
         return numbers;
     }
+
+    /**
+     * <p>Convert a {@code String} to a {@code long}, returning a default value if the conversion fails.</p>
+     *
+     * <p>If the string is {@code null}, the default value is returned.</p>
+     *
+     * <pre>
+     *   NumberUtils.toLong(null, 1L) = 1L
+     *   NumberUtils.toLong("", 1L)   = 1L
+     *   NumberUtils.toLong("1", 0L)  = 1L
+     * </pre>
+     *
+     * @param str          the string to convert, may be null
+     * @param defaultValue the default value
+     * @return the long represented by the string, or the default if conversion fails
+     */
+    public static long toLong(final String str, final long defaultValue) {
+        if (str == null) {
+            return defaultValue;
+        }
+        try {
+            return Long.parseLong(str);
+        } catch (final NumberFormatException nfe) {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * <p>Convert a {@code String} to a {@code int}, returning a default value if the conversion fails.</p>
+     *
+     * <p>If the string is {@code null}, the default value is returned.</p>
+     *
+     * <pre>
+     *   NumberUtils.toInt(null, 1) = 1
+     *   NumberUtils.toInt("", 1)   = 1
+     *   NumberUtils.toInt("1", 0)  = 1
+     * </pre>
+     *
+     * @param str          the string to convert, may be null
+     * @param defaultValue the default value
+     * @return the int represented by the string, or the default if conversion fails
+     */
+    public static int toInt(final String str, final int defaultValue) {
+        if (str == null) {
+            return defaultValue;
+        }
+        try {
+            return Integer.parseInt(str);
+        } catch (final NumberFormatException nfe) {
+            return defaultValue;
+        }
+    }
 }
