@@ -11,9 +11,7 @@ public final class MoneyUtils {
     }
 
     /**
-     * @param money
      * @return get long number and return that in string format with money mask
-     * @throws
      */
     public static String moneyMask(long money) {
         NumberFormat numberFormatter = NumberFormat.getNumberInstance();

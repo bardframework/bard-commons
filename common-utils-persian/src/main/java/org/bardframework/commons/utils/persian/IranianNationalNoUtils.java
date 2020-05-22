@@ -18,10 +18,7 @@ public final class IranianNationalNoUtils {
     }
 
     /**
-     * @param nationalNo
-     * @return if given nationalNo is a valid number it return true else return
-     * false
-     * @throws
+     * @return if given nationalNo is a valid number it return true else return false
      */
     public static boolean checkNationalNo(long nationalNo) {
         if (nationalNo < 10000000 || nationalNoBlackList.contains(nationalNo)) {

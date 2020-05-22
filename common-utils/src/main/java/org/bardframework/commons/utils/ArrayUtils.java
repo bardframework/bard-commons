@@ -97,7 +97,7 @@ public final class ArrayUtils {
     /**
      * @param start, int end, int increment
      * @return Array of numbers from start to end with specific increment step
-     * if increment < 0 then returns String object with zero length
+     * if increment less than 0 then returns String object with zero length
      */
     public static String[] getNumberArray(int start, int end, int increment) {
         if (increment > 0) {
@@ -113,7 +113,8 @@ public final class ArrayUtils {
     }
 
     /**
-     * @param original(Array), int splitSize
+     * @param original  array
+     * @param splitSize split size
      * @return split given array to small array with split size length
      */
     public static <T> List<T[]> arraySplit(T[] original, int splitSize) {
@@ -148,6 +149,7 @@ public final class ArrayUtils {
     }
 
     /**
+     * @param nums elements of list
      * @return List of numbers in Long format
      */
     public static List<Long> getLongList(String... nums) {

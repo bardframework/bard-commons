@@ -47,7 +47,7 @@ public final class OsUtils {
     /**
      * @param start, int end, int increment
      * @return Array of numbers from start to end with specific increment step
-     * if increment < 0 then returns String object with zero length
+     * if increment less than 0 then returns String object with zero length
      */
     public static String[] getNumberArray(int start, int end, int increment) {
         if (increment > 0) {

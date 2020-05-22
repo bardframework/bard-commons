@@ -24,7 +24,6 @@ public final class UtilityMethods {
 
 
     /**
-     * @param object
      * @return true if value of object be '1', 'on' or 'true', otherwise false.
      */
     public static boolean getBoolean(Object object) {
@@ -41,8 +40,6 @@ public final class UtilityMethods {
      *
      * @param number this number between [-999999999999999 ,999999999999999]
      * @return String
-     * @author M.Talebi
-     * @syntax numberToAlphabet(number)
      */
     public static String numberToAlphabet(long number) {
         String tempStringNumberOrgin = String.valueOf(number);

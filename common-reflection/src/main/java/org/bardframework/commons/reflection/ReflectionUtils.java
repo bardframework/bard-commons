@@ -103,7 +103,7 @@ public final class ReflectionUtils {
                     return field;
                 }
 
-                if (foundField != null && enforceUniqueness) {
+                if (foundField != null) {
                     throw new IllegalStateException(filter.getDescription());
                 }
 
@@ -121,7 +121,6 @@ public final class ReflectionUtils {
      *
      * @param type must not be {@literal null}.
      * @param name must not be {@literal null} or empty.
-     * @return
      * @throws IllegalArgumentException in case the field can't be found.
      */
     public static Field findRequiredField(Class<?> type, String name) {
@@ -141,7 +140,6 @@ public final class ReflectionUtils {
      * @param type           must not be {@literal null}.
      * @param name           must not be {@literal null}.
      * @param parameterTypes must not be {@literal null}.
-     * @return
      * @throws IllegalArgumentException in case the method cannot be resolved.
      */
     public static Method findRequiredMethod(Class<?> type, String name, Class<?>... parameterTypes) {
@@ -233,13 +231,7 @@ public final class ReflectionUtils {
     }
 
     /**
-     * @param root
-     * @param propertyPath
      * @return value of property path of root object
-     * @throws IllegalAccessException
-     * @throws IllegalArgumentException
-     * @throws InvocationTargetException
-     * @throws NoSuchMethodException
      */
     public static Object getPropertyValue(final Object root, String propertyPath)
             throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
@@ -308,9 +300,6 @@ public final class ReflectionUtils {
         Method method = null;
         for (String fieldName : fieldPaths) {
             method = getGetter(currentClazz, fieldName);
-            if (null == method) {
-                return null;
-            }
             currentClazz = method.getReturnType();
         }
         return method;
@@ -349,7 +338,7 @@ public final class ReflectionUtils {
             Method getter = getGetter(current.getClass(), callList[i]);
             Object result = getter.invoke(current);
             if (result == null) {
-                result = getter.getReturnType().newInstance();
+                result = getter.getReturnType().getConstructor().newInstance();
                 getSetter(current.getClass(), callList[i], result.getClass()).invoke(current, result);
             }
             current = result;
@@ -375,7 +364,7 @@ public final class ReflectionUtils {
         return current;
     }
 
-    public static Method getSetter(Class aClass, final String property, Class<?>... parameterType)
+    public static Method getSetter(Class<?> aClass, final String property, Class<?>... parameterType)
             throws NoSuchMethodException {
         if (aClass == null) {
             throw new IllegalArgumentException("null _class not accepted");
@@ -386,7 +375,7 @@ public final class ReflectionUtils {
         return aClass.getMethod(getSetterName(property.trim()), parameterType);
     }
 
-    public static Method getGetter(Class aClass, final String property)
+    public static Method getGetter(Class<?> aClass, final String property)
             throws NoSuchMethodException {
         if (aClass == null) {
             throw new IllegalArgumentException("null _class not accepted");
@@ -402,10 +391,7 @@ public final class ReflectionUtils {
     }
 
     /**
-     * @param stackTraceElement
-     * @return
-     * @throws ClassNotFoundException
-     * @throws NoSuchMethodException  getCurrentMethod(Thread.currentThread().getStackTrace()[1])
+     * @throws NoSuchMethodException getCurrentMethod(Thread.currentThread().getStackTrace()[1])
      */
     public static Method getCurrentMethod(StackTraceElement stackTraceElement)
             throws ClassNotFoundException, NoSuchMethodException {
@@ -416,9 +402,8 @@ public final class ReflectionUtils {
      * @param property, Class type
      * @return getter of the given property, if the given property has boolean
      * type add is to its first else add get
-     * @throws
      */
-    public static String getGetterName(String property, Class type) {
+    public static String getGetterName(String property, Class<?> type) {
         property = property.trim();
         return (boolean.class.equals(type) || Boolean.class.equals(type) ? "is" : "get") + property.substring(0, 1).toUpperCase() + property.substring(1);
     }
@@ -1216,8 +1201,6 @@ public final class ReflectionUtils {
         /**
          * Returns the description of the field filter. Used in exceptions being thrown in case uniqueness shall be enforced
          * on the field filter.
-         *
-         * @return
          */
         String getDescription();
     }

@@ -436,7 +436,7 @@ public abstract class StringUtils {
 
     /**
      * Extract the filename extension from the given Java resource path,
-     * e.g. "mypath/myfile.txt" -> "txt".
+     * e.g. "mypath/myfile.txt" : "txt".
      *
      * @param path the file path (may be {@code null})
      * @return the extracted filename extension, or {@code null} if none
@@ -461,7 +461,7 @@ public abstract class StringUtils {
 
     /**
      * Strip the filename extension from the given Java resource path,
-     * e.g. "mypath/myfile.txt" -> "mypath/myfile".
+     * e.g. "mypath/myfile.txt" : "mypath/myfile".
      *
      * @param path the file path
      * @return the path with stripped filename extension
@@ -8543,7 +8543,7 @@ public abstract class StringUtils {
      *
      * @param str the source String to normalize whitespaces from, may be null
      * @return the modified string with whitespace normalized, {@code null} if null String input
-     * href="http://www.w3.org/TR/xpath/#function-normalize-space">http://www.w3.org/TR/xpath/#function-normalize-space</a>
+     * <a href="http://www.w3.org/TR/xpath/#function-normalize-space">http://www.w3.org/TR/xpath/#function-normalize-space</a>
      */
     public static String normalizeSpace(final String str) {
         // LANG-1020: Improved performance significantly by normalizing manually instead of using regex
@@ -9066,4 +9066,36 @@ public abstract class StringUtils {
         return value == null ? null : String.valueOf(value);
     }
 
+    /**
+     * <p>Compares two CharSequences, returning {@code true} if they represent
+     * equal sequences of characters, ignoring case.</p>
+     *
+     * <p>{@code null}s are handled without exceptions. Two {@code null}
+     * references are considered equal. The comparison is <strong>case insensitive</strong>.</p>
+     *
+     * <pre>
+     * StringUtils.equalsIgnoreCase(null, null)   = true
+     * StringUtils.equalsIgnoreCase(null, "abc")  = false
+     * StringUtils.equalsIgnoreCase("abc", null)  = false
+     * StringUtils.equalsIgnoreCase("abc", "abc") = true
+     * StringUtils.equalsIgnoreCase("abc", "ABC") = true
+     * </pre>
+     *
+     * @param cs1 the first CharSequence, may be {@code null}
+     * @param cs2 the second CharSequence, may be {@code null}
+     * @return {@code true} if the CharSequences are equal (case-insensitive), or both {@code null}
+     * @see #equals(CharSequence, CharSequence)
+     */
+    public static boolean equalsIgnoreCase(final CharSequence cs1, final CharSequence cs2) {
+        if (cs1 == cs2) {
+            return true;
+        }
+        if (cs1 == null || cs2 == null) {
+            return false;
+        }
+        if (cs1.length() != cs2.length()) {
+            return false;
+        }
+        return CharSequenceUtils.regionMatches(cs1, true, 0, cs2, 0, cs1.length());
+    }
 }

@@ -9,7 +9,6 @@ public final class PersianStringUtils {
     }
 
     /**
-     * @param string
      * @return remove some characters form the given string and return it
      */
     public static String getComparableString(String string) {
@@ -28,7 +27,6 @@ public final class PersianStringUtils {
     }
 
     /**
-     * @param dirtyString
      * @return remove some characters form the given string and return it
      */
     public static String disinfectPersianText(String dirtyString) {
@@ -40,7 +38,7 @@ public final class PersianStringUtils {
                 .replace('ك', 'ک')
                 .replace('ؤ', 'و');
         while (dirtyString.contains("  ")) {
-            dirtyString = dirtyString.replaceAll("  ", " ");
+            dirtyString = dirtyString.replaceAll(" {2}", " ");
         }
         return dirtyString.trim();
     }

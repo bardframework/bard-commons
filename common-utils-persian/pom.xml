@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.bardframework</groupId>
             <artifactId>jalali-date</artifactId>
-            <version>${jalali-date.version}</version>
+            <version>${bardframework.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

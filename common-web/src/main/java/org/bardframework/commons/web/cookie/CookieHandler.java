@@ -21,9 +21,6 @@ public class CookieHandler extends CookieGenerator {
 
     /**
      * don't set domain when it is empty
-     *
-     * @param cookieValue
-     * @return
      */
     @Override
     protected Cookie createCookie(String cookieValue) {
@@ -39,9 +36,8 @@ public class CookieHandler extends CookieGenerator {
     }
 
     /**
-     * Add a cookie with the given value & age to the response,
+     * Add a cookie with the given value and age to the response,
      * using the cookie descriptor settings of this generator.
-     * <p>Delegates to {@link #createCookie} for cookie creation.
      *
      * @param response    the HTTP response to add the cookie to
      * @param cookieValue the value of the cookie to add

@@ -24,7 +24,6 @@ public final class LetterConverterUtility {
     }
 
     /**
-     * @param str
      * @return new string equivalent to <code>arabicString</code> convert arabic letter to persian and numeric to english
      */
     public static String convertArabicCharacters(String str) {
