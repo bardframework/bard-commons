@@ -2811,7 +2811,6 @@ public abstract class StringUtils {
      * @return {@code true} if the CharSequence is not empty and
      * contains at least 1 (breaking) whitespace character
      */
-    // From org.springframework.util.StringUtils, under Apache License 2.0
     public static boolean containsWhitespace(final CharSequence seq) {
         if (isEmpty(seq)) {
             return false;

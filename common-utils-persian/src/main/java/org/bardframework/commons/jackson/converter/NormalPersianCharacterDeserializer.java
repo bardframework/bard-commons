@@ -1,15 +1,12 @@
 package org.bardframework.commons.jackson.converter;
 
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
-@Component
 public class NormalPersianCharacterDeserializer extends JsonDeserializer<String> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

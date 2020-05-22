@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,7 +14,6 @@ import java.time.ZoneOffset;
 /**
  * Created by Vahid Zafari(v.zafari@chmail.ir) on 7/12/2016.
  **/
-@Component
 public class LocalDateToLongConverter extends JsonSerializer<LocalDate> implements Converter<LocalDate, Long> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -24,7 +22,7 @@ public class LocalDateToLongConverter extends JsonSerializer<LocalDate> implemen
     public void serialize(LocalDate date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
             throws IOException {
         try {
-            jsonGenerator.writeNumber(convert(date));
+            jsonGenerator.writeNumber(this.convert(date));
         } catch (Exception e) {
             logger.error("error when toModel local date time '{}' to jalali date time string:", date, e);
             jsonGenerator.writeNull();

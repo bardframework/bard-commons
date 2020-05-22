@@ -7,11 +7,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component
 public class ArabicToPersianCharacterSerializer extends JsonSerializer<String> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

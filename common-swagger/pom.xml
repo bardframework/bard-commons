@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.bardframework.commons</groupId>
         <artifactId>bard-commons</artifactId>
-        <version>0.3</version>
+        <version>0.3.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -17,6 +17,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-spring-web</artifactId>
             <version>${springfox-swagger.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -27,6 +33,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.bardframework.commons</groupId>
@@ -44,6 +56,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 

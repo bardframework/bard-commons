@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -17,7 +16,6 @@ import java.time.ZoneOffset;
 /**
  * Created by Vahid Zafari(v.zafari@chmail.ir) on 7/12/2016.
  */
-@Component
 public class LongToLocalDateConverter extends JsonDeserializer<LocalDate> implements Converter<Long, LocalDate> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

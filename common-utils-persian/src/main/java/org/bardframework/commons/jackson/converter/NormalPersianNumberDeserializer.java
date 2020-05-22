@@ -7,24 +7,21 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
-/**
- * Created by Vahid Zafari(v.zafari@chmail.ir) on 7/12/2016.
- */
-@Component
-public class ArabicToPersianDeserializer extends JsonDeserializer<String> {
+public class NormalPersianNumberDeserializer extends JsonDeserializer<String> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) {
         try {
-            return LetterConverterUtility.convertArabicCharacters(jsonParser.getValueAsString());
+            if (jsonParser.getValueAsString() != null)
+                return LetterConverterUtility.convertFarsiNumbersToEnglish(jsonParser.getValueAsString());
         } catch (Exception e) {
-            logger.info("error when converting StringJalaliDate '{}' to LocalDate.", jsonParser.getCurrentValue());
+            logger.error("error when normal '{}' to english number", jsonParser.getCurrentValue());
             logger.debug("exception details:", e);
-            return null;
         }
+        return "";
+
     }
 }

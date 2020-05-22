@@ -8,15 +8,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import java.io.IOException;
 
 /**
- * A {@link org.springframework.core.io.support.ResourcePatternResolver} implementation that is able to resolve a
- * specified resource location path into one or more matching Resources.
- * The source path may be a simple path which has a one-to-one mapping to a
- * target {@link org.springframework.core.io.Resource}, or alternatively
- * may contain the special "{@code classpath*:}" prefix and/or
- * internal Ant-style regular expressions (matched using Spring's
- * {@link org.springframework.util.AntPathMatcher} utility).
- * Both of the latter are effectively wildcards.
- *
  * <p><b>No Wildcards:</b>
  *
  * <p>In the simple case, if the specified location path does not start with the

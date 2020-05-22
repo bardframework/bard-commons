@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.bardframework.commons</groupId>
         <artifactId>bard-commons</artifactId>
-        <version>0.3</version>
+        <version>0.3.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -23,16 +23,8 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.bardframework</groupId>
-            <artifactId>jalali-date</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.bardframework.commons</groupId>
             <artifactId>common-utils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.bardframework.commons</groupId>
-            <artifactId>common-utils-persian</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
