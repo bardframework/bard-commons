@@ -20,7 +20,6 @@ public abstract class ConverterSerializer<INPUT, OUTPUT> extends JsonSerializer<
     protected MessageSource messageSource;
 
     public ConverterSerializer() {
-        super();
         SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
     }
 
@@ -30,7 +29,7 @@ public abstract class ConverterSerializer<INPUT, OUTPUT> extends JsonSerializer<
         if (null == value) {
             jsonGenerator.writeNull();
         } else {
-            jsonGenerator.writeObject(convert(value));
+            jsonGenerator.writeObject(this.convert(value));
         }
     }
 }
