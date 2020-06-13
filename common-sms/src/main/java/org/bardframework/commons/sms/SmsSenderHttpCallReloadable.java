@@ -10,8 +10,8 @@ public class SmsSenderHttpCallReloadable extends SmsSenderHttpCallAbstract {
     }
 
     @Override
-    public String getUrl() {
-        return ReloadableConfig.get(SmsConfig.SMS_SENDER_URL);
+    public String getUrlTemplate() {
+        return ReloadableConfig.get(SmsConfig.SMS_SENDER_URL_TEMPLATE);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SmsSenderHttpCallReloadable extends SmsSenderHttpCallAbstract {
     }
 
     @Override
-    public String getBody() {
-        return ReloadableConfig.get(SmsConfig.SMS_SENDER_BODY, null);
+    public String getBodyTemplate() {
+        return ReloadableConfig.get(SmsConfig.SMS_SENDER_BODY_TEMPLATE, null);
     }
 }

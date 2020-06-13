@@ -3,15 +3,15 @@ package org.bardframework.commons.sms;
 public class SmsSenderHttpCall extends SmsSenderHttpCallAbstract {
 
     protected final String httpMethod;
-    protected final String url;
+    protected final String urlTemplate;
     protected final String successPattern;
     protected final String insufficientCreditPattern;
     protected String contentType;
-    protected String body;
+    protected String bodyTemplate;
 
-    public SmsSenderHttpCall(String httpMethod, String url, String successPattern, String insufficientCreditPattern) {
+    public SmsSenderHttpCall(String httpMethod, String urlTemplate, String successPattern, String insufficientCreditPattern) {
         this.httpMethod = httpMethod;
-        this.url = url;
+        this.urlTemplate = urlTemplate;
         this.successPattern = successPattern;
         this.insufficientCreditPattern = insufficientCreditPattern;
     }
@@ -22,8 +22,8 @@ public class SmsSenderHttpCall extends SmsSenderHttpCallAbstract {
     }
 
     @Override
-    public String getUrl() {
-        return url;
+    public String getUrlTemplate() {
+        return urlTemplate;
     }
 
     @Override
@@ -46,11 +46,11 @@ public class SmsSenderHttpCall extends SmsSenderHttpCallAbstract {
     }
 
     @Override
-    public String getBody() {
-        return body;
+    public String getBodyTemplate() {
+        return bodyTemplate;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setBodyTemplate(String bodyTemplate) {
+        this.bodyTemplate = bodyTemplate;
     }
 }
