@@ -11,7 +11,7 @@
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>0.3.2</version>
+    <version>0.3.3</version>
 
     <packaging>pom</packaging>
 
@@ -43,7 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <reflection.version>0.9.12</reflection.version>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
-        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
     </properties>
 
     <dependencyManagement>
