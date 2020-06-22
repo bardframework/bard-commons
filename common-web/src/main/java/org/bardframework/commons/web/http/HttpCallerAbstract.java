@@ -1,6 +1,7 @@
 package org.bardframework.commons.web.http;
 
 import org.bardframework.commons.utils.IOUtils;
+import org.bardframework.commons.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +51,14 @@ public abstract class HttpCallerAbstract {
     protected String fillUrl(String urlTemplate, Map<String, String> variables) throws UnsupportedEncodingException {
         String result = String.valueOf(urlTemplate);
         for (Map.Entry<String, String> entry : variables.entrySet()) {
+            if (StringUtils.isBlank(entry.getKey())) {
+                LOGGER.debug("one key entry of variables is empty, ignoring it");
+                continue;
+            }
+            if (null == entry.getValue()) {
+                LOGGER.debug("value of entry[{}] is null, ignoring it", entry.getKey());
+                continue;
+            }
             result = result.replaceAll(entry.getKey(), URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.displayName()));
         }
         return result;
@@ -58,6 +67,14 @@ public abstract class HttpCallerAbstract {
     protected String fillBody(String bodyTemplate, Map<String, String> variables) {
         String result = String.valueOf(bodyTemplate);
         for (Map.Entry<String, String> entry : variables.entrySet()) {
+            if (StringUtils.isBlank(entry.getKey())) {
+                LOGGER.debug("one key entry of variables is empty, ignoring it");
+                continue;
+            }
+            if (null == entry.getValue()) {
+                LOGGER.debug("value of entry[{}] is null, ignoring it", entry.getKey());
+                continue;
+            }
             result = result.replaceAll(entry.getKey(), entry.getValue());
         }
         return result;
