@@ -47,11 +47,11 @@ public abstract class SmsSenderHttpCallAbstract extends HttpCallerAbstract imple
         String receiverNumberForLog = StringUtils.hideString(receiverNumber, 4, '*');
         LOGGER.info("sending sms to:  " + receiverNumberForLog);
         Map<String, String> variables = new HashMap<>();
-        variables.put(":to", receiverNumber);
-        variables.put(":message", message);
-        variables.put(":signature", signature);
-        variables.put(":username", username);
-        variables.put(":password", password);
+        variables.put("::to::", receiverNumber);
+        variables.put("::message::", message);
+        variables.put("::signature::", signature);
+        variables.put("::username::", username);
+        variables.put("::password::", password);
         try {
             HttpCallResult callResult = super.httpCall(variables);
             LOGGER.info("Result of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());

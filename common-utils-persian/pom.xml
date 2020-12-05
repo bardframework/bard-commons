@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.bardframework.commons</groupId>
         <artifactId>bard-commons</artifactId>
-        <version>0.3.3</version>
+        <version>0.4</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.bardframework</groupId>
             <artifactId>jalali-date</artifactId>
-            <version>${project.version}</version>
+            <version>${jalali-date.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

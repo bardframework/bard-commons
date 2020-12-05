@@ -23,7 +23,7 @@ public class LongToLocalDateTimeConverter extends JsonDeserializer<LocalDateTime
         try {
             return null == jsonParser.getValueAsString() ? null : LocalDateTime.ofInstant(Instant.ofEpochMilli(jsonParser.getValueAsLong()), ZoneOffset.UTC);
         } catch (Exception e) {
-            logger.info("error when converting StringJalaliDate '{}' to LocalDate.", jsonParser.getCurrentValue());
+            logger.info("error when converting StringLocalDateJalali '{}' to LocalDate.", jsonParser.getCurrentValue());
             logger.debug("exception details:", e);
             return null;
         }

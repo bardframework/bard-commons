@@ -20,7 +20,7 @@ public class ArabicToPersianDeserializer extends JsonDeserializer<String> {
         try {
             return LetterConverterUtility.convertArabicCharacters(jsonParser.getValueAsString());
         } catch (Exception e) {
-            LOGGER.info("error when converting StringJalaliDate '{}' to LocalDate.", jsonParser.getCurrentValue());
+            LOGGER.info("error when converting StringLocalDateJalali '{}' to LocalDate.", jsonParser.getCurrentValue());
             LOGGER.debug("exception details:", e);
             return null;
         }

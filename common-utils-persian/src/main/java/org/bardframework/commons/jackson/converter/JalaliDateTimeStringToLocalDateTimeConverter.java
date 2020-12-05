@@ -1,7 +1,7 @@
 package org.bardframework.commons.jackson.converter;
 
 import org.bardframework.commons.utils.StringUtils;
-import org.bardframework.time.JalaliDateTime;
+import org.bardframework.time.LocalDateTimeJalali;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +12,6 @@ public class JalaliDateTimeStringToLocalDateTimeConverter extends ConverterDeser
 
     @Override
     public LocalDateTime convert(String value) {
-        return StringUtils.hasText(value) ? JalaliDateTime.of(value).toLocalDateTime() : null;
+        return StringUtils.hasText(value) ? LocalDateTimeJalali.of(value).toLocalDateTime() : null;
     }
 }

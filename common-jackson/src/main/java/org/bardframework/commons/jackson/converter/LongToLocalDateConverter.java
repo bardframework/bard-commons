@@ -25,7 +25,7 @@ public class LongToLocalDateConverter extends JsonDeserializer<LocalDate> implem
         try {
             return this.convert(jsonParser.getValueAsLong());
         } catch (Exception e) {
-            logger.info("error when converting StringJalaliDate '{}' to LocalDate.", jsonParser.getCurrentValue());
+            logger.info("error when converting StringLocalDateJalali '{}' to LocalDate.", jsonParser.getCurrentValue());
             logger.debug("exception details:", e);
             return null;
         }
