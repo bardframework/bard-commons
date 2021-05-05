@@ -15,32 +15,39 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-public abstract class HttpCallerAbstract {
-    protected static final Logger LOGGER = LoggerFactory.getLogger(HttpCallerAbstract.class);
+public final class HttpCallerUtils {
+    protected static final Logger LOGGER = LoggerFactory.getLogger(HttpCallerUtils.class);
 
-    protected HttpCallResult httpCall(Map<String, String> variables) throws IOException {
+    public static HttpCallResult httpCall(String url, String httpMethod, String bodyTemplate, Map<String, String> variables, Map<String, String> headers) throws IOException {
         HttpURLConnection connection = null;
         try {
-            String url = this.fillUrl(this.getUrlTemplate(), variables);
+            url = HttpCallerUtils.fillUrl(url, variables);
             connection = (HttpURLConnection) new URL(url).openConnection();
             // optional default is GET
-            connection.setRequestMethod(this.getHttpMethod());
-            if (null != this.getContentType()) {
-                connection.setRequestProperty("Content-Type", this.getContentType());
+            connection.setRequestMethod(httpMethod);
+            if (null != headers) {
+                for (Map.Entry<String, String> entry : headers.entrySet()) {
+                    connection.setRequestProperty(entry.getKey(), entry.getValue());
+                }
             }
-            if (null != this.getBodyTemplate() && ("PUT".equalsIgnoreCase(this.getHttpMethod()) || "POST".equalsIgnoreCase(this.getHttpMethod()))) {
-                LOGGER.debug("http method is [{}] setting request body", this.getHttpMethod());
+            if (null != bodyTemplate && ("PUT".equalsIgnoreCase(httpMethod) || "POST".equalsIgnoreCase(httpMethod))) {
+                LOGGER.debug("http method is [{}] setting request body", httpMethod);
                 connection.setDoOutput(true);
                 try (OutputStream outputStream = connection.getOutputStream()) {
-                    outputStream.write(this.fillBody(this.getBodyTemplate(), variables).getBytes(StandardCharsets.UTF_8));
+                    outputStream.write(HttpCallerUtils.fillBody(bodyTemplate, variables).getBytes(StandardCharsets.UTF_8));
                 }
             } else {
                 LOGGER.debug("http method is not PUT or POST or request body is null, not set body");
             }
-            InputStream stream = null == connection.getInputStream() ? connection.getErrorStream() : connection.getInputStream();
-            String response = IOUtils.toString(stream, StandardCharsets.UTF_8);
-            LOGGER.debug("http call[{}] response, code: [{}], details: [{}]", url, connection.getResponseCode(), response);
-            return new HttpCallResult(connection.getResponseCode(), response, false);
+            /*
+                getResponseCode to hack to force HttpURLConnection to run the request
+                Otherwise getErrorStream always returns null
+             */
+            int responseCode = connection.getResponseCode();
+            InputStream stream = null != connection.getErrorStream() ? connection.getErrorStream() : connection.getInputStream();
+            byte[] response = IOUtils.toByteArray(stream);
+            LOGGER.debug("http call[{}] response, code: [{}], details: [{}]", url, responseCode, IOUtils.toString(response, StandardCharsets.UTF_8.displayName()));
+            return new HttpCallResult(responseCode, response, null != connection.getErrorStream());
         } finally {
             if (null != connection) {
                 connection.disconnect();
@@ -48,7 +55,7 @@ public abstract class HttpCallerAbstract {
         }
     }
 
-    protected String fillUrl(String urlTemplate, Map<String, String> variables) throws UnsupportedEncodingException {
+    private static String fillUrl(String urlTemplate, Map<String, String> variables) throws UnsupportedEncodingException {
         String result = String.valueOf(urlTemplate);
         for (Map.Entry<String, String> entry : variables.entrySet()) {
             if (StringUtils.isBlank(entry.getKey())) {
@@ -64,7 +71,7 @@ public abstract class HttpCallerAbstract {
         return result;
     }
 
-    protected String fillBody(String bodyTemplate, Map<String, String> variables) {
+    private static String fillBody(String bodyTemplate, Map<String, String> variables) {
         String result = String.valueOf(bodyTemplate);
         for (Map.Entry<String, String> entry : variables.entrySet()) {
             if (StringUtils.isBlank(entry.getKey())) {
@@ -79,13 +86,4 @@ public abstract class HttpCallerAbstract {
         }
         return result;
     }
-
-    public abstract String getHttpMethod();
-
-    public abstract String getUrlTemplate();
-
-    public abstract String getBodyTemplate();
-
-    public abstract String getContentType();
-
 }

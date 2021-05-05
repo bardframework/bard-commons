@@ -2,15 +2,16 @@ package org.bardframework.commons.sms;
 
 import org.bardframework.commons.utils.StringUtils;
 import org.bardframework.commons.web.http.HttpCallResult;
-import org.bardframework.commons.web.http.HttpCallerAbstract;
+import org.bardframework.commons.web.http.HttpCallerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public abstract class SmsSenderHttpCallAbstract extends HttpCallerAbstract implements SmsSender {
+public abstract class SmsSenderHttpCallAbstract implements SmsSender {
     protected static final Logger LOGGER = LoggerFactory.getLogger(SmsSenderHttpCallAbstract.class);
 
     @Override
@@ -52,18 +53,22 @@ public abstract class SmsSenderHttpCallAbstract extends HttpCallerAbstract imple
         variables.put("::signature::", signature);
         variables.put("::username::", username);
         variables.put("::password::", password);
+
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", this.getContentType());
         try {
-            HttpCallResult callResult = super.httpCall(variables);
+            HttpCallResult callResult = HttpCallerUtils.httpCall(this.getUrlTemplate(), this.getHttpMethod(), this.getBodyTemplate(), variables, headers);
             LOGGER.info("Result of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());
             if (callResult.hasError()) {
                 LOGGER.info("error response sending sms to [{}], [{}]", receiverNumberForLog, callResult.getBody());
                 return SendResult.ERROR;
             }
-            if (null != this.getInsufficientCreditPattern() && Pattern.matches(this.getInsufficientCreditPattern(), callResult.getBody())) {
+            String body = new String(callResult.getBody(), StandardCharsets.UTF_8);
+            if (null != this.getInsufficientCreditPattern() && Pattern.matches(this.getInsufficientCreditPattern(), body)) {
                 return SendResult.INSUFFICIENT_CREDIT;
             }
             if (null != this.getSuccessPattern()) {
-                if (Pattern.matches(this.getSuccessPattern(), callResult.getBody())) {
+                if (Pattern.matches(this.getSuccessPattern(), body)) {
                     return SendResult.SUCCESS;
                 } else {
                     return SendResult.ERROR;
@@ -75,6 +80,14 @@ public abstract class SmsSenderHttpCallAbstract extends HttpCallerAbstract imple
             return SendResult.ERROR;
         }
     }
+
+    public abstract String getHttpMethod();
+
+    public abstract String getUrlTemplate();
+
+    public abstract String getBodyTemplate();
+
+    public abstract String getContentType();
 
     public abstract String getSuccessPattern();
 
