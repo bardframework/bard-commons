@@ -133,7 +133,7 @@ public class ReloadableConfig {
             }
         }
         ReloadableConfig.config = newConfigs;
-        LOGGER.info("load [{}] config entries successfully from [{}] files", newConfigs.keySet().size(), resources.size());
+        LOGGER.debug("load [{}] config entries successfully from [{}] files", newConfigs.keySet().size(), resources.size());
     }
 
     /**

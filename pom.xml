@@ -11,7 +11,7 @@
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>0.5</version>
+    <version>0.9.5</version>
 
     <packaging>pom</packaging>
 
@@ -37,11 +37,11 @@
     <properties>
         <jalali-date.version>0.5.1</jalali-date.version>
         <google.zxing.version>3.4.1</google.zxing.version>
-        <guava.version>30.0-jre</guava.version>
-        <mapstruct.version>1.4.1.Final</mapstruct.version>
-        <reflection.version>0.9.12</reflection.version>
-        <springfox-swagger.version>3.0.0</springfox-swagger.version>
-        <spring-boot.version>2.4.0</spring-boot.version>
+        <guava.version>31.0.1-jre</guava.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <reflection.version>0.10.2</reflection.version>
+        <springdoc.version>1.5.12</springdoc.version>
+        <spring-boot.version>2.6.0</spring-boot.version>
     </properties>
 
     <dependencyManagement>
