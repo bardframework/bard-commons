@@ -1,8 +1,8 @@
 package org.bardframework.commons.captcha;
 
-import org.bardframework.commons.utils.RandomStringUtils;
-import org.bardframework.commons.utils.RandomUtils;
-import org.bardframework.commons.utils.StringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
 
 import javax.imageio.ImageIO;
@@ -76,7 +76,7 @@ public class CaptchaService {
                 graphics.drawString(text.substring(i, i + 1), start + (i * 20), random.nextInt(15) + 25);
             }
         } else {
-            String[] parts = text.split(" ");
+            String[] parts = text.split(StringUtils.SPACE);
             for (int i = 0; i < parts.length; i++) {
                 graphics.drawString(parts[i], start + (i * 20), random.nextInt(15) + 25);
             }
@@ -94,9 +94,6 @@ public class CaptchaService {
     /**
      * remove numbers from first, last amd continuous
      *
-     * @param text
-     * @param validChars
-     * @return
      */
     private StringBuilder removeContinuousNumbers(String text, String validChars) {
         StringBuilder result = new StringBuilder();

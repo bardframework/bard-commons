@@ -68,7 +68,6 @@ class FileWalker {
     /**
      * Preorder traversal of tree
      *
-     * @param currentDir
      */
     protected void walk(File currentDir) {
         File[] files = currentDir.listFiles();

@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils.persian;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
@@ -38,7 +40,7 @@ public final class PersianStringUtils {
                 .replace('ك', 'ک')
                 .replace('ؤ', 'و');
         while (dirtyString.contains("  ")) {
-            dirtyString = dirtyString.replaceAll(" {2}", " ");
+            dirtyString = dirtyString.replaceAll(" {2}", StringUtils.SPACE);
         }
         return dirtyString.trim();
     }

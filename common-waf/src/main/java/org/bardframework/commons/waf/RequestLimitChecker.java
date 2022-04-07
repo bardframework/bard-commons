@@ -31,12 +31,6 @@ public class RequestLimitChecker {
     /**
      * post method
      *
-     * @param url
-     * @param requestCallCounter
-     * @param requestKeyDetector
-     * @param limit
-     * @param period
-     * @param periodUnit
      */
     public RequestLimitChecker(String url, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
         this.httpMethod = null;

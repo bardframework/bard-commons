@@ -1,7 +1,7 @@
 package org.bardframework.commons.spring.boot;
 
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.CharsetUtils;
-import org.bardframework.commons.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ public class ConfigsConfiguration {
     private static final String CLASS_PATH_KEY = "java.class.path";
     private static final String SEPARATOR_KEY = "path.separator";
     private static final Set<String> SENSITIVE_KEYS = new HashSet<>(Arrays.asList("password", "credential", "secret"));
-    private static final Set<String> NOT_LOG_KEYS = new HashSet<>(Arrays.asList(CLASS_PATH_KEY));
+    private static final Set<String> NOT_LOG_KEYS = new HashSet<>(Collections.singletonList(CLASS_PATH_KEY));
 
     @Bean
     static PropertySourcesPlaceholderConfigurer placeHolderConfigurer(Environment environment) throws IOException {
@@ -55,7 +55,7 @@ public class ConfigsConfiguration {
                 return String.valueOf(resource);
             }
         }).collect(Collectors.joining("\n\t")));
-        if (StringUtils.isNotEmpty(classpath) && StringUtils.isNotEmpty(separator)) {
+        if (StringUtils.isNotBlank(classpath) && StringUtils.isNotBlank(separator)) {
             ConfigsConfiguration.append(configs, CLASS_PATH_KEY, Arrays.stream(classpath.split(separator)).map(Object::toString).collect(Collectors.joining("\n\t")));
         } else {
             LOGGER.info("classpath[{}] or separator[{}] is not valid", classpath, separator);

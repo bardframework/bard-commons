@@ -17,7 +17,7 @@ public final class IpUtils {
                     throw new IllegalArgumentException(ip);
                 }
                 builder.append(String.format("%03d", part));
-                builder.append(StringUtils.DOT_CHAR);
+                builder.append(".");
             }
             String finalIp = builder.substring(0, builder.length() - 1);
             if (finalIp.length() != 15) {

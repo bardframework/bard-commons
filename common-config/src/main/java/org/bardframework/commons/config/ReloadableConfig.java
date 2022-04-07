@@ -1,7 +1,7 @@
 package org.bardframework.commons.config;
 
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.reflection.ReflectionUtils;
-import org.bardframework.commons.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -38,7 +38,6 @@ public class ReloadableConfig {
     }
 
     /**
-     * @param key
      * @return list of separated value with ',', empty list if value not set.
      */
     public static List<String> getList(ConfigKey key) {
@@ -47,7 +46,6 @@ public class ReloadableConfig {
     }
 
     /**
-     * @param key
      * @return Set of separated value with ',', empty Set if value not set.
      */
     public static Set<String> getSet(ConfigKey key) {

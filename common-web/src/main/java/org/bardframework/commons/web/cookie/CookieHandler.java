@@ -1,6 +1,6 @@
 package org.bardframework.commons.web.cookie;
 
-import org.bardframework.commons.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.CookieGenerator;
 import org.springframework.web.util.WebUtils;
 

@@ -1,8 +1,8 @@
 package org.bardframework.commons.security.context;
 
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.security.token.AuthenticationAbstract;
 import org.bardframework.commons.security.token.manager.TokenManager;
-import org.bardframework.commons.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,13 +23,11 @@ public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbs
     /**
      * used in security context filter
      *
-     * @param request
-     * @param response
      */
     @Override
     public void setSecurityContext(HttpServletRequest request, HttpServletResponse response) {
         String tokenId = this.getToken(request);
-        if (StringUtils.hasNotText(tokenId)) {
+        if (StringUtils.isBlank(tokenId)) {
             SecurityContextHolder.clearContext();
             return;
         }
@@ -56,9 +54,6 @@ public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbs
     /**
      * used in login filter
      *
-     * @param authentication
-     * @param response
-     * @return
      */
     @Override
     public String putAuthentication(A authentication, HttpServletResponse response) {

@@ -78,7 +78,6 @@ class JavaClassFinder {
     /**
      * Finds all classes in the classpath
      *
-     * @return
      */
     public List<Class<?>> findAllMatchingTypes() {
         return findAllMatchingTypes(null);

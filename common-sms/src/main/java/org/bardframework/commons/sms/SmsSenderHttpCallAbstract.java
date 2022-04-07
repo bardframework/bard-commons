@@ -1,6 +1,6 @@
 package org.bardframework.commons.sms;
 
-import org.bardframework.commons.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.web.http.HttpCallResult;
 import org.bardframework.commons.web.http.HttpCallerUtils;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public abstract class SmsSenderHttpCallAbstract implements SmsSender {
     @Override
     public SendResult send(String receiverNumber, String message) {
         try {
-            return this.getSmsSender(receiverNumber, message, null, null, null);
+            return this.send(receiverNumber, message, null, null, null);
         } catch (Exception e) {
             LOGGER.error("error occurred in sms sender thread", e);
             return SendResult.ERROR;
@@ -25,9 +25,9 @@ public abstract class SmsSenderHttpCallAbstract implements SmsSender {
     }
 
     @Override
-    public SendResult send(String receiverNumber, String message, String signature) {
+    public SendResult send(String receiverNumber, String message, String token) {
         try {
-            return this.getSmsSender(receiverNumber, message, signature, null, null);
+            return this.send(receiverNumber, message, token, null, null);
         } catch (Exception e) {
             LOGGER.error("error occurred in sms sender thread", e);
             return SendResult.ERROR;
@@ -37,27 +37,25 @@ public abstract class SmsSenderHttpCallAbstract implements SmsSender {
     @Override
     public SendResult send(String receiverNumber, String message, String username, String password) {
         try {
-            return this.getSmsSender(receiverNumber, message, null, username, password);
+            return this.send(receiverNumber, message, null, username, password);
         } catch (Exception e) {
             LOGGER.error("error occurred in sms sender thread", e);
             return SendResult.ERROR;
         }
     }
 
-    private SendResult getSmsSender(String receiverNumber, String message, String signature, String username, String password) {
-        String receiverNumberForLog = StringUtils.hideString(receiverNumber, 4, '*');
+    private SendResult send(String receiverNumber, String message, String token, String username, String password) {
+        String receiverNumberForLog = StringUtils.overlay(receiverNumber, "*", 4, receiverNumber.length() - 4);
         LOGGER.info("sending sms to:  " + receiverNumberForLog);
         Map<String, String> variables = new HashMap<>();
         variables.put("::to::", receiverNumber);
         variables.put("::message::", message);
-        variables.put("::signature::", signature);
+        variables.put("::token::", token);
         variables.put("::username::", username);
         variables.put("::password::", password);
 
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", this.getContentType());
         try {
-            HttpCallResult callResult = HttpCallerUtils.httpCall(this.getUrlTemplate(), this.getHttpMethod(), this.getBodyTemplate(), variables, headers);
+            HttpCallResult callResult = HttpCallerUtils.httpCall(this.getUrlTemplate(), this.getHttpMethod(), this.getBodyTemplate(), variables, this.getHeaders());
             LOGGER.info("Result of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());
             if (callResult.hasError()) {
                 LOGGER.info("error response sending sms to [{}], [{}]", receiverNumberForLog, callResult.getBody());
@@ -87,7 +85,7 @@ public abstract class SmsSenderHttpCallAbstract implements SmsSender {
 
     public abstract String getBodyTemplate();
 
-    public abstract String getContentType();
+    public abstract Map<String, String> getHeaders();
 
     public abstract String getSuccessPattern();
 

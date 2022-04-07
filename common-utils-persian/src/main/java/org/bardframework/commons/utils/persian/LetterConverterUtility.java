@@ -1,6 +1,6 @@
 package org.bardframework.commons.utils.persian;
 
-import org.bardframework.commons.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public final class LetterConverterUtility {
      * @return new string equivalent to <code>arabicString</code> convert arabic letter to persian and numeric to english
      */
     public static String convertArabicCharacters(String str) {
-        if (StringUtils.hasNotText(str)) {
+        if (StringUtils.isBlank(str)) {
             return str;
         }
         for (int j = 0; j < str.length(); j++) {
@@ -41,7 +41,7 @@ public final class LetterConverterUtility {
     }
 
     public static String convertFarsiNumbersToEnglish(String str) {
-        if (StringUtils.hasNotText(str)) {
+        if (StringUtils.isBlank(str)) {
             return str;
         }
         for (int j = 0; j < str.length(); j++) {
@@ -56,7 +56,7 @@ public final class LetterConverterUtility {
     }
 
     public static String convertEnglishNumbersToFarsi(String str) {
-        if (StringUtils.hasNotText(str)) {
+        if (StringUtils.isBlank(str)) {
             return str;
         }
         for (int j = 0; j < str.length(); j++) {
@@ -132,7 +132,7 @@ public final class LetterConverterUtility {
             List<String> groupWords = groupToWords(group);
             if (groupWords != null) {
                 StringBuilder part = new StringBuilder();
-                part.append(StringUtils.collectionToDelimitedString(groupWords, " و "));
+                part.append(String.join(" و ", groupWords));
                 if (len - step - 1 > 0) {
                     part.append(' ');
                     part.append(steps[len - step - 2]);
@@ -140,6 +140,6 @@ public final class LetterConverterUtility {
                 parts.add(String.valueOf(part));
             }
         }
-        return (isNegative ? "منفی " : "") + StringUtils.collectionToDelimitedString(parts, " و ") + " ریال";
+        return (isNegative ? "منفی " : "") + String.join(" و ", parts) + " ریال";
     }
 }

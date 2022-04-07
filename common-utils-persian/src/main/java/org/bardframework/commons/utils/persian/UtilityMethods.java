@@ -1,6 +1,6 @@
 package org.bardframework.commons.utils.persian;
 
-import org.bardframework.commons.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +103,7 @@ public final class UtilityMethods {
 
         if ("-".equals(tempStringNumberOrgin.substring(0, 1))) {
             outString.append(NEGATIVE);
-            outString.append(StringUtils.SPACE_CHAR);
+            outString.append(StringUtils.SPACE);
             outString.append(outString);
         }
 
@@ -179,7 +179,7 @@ public final class UtilityMethods {
             if (StringUtils.EMPTY.equals(partInWord)) {
                 partFullString.add(index, StringUtils.EMPTY);
             } else {
-                partFullString.add(index, partInWord + " " + partPreFix);
+                partFullString.add(index, partInWord + StringUtils.SPACE + partPreFix);
             }
         } else {
             addParts(partFullString, partInWord, partPreFix, index);

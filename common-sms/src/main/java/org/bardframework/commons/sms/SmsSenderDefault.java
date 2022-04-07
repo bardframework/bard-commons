@@ -1,15 +1,18 @@
 package org.bardframework.commons.sms;
 
-public class SmsSenderHttpCall extends SmsSenderHttpCallAbstract {
+import java.util.HashMap;
+import java.util.Map;
+
+public class SmsSenderDefault extends SmsSenderHttpCallAbstract {
 
     protected final String httpMethod;
     protected final String urlTemplate;
     protected final String successPattern;
     protected final String insufficientCreditPattern;
-    protected String contentType;
+    protected Map<String, String> headers = new HashMap<>();
     protected String bodyTemplate;
 
-    public SmsSenderHttpCall(String httpMethod, String urlTemplate, String successPattern, String insufficientCreditPattern) {
+    public SmsSenderDefault(String httpMethod, String urlTemplate, String successPattern, String insufficientCreditPattern) {
         this.httpMethod = httpMethod;
         this.urlTemplate = urlTemplate;
         this.successPattern = successPattern;
@@ -37,12 +40,12 @@ public class SmsSenderHttpCall extends SmsSenderHttpCallAbstract {
     }
 
     @Override
-    public String getContentType() {
-        return contentType;
+    public Map<String, String> getHeaders() {
+        return headers;
     }
 
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
     }
 
     @Override

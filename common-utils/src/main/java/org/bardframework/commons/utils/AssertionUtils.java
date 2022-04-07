@@ -1,6 +1,10 @@
 package org.bardframework.commons.utils;
 
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -178,14 +182,14 @@ public abstract class AssertionUtils {
     /**
      * Assert that the given String is not empty; that is,
      * it must not be {@code null} and not the empty String.
-     * <pre class="code">Assert.hasLength(name, "Name must not be empty");</pre>
+     * <pre class="code">Assert.isNotBlank(name, "Name must not be empty");</pre>
      *
      * @param text    the String to check
      * @param message the exception message to use if the assertion fails
      * @throws IllegalArgumentException if the text is empty
      */
-    public static void hasLength(String text, String message) {
-        if (!StringUtils.hasLength(text)) {
+    public static void isNotBlank(String text, String message) {
+        if (!StringUtils.isNotBlank(text)) {
             throw new IllegalArgumentException(message);
         }
     }
@@ -194,7 +198,7 @@ public abstract class AssertionUtils {
      * Assert that the given String is not empty; that is,
      * it must not be {@code null} and not the empty String.
      * <pre class="code">
-     * Assert.hasLength(name, () -&gt; "Name for account '" + account.getId() + "' must not be empty");
+     * Assert.isNotBlank(name, () -&gt; "Name for account '" + account.getId() + "' must not be empty");
      * </pre>
      *
      * @param text            the String to check
@@ -202,8 +206,8 @@ public abstract class AssertionUtils {
      *                        assertion fails
      * @throws IllegalArgumentException if the text is empty
      */
-    public static void hasLength(String text, Supplier<String> messageSupplier) {
-        if (!StringUtils.hasLength(text)) {
+    public static void isNotBlank(String text, Supplier<String> messageSupplier) {
+        if (!StringUtils.isNotBlank(text)) {
             throw new IllegalArgumentException(nullSafeGet(messageSupplier));
         }
     }
@@ -218,7 +222,7 @@ public abstract class AssertionUtils {
      * @throws IllegalArgumentException if the text does not contain valid text content
      */
     public static void hasText(String text, String message) {
-        if (!StringUtils.hasText(text)) {
+        if (!StringUtils.isNotBlank(text)) {
             throw new IllegalArgumentException(message);
         }
     }
@@ -236,7 +240,7 @@ public abstract class AssertionUtils {
      * @throws IllegalArgumentException if the text does not contain valid text content
      */
     public static void hasText(String text, Supplier<String> messageSupplier) {
-        if (!StringUtils.hasText(text)) {
+        if (!StringUtils.isNotBlank(text)) {
             throw new IllegalArgumentException(nullSafeGet(messageSupplier));
         }
     }
@@ -251,7 +255,7 @@ public abstract class AssertionUtils {
      * @throws IllegalArgumentException if the text contains the substring
      */
     public static void doesNotContain(String textToSearch, String substring, String message) {
-        if (StringUtils.hasLength(textToSearch) && StringUtils.hasLength(substring) &&
+        if (StringUtils.isNotBlank(textToSearch) && StringUtils.isNotBlank(substring) &&
                 textToSearch.contains(substring)) {
             throw new IllegalArgumentException(message);
         }
@@ -270,7 +274,7 @@ public abstract class AssertionUtils {
      * @throws IllegalArgumentException if the text contains the substring
      */
     public static void doesNotContain(String textToSearch, String substring, Supplier<String> messageSupplier) {
-        if (StringUtils.hasLength(textToSearch) && StringUtils.hasLength(substring) &&
+        if (StringUtils.isNotBlank(textToSearch) && StringUtils.isNotBlank(substring) &&
                 textToSearch.contains(substring)) {
             throw new IllegalArgumentException(nullSafeGet(messageSupplier));
         }
@@ -435,7 +439,7 @@ public abstract class AssertionUtils {
      * @throws IllegalArgumentException if the map is {@code null} or contains no entries
      */
     public static void notEmpty(Map<?, ?> map, String message) {
-        if (CollectionUtils.isEmpty(map)) {
+        if (MapUtils.isEmpty(map)) {
             throw new IllegalArgumentException(message);
         }
     }
@@ -453,7 +457,7 @@ public abstract class AssertionUtils {
      * @throws IllegalArgumentException if the map is {@code null} or contains no entries
      */
     public static void notEmpty(Map<?, ?> map, Supplier<String> messageSupplier) {
-        if (CollectionUtils.isEmpty(map)) {
+        if (MapUtils.isEmpty(map)) {
             throw new IllegalArgumentException(nullSafeGet(messageSupplier));
         }
     }
@@ -565,9 +569,9 @@ public abstract class AssertionUtils {
         String className = (obj != null ? obj.getClass().getName() : "null");
         String result = "";
         boolean defaultMessage = true;
-        if (StringUtils.hasLength(msg)) {
+        if (StringUtils.isNotBlank(msg)) {
             if (endsWithSeparator(msg)) {
-                result = msg + " ";
+                result = msg + StringUtils.SPACE;
             } else {
                 result = messageWithTypeName(msg, className);
                 defaultMessage = false;
@@ -582,9 +586,9 @@ public abstract class AssertionUtils {
     private static void assignableCheckFailed(Class<?> superType, Class<?> subType, String msg) {
         String result = "";
         boolean defaultMessage = true;
-        if (StringUtils.hasLength(msg)) {
+        if (StringUtils.isNotBlank(msg)) {
             if (endsWithSeparator(msg)) {
-                result = msg + " ";
+                result = msg + StringUtils.SPACE;
             } else {
                 result = messageWithTypeName(msg, subType);
                 defaultMessage = false;
@@ -601,7 +605,7 @@ public abstract class AssertionUtils {
     }
 
     private static String messageWithTypeName(String msg, Object typeName) {
-        return msg + (msg.endsWith(" ") ? "" : ": ") + typeName;
+        return msg + (msg.endsWith(StringUtils.SPACE) ? StringUtils.EMPTY : ": ") + typeName;
     }
 
     private static String nullSafeGet(Supplier<String> messageSupplier) {

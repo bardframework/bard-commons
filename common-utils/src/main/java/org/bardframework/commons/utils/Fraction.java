@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigInteger;
 
 /**
@@ -892,7 +894,7 @@ public final class Fraction extends Number implements Comparable<Fraction> {
                 if (properNumerator == 0) {
                     toProperString = Integer.toString(getProperWhole());
                 } else {
-                    toProperString = getProperWhole() + " " + properNumerator + "/" + getDenominator();
+                    toProperString = getProperWhole() + StringUtils.SPACE + properNumerator + "/" + getDenominator();
                 }
             } else {
                 toProperString = getNumerator() + "/" + getDenominator();

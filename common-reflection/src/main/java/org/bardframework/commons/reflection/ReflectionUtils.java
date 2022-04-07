@@ -1,7 +1,7 @@
 package org.bardframework.commons.reflection;
 
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.AssertionUtils;
-import org.bardframework.commons.utils.StringUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -256,7 +256,7 @@ public final class ReflectionUtils {
         if (clazz == null) {
             throw new IllegalArgumentException(UNACCEPTABLE_NULL_CLAZZ);
         }
-        if (StringUtils.hasNotText(fieldPath)) {
+        if (StringUtils.isBlank(fieldPath)) {
             throw new IllegalArgumentException(UNACCEPTABLE_FIELD_PATH);
         }
         Class<?> currentClazz = clazz;
@@ -276,7 +276,7 @@ public final class ReflectionUtils {
         if (clazz == null) {
             throw new IllegalArgumentException(UNACCEPTABLE_NULL_CLAZZ);
         }
-        if (StringUtils.hasNotText(fieldPath)) {
+        if (StringUtils.isBlank(fieldPath)) {
             throw new IllegalArgumentException(UNACCEPTABLE_FIELD_PATH);
         }
         Class<?> currentClazz = clazz;
@@ -292,7 +292,7 @@ public final class ReflectionUtils {
         if (clazz == null) {
             throw new IllegalArgumentException(UNACCEPTABLE_NULL_CLAZZ);
         }
-        if (StringUtils.hasNotText(fieldPath)) {
+        if (StringUtils.isBlank(fieldPath)) {
             throw new IllegalArgumentException(UNACCEPTABLE_FIELD_PATH);
         }
         Class<?> currentClazz = clazz;
@@ -310,7 +310,7 @@ public final class ReflectionUtils {
         if (clazz == null) {
             throw new IllegalArgumentException(UNACCEPTABLE_NULL_CLAZZ);
         }
-        if (StringUtils.hasNotText(fieldPath)) {
+        if (StringUtils.isBlank(fieldPath)) {
             throw new IllegalArgumentException(UNACCEPTABLE_FIELD_PATH);
         }
         Class<?> currentClazz = clazz;
@@ -447,8 +447,8 @@ public final class ReflectionUtils {
             return fields;
         }
         allFields.forEach(field -> {
-            if (field.startsWith(fieldName + StringUtils.DOT_CHAR)) {
-                fields.add(field.replaceFirst(fieldName + StringUtils.DOT_CHAR, StringUtils.EMPTY));
+            if (field.startsWith(fieldName + ".")) {
+                fields.add(field.replaceFirst(fieldName + ".", StringUtils.EMPTY));
             }
         });
         if (!fields.isEmpty()) {
@@ -463,7 +463,7 @@ public final class ReflectionUtils {
             return false;
         }
         for (String field : fields) {
-            if (field.equals(fieldName) || field.startsWith(fieldName + StringUtils.DOT_CHAR)) {
+            if (field.equals(fieldName) || field.startsWith(fieldName + ".")) {
                 return true;
             }
         }

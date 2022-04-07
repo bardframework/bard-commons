@@ -1,7 +1,5 @@
 package org.bardframework.commons.reflection;
 
-import org.bardframework.commons.utils.FileUtils;
-
 import java.io.File;
 
 /**
@@ -15,9 +13,6 @@ class FileToClassConverter {
         setClassPathRoot(classPathRoot);
     }
 
-    /**
-     * @param classPathRoot
-     */
     public void setClassPathRoot(String classPathRoot) {
         if (classPathRoot == null) {
             throw new RuntimeException("Class path root must not be null");
@@ -36,7 +31,7 @@ class FileToClassConverter {
     private Class getClassFromName(String fileName) {
         try {
             String className = removeClassPathBase(fileName);
-            className = FileUtils.removeExtension(className);
+            className = this.removeExtension(className);
             return Class.forName(className);
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,13 +39,21 @@ class FileToClassConverter {
         }
     }
 
-    /**
-     * @param fileName
-     * @return
-     */
     private String removeClassPathBase(String fileName) {
         String classPart = fileName.substring(classPathRoot.length() + 1);
         return classPart.replace(File.separatorChar, '.');
+    }
+
+    private String removeExtension(String fileName) {
+        if (fileName == null) {
+            return null;
+        }
+        String modifiedName = fileName;
+        int index = fileName.lastIndexOf(".");
+        if (index > -1) {
+            modifiedName = fileName.substring(0, index);
+        }
+        return modifiedName;
     }
 
 

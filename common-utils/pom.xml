@@ -5,11 +5,26 @@
     <parent>
         <groupId>org.bardframework.commons</groupId>
         <artifactId>bard-commons</artifactId>
-        <version>0.9.5</version>
+        <version>1.1.16</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>common-utils</artifactId>
 
     <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+    </dependencies>
 </project>

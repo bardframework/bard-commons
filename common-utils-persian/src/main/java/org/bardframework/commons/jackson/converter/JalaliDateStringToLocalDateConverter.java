@@ -1,6 +1,6 @@
 package org.bardframework.commons.jackson.converter;
 
-import org.bardframework.commons.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bardframework.time.LocalDateJalali;
 
 import java.time.LocalDate;
@@ -12,6 +12,6 @@ public class JalaliDateStringToLocalDateConverter extends ConverterDeserializer<
 
     @Override
     public LocalDate convert(String value) {
-        return StringUtils.hasText(value) ? LocalDateJalali.of(value).toLocalDate() : null;
+        return StringUtils.isNotBlank(value) ? LocalDateJalali.of(value).toLocalDate() : null;
     }
 }

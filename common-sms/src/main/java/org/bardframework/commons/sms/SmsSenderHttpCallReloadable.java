@@ -1,6 +1,10 @@
 package org.bardframework.commons.sms;
 
 import org.bardframework.commons.config.ReloadableConfig;
+import org.springframework.http.HttpHeaders;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SmsSenderHttpCallReloadable extends SmsSenderHttpCallAbstract {
 
@@ -25,8 +29,10 @@ public class SmsSenderHttpCallReloadable extends SmsSenderHttpCallAbstract {
     }
 
     @Override
-    public String getContentType() {
-        return ReloadableConfig.get(SmsConfig.SMS_SENDER_CONTENT_TYPE, null);
+    public Map<String, String> getHeaders() {
+        Map<String, String> headers = new HashMap<>();
+        headers.put(HttpHeaders.CONTENT_TYPE, ReloadableConfig.get(SmsConfig.SMS_SENDER_CONTENT_TYPE, null));
+        return headers;
     }
 
     @Override
