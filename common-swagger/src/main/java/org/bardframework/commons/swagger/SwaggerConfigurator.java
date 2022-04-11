@@ -41,7 +41,7 @@ public class SwaggerConfigurator implements WebMvcConfigurer, Configurator {
     @Override
     public void configure(HttpSecurity httpSecurity) {
         try {
-            httpSecurity.authorizeRequests().antMatchers("/swagger-resources/**", "/swagger-ui/**", "/v2/api-docs", "/v3/api-docs").permitAll();
+            httpSecurity.authorizeRequests().antMatchers("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll();
         } catch (Exception e) {
             LOGGER.error("error configuring swagger", e);
         }
