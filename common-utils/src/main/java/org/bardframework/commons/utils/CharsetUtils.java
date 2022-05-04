@@ -10,9 +10,12 @@ import java.util.Locale;
  * Demonstrate default Charset-related details.
  */
 
-public abstract class CharsetUtils {
+public final class CharsetUtils {
 
     private CharsetUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     /**

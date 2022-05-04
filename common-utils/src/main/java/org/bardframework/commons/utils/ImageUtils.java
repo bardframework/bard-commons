@@ -3,9 +3,12 @@ package org.bardframework.commons.utils;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class ImageUtils {
+public final class ImageUtils {
 
     private ImageUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     /**

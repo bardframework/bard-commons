@@ -14,6 +14,9 @@ public final class EncryptionUtil {
     private static final String ALGORITHM = "AES";
 
     private EncryptionUtil() {
+        /*
+            prevent instantiation
+         */
     }
 
     /**

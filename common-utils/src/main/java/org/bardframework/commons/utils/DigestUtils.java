@@ -10,6 +10,9 @@ public final class DigestUtils {
     private static final String SHA = "SHA";
 
     private DigestUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     public static String sha512(String data)

@@ -8,6 +8,9 @@ import java.text.NumberFormat;
 public final class MoneyUtils {
 
     private MoneyUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     /**

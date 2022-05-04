@@ -27,7 +27,6 @@ public class CorsFilter implements Filter {
     private boolean allowedCredentials;
     private List<String> exposedHeaders;
     private int maxAge;
-    private boolean enable;
 
     public CorsFilter(List<String> corsMapping) {
         this.corsRequestMatchers = new ArrayList<>();
@@ -39,7 +38,7 @@ public class CorsFilter implements Filter {
         this.antPathMatcher.setCaseSensitive(false);
     }
 
-    protected CorsFilter(List<String> corsMapping, List<String> allowedOrigins, List<String> allowedMethods, List<String> allowedHeaders, List<String> exposedHeaders, boolean allowedCredentials, int maxAge, boolean enable) {
+    protected CorsFilter(List<String> corsMapping, List<String> allowedOrigins, List<String> allowedMethods, List<String> allowedHeaders, List<String> exposedHeaders, boolean allowedCredentials, int maxAge) {
         this(corsMapping);
         this.allowedOrigins = allowedOrigins;
         this.allowedMethods = allowedMethods;
@@ -47,7 +46,6 @@ public class CorsFilter implements Filter {
         this.allowedCredentials = allowedCredentials;
         this.exposedHeaders = exposedHeaders;
         this.maxAge = maxAge;
-        this.enable = enable;
     }
 
     @Override
@@ -57,10 +55,6 @@ public class CorsFilter implements Filter {
         String origin = request.getHeader("Origin");
         if (StringUtils.isBlank(origin) || !this.needCorsCheck(request)) {
             chain.doFilter(request, response);
-            return;
-        }
-        if (!this.isEnable()) {
-            LOGGER.debug("cors filter is disable and not processed for request [{}], check config [{}]", request.getRequestURI(), CorsConfig.CORS_ENABLE.getKey());
             return;
         }
         if (this.isAllowedOrigin(origin)) {
@@ -98,10 +92,6 @@ public class CorsFilter implements Filter {
 
     public List<RequestMatcher> getCorsRequestMatchers() {
         return corsRequestMatchers;
-    }
-
-    protected boolean isEnable() {
-        return enable;
     }
 
     public List<String> getAllowedOrigins() {

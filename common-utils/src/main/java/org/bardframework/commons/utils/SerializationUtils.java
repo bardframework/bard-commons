@@ -10,6 +10,9 @@ public final class SerializationUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(SerializationUtils.class);
 
     private SerializationUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     public static byte[] serialize(Serializable object)

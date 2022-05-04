@@ -6,6 +6,9 @@ package org.bardframework.commons.utils;
 public final class IpUtils {
 
     private IpUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     public static String formatIp(String ip) {

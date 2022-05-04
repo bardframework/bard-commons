@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.bardframework</groupId>
         <artifactId>bard-parent</artifactId>
-        <version>6</version>
+        <version>11</version>
         <relativePath/>
     </parent>
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>1.1.21</version>
+    <version>1.2.13</version>
 
     <packaging>pom</packaging>
 
@@ -22,7 +22,6 @@
         <module>common-monitoring</module>
         <module>common-qr</module>
         <module>common-redis</module>
-        <module>common-reflection</module>
         <module>common-security</module>
         <module>common-security-redis</module>
         <module>common-sms</module>
@@ -37,13 +36,14 @@
     <properties>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
+        <commons-text.version>1.9</commons-text.version>
         <jalali-date.version>0.5.1</jalali-date.version>
         <google.zxing.version>3.4.1</google.zxing.version>
         <guava.version>31.1-jre</guava.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <reflection.version>0.10.2</reflection.version>
-        <springdoc.version>1.6.6</springdoc.version>
-        <spring-boot.version>2.6.6</spring-boot.version>
+        <springdoc.version>1.6.8</springdoc.version>
+        <spring-boot.version>2.6.7</spring-boot.version>
     </properties>
 
     <dependencyManagement>
@@ -58,16 +58,6 @@
             <dependency>
                 <groupId>org.bardframework.commons</groupId>
                 <artifactId>common-utils</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.bardframework.commons</groupId>
-                <artifactId>common-config</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.bardframework.commons</groupId>
-                <artifactId>common-reflection</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -99,6 +89,11 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

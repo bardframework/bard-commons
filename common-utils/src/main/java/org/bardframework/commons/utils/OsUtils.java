@@ -22,6 +22,9 @@ public final class OsUtils {
     private static final MBeanServer M_BEAN_SERVER = ManagementFactory.getPlatformMBeanServer();
 
     private OsUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     public static int getCpuUsagePercent() {

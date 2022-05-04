@@ -1,7 +1,8 @@
 package org.bardframework.commons.config;
 
 import org.apache.commons.lang3.StringUtils;
-import org.bardframework.commons.reflection.ReflectionUtils;
+import org.bardframework.commons.utils.reflection.ReflectionUtils;
+import org.bardframework.commons.web.utils.ResourceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;

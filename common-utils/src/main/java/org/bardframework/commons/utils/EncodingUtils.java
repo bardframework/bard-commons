@@ -10,6 +10,9 @@ import java.util.stream.IntStream;
 public final class EncodingUtils {
 
     private EncodingUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     public static String hexEncode(byte[] data) {

@@ -47,14 +47,7 @@ public class ConfigsConfiguration {
         ConfigsConfiguration.append(configs, "Active profiles", Arrays.toString(environment.getActiveProfiles()));
         String classpath = environment.getProperty(CLASS_PATH_KEY);
         String separator = environment.getProperty(SEPARATOR_KEY);
-        ConfigsConfiguration.append(configs, "Config Files", resources.stream().map(resource -> {
-            try {
-                return String.valueOf(resource.getURI());
-            } catch (IOException e) {
-                LOGGER.error("error get config resource[{}] as uri", resource, e);
-                return String.valueOf(resource);
-            }
-        }).collect(Collectors.joining("\n\t")));
+        ConfigsConfiguration.append(configs, "Config Files", resources.stream().map(String::valueOf).collect(Collectors.joining("\n\t")));
         if (StringUtils.isNotBlank(classpath) && StringUtils.isNotBlank(separator)) {
             ConfigsConfiguration.append(configs, CLASS_PATH_KEY, Arrays.stream(classpath.split(separator)).map(Object::toString).collect(Collectors.joining("\n\t")));
         } else {
@@ -85,7 +78,7 @@ public class ConfigsConfiguration {
 
     private static void append(StringBuilder configs, String key, String value) {
         configs.append(key);
-        configs.append(": ");
+        configs.append(":\n\t");
         configs.append(value);
         configs.append("\n");
     }

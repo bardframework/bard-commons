@@ -14,7 +14,7 @@ import java.util.*;
  * An exception will generally not be thrown for a {@code null} input.
  * Each method documents its behaviour in more detail.</p>
  **/
-public class ObjectUtils {
+public final class ObjectUtils {
 
     /**
      * <p>Singleton used as a {@code null} placeholder where
@@ -44,6 +44,11 @@ public class ObjectUtils {
     private static final String ARRAY_ELEMENT_SEPARATOR = ", ";
     private static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
 
+    private ObjectUtils() {
+        /*
+            prevent instantiation
+         */
+    }
 
     /**
      * Return whether the given throwable is a checked exception:

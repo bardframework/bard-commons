@@ -12,6 +12,9 @@ import java.util.Set;
 public final class NumberUtils {
 
     private NumberUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     /**

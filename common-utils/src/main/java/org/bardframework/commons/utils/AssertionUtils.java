@@ -12,9 +12,12 @@ import java.util.function.Supplier;
 /**
  * Created by vahid (va.zafari@gmail.com) on 10/30/17.
  */
-public abstract class AssertionUtils {
+public class AssertionUtils {
 
     private AssertionUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     public static void ge(long greater, long smaller, String message) {

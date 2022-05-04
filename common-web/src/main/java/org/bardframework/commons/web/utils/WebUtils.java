@@ -1,5 +1,6 @@
 package org.bardframework.commons.web.utils;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.util.FileCopyUtils;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,9 @@ import java.nio.charset.StandardCharsets;
  * Created by Vahid Zafari on 6/10/2016.
  */
 public final class WebUtils {
+
+    private static final char RLO = '\u202E';
+    private static final char EMPTY = '\u0000';
 
     public static void fillResponse(HttpServletResponse response, byte[] data, String contentType, String name)
             throws IOException {
@@ -27,5 +31,22 @@ public final class WebUtils {
         response.setContentLength(data.length);
         //Copy bytes from source to destination(outputstream in this example), closes both streams.
         FileCopyUtils.copy(data, response.getOutputStream());
+    }
+
+    /**
+     * remove < > RLO from input string, escapeHtml4, escapeJava, escapeXSI
+     *
+     * @return cleaned string
+     */
+    public static String escapeString(String value) {
+        if (null == value) {
+            return null;
+        }
+        value = StringEscapeUtils.escapeHtml4(value);
+        value = StringEscapeUtils.escapeJava(value);
+        value = StringEscapeUtils.escapeXSI(value);
+        return value.replace(RLO, EMPTY)
+                .replace('<', EMPTY)
+                .replace('>', EMPTY);
     }
 }

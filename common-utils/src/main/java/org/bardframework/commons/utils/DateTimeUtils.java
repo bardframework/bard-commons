@@ -18,6 +18,9 @@ public final class DateTimeUtils {
     private static final ZoneId UTCZone = ZoneOffset.UTC;
 
     private DateTimeUtils() {
+        /*
+            prevent instantiation
+         */
     }
 
     /**
