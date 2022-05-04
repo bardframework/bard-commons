@@ -1,6 +1,7 @@
 package org.bardframework.commons.web.cookie;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.lang.Nullable;
 import org.springframework.web.util.CookieGenerator;
 import org.springframework.web.util.WebUtils;
 
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CookieHandler extends CookieGenerator {
+
+    @Nullable
+    private String cookieSameSite;
 
     public Cookie get(HttpServletRequest request) {
         return WebUtils.getCookie(request, this.getCookieName());
@@ -35,6 +39,11 @@ public class CookieHandler extends CookieGenerator {
         return cookie;
     }
 
+    @Override
+    public void addCookie(HttpServletResponse response, String cookieValue) {
+        this.addCookie(response, cookieValue, this.getCookieMaxAge());
+    }
+
     /**
      * Add a cookie with the given value and age to the response,
      * using the cookie descriptor settings of this generator.
@@ -44,16 +53,34 @@ public class CookieHandler extends CookieGenerator {
      * @param maxAge      max age value of the cookie to add
      */
     public void addCookie(HttpServletResponse response, String cookieValue, Integer maxAge) {
-        Cookie cookie = this.createCookie(cookieValue);
+        StringBuilder setCookieHeader = new StringBuilder(String.format("%s=%s;", this.getCookieName(), cookieValue));
         if (null != maxAge) {
-            cookie.setMaxAge(maxAge);
+            setCookieHeader.append(String.format("Max-Age=%d;", maxAge));
         }
-        if (isCookieSecure()) {
-            cookie.setSecure(true);
+        if (this.isCookieSecure()) {
+            setCookieHeader.append("Secure;");
         }
-        if (isCookieHttpOnly()) {
-            cookie.setHttpOnly(true);
+        if (this.isCookieHttpOnly()) {
+            setCookieHeader.append("HttpOnly;");
         }
-        response.addCookie(cookie);
+        if (StringUtils.isNotBlank(this.getCookieDomain())) {
+            setCookieHeader.append(String.format("Domain=%s;", this.getCookieDomain()));
+        }
+        if (StringUtils.isNotBlank(this.getCookiePath())) {
+            setCookieHeader.append(String.format("Path=%s;", this.getCookiePath()));
+        }
+        if (StringUtils.isNotBlank(this.getCookieSameSite())) {
+            setCookieHeader.append(String.format("SameSite=%s;", this.getCookieSameSite()));
+        }
+        response.addHeader("Set-Cookie", setCookieHeader.toString());
+    }
+
+    @Nullable
+    public String getCookieSameSite() {
+        return cookieSameSite;
+    }
+
+    public void setCookieSameSite(@Nullable String cookieSameSite) {
+        this.cookieSameSite = cookieSameSite;
     }
 }
