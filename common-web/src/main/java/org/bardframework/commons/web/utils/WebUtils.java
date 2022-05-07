@@ -34,7 +34,7 @@ public final class WebUtils {
     }
 
     /**
-     * remove < > RLO from input string, escapeHtml4, escapeJava, escapeXSI
+     * remove &gt; &lt; RLO from input string, escapeHtml4, escapeJava, escapeXSI
      *
      * @return cleaned string
      */
