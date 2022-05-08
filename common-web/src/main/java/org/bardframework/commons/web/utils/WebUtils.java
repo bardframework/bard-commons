@@ -15,6 +15,8 @@ public final class WebUtils {
 
     private static final char RLO = '\u202E';
     private static final char EMPTY = '\u0000';
+    private static final char UNDERLINE = '_';
+    private static final char SPACE = ' ';
 
     public static void fillResponse(HttpServletResponse response, byte[] data, String contentType, String name)
             throws IOException {
@@ -34,7 +36,7 @@ public final class WebUtils {
     }
 
     /**
-     * remove &gt; &lt; RLO from input string, escapeHtml4, escapeJava, escapeXSI
+     * remove &gt; &lt; RLO from input string, escapeHtml4
      *
      * @return cleaned string
      */
@@ -42,11 +44,14 @@ public final class WebUtils {
         if (null == value) {
             return null;
         }
-        value = StringEscapeUtils.escapeHtml4(value);
-        value = StringEscapeUtils.escapeJava(value);
-        value = StringEscapeUtils.escapeXSI(value);
-        return value.replace(RLO, EMPTY)
-                .replace('<', EMPTY)
-                .replace('>', EMPTY);
+        return StringEscapeUtils.escapeHtml4(value)
+                .replace(RLO, EMPTY)
+                .replace('\n', SPACE)
+                .replace('\r', SPACE)
+                .replace('\t', SPACE)
+                .replace('"', UNDERLINE)
+                .replace('\'', UNDERLINE)
+                .replace('<', UNDERLINE)
+                .replace('>', UNDERLINE);
     }
 }

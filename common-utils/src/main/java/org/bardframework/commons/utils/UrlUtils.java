@@ -4,10 +4,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -57,23 +57,20 @@ public final class UrlUtils {
     }
 
 
-    public static String fillUrlTemplate(String urlTemplate, Map<String, String> args) throws IOException {
-        return UrlUtils.fillUrlTemplate(urlTemplate, "::", args);
+    public static String fillUrlTemplate(String urlTemplate, Map<String, String> args) {
+        return StringTemplateUtils.fillTemplate(urlTemplate, UrlUtils.urlEncodeValues(args));
     }
 
-    public static String fillUrlTemplate(String urlTemplate, String prefixSuffix, Map<String, String> args) throws IOException {
-        if (StringUtils.isBlank(urlTemplate)) {
-            return urlTemplate;
-        }
-        String result = urlTemplate;
+    public static String fillUrlTemplate(String urlTemplate, String prefix, String suffix, Map<String, String> args) {
+        return StringTemplateUtils.fillTemplate(urlTemplate, prefix, suffix, UrlUtils.urlEncodeValues(args));
+    }
+
+    public static Map<String, String> urlEncodeValues(Map<String, String> args) {
+        Map<String, String> map = new HashMap<>();
         for (Map.Entry<String, String> entry : args.entrySet()) {
-            if (null == entry.getValue()) {
-                LOGGER.debug("value of entry[{}] is null, ignoring it", entry.getKey());
-                continue;
-            }
-            String value = URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8.displayName());
-            result = result.replaceAll(prefixSuffix + entry.getKey() + prefixSuffix, entry.getValue());
+            String value = StringTemplateUtils.fillTemplate(entry.getValue(), args);
+            map.put(entry.getKey(), UrlUtils.urlEncode(value));
         }
-        return result;
+        return map;
     }
 }
