@@ -1,6 +1,7 @@
 package org.bardframework.commons.config;
 
 import org.apache.commons.lang3.StringUtils;
+import org.bardframework.commons.utils.StringTemplateUtils;
 import org.bardframework.commons.utils.reflection.ReflectionUtils;
 import org.bardframework.commons.web.utils.ResourceUtils;
 import org.slf4j.Logger;
@@ -29,64 +30,121 @@ public class ReloadableConfig {
         this.reload();
     }
 
-    public static String get(ConfigKey key) {
-        return config.getProperty(key.getKey());
+    public static String get(ConfigKey<?, ?> key) {
+        return ReloadableConfig.get(key, Map.of());
     }
 
-    public static String get(ConfigKey key, String defaultValue) {
+    public static String get(ConfigKey<?, ?> key, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
+        return value;
+    }
+
+    public static String get(ConfigKey<?, ?> key, String defaultValue) {
+        return ReloadableConfig.get(key, defaultValue, Map.of());
+    }
+
+    public static String get(ConfigKey<?, ?> key, String defaultValue, Map<String, String> args) {
+        String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return null == value ? defaultValue : value;
+    }
+
+    public static List<String> getList(ConfigKey<?, ?> key) {
+        return ReloadableConfig.getList(key, Map.of());
     }
 
     /**
      * @return list of separated value with ',', empty list if value not set.
      */
-    public static List<String> getList(ConfigKey key) {
+    public static List<String> getList(ConfigKey<?, ?> key, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return StringUtils.isBlank(value) ? Collections.emptyList() : Arrays.asList(value.split(","));
+    }
+
+    public static Set<String> getSet(ConfigKey<?, ?> key) {
+        return ReloadableConfig.getSet(key, Map.of());
     }
 
     /**
      * @return Set of separated value with ',', empty Set if value not set.
      */
-    public static Set<String> getSet(ConfigKey key) {
+    public static Set<String> getSet(ConfigKey<?, ?> key, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return StringUtils.isBlank(value) ? Collections.emptySet() : Stream.of(value.split(",")).collect(Collectors.toSet());
     }
 
-    public static int getInt(ConfigKey key) {
-        return Integer.parseInt(config.getProperty(key.getKey()));
+    public static int getInt(ConfigKey<?, ?> key, Map<String, String> args) {
+        String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
+        return Integer.parseInt(value);
     }
 
-    public static Integer getInteger(ConfigKey key, Integer defaultValue) {
+    public static int getInt(ConfigKey<?, ?> key) {
         String value = config.getProperty(key.getKey());
+        return Integer.parseInt(value);
+    }
+
+    public static Integer getInteger(ConfigKey<?, ?> key, Integer defaultValue) {
+        return ReloadableConfig.getInteger(key, defaultValue, Map.of());
+    }
+
+    public static Integer getInteger(ConfigKey<?, ?> key, Integer defaultValue, Map<String, String> args) {
+        String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return null == value ? defaultValue : Integer.valueOf(value);
     }
 
-    public static long getLong(ConfigKey key) {
-        return Long.parseLong(config.getProperty(key.getKey()));
+    public static long getLong(ConfigKey<?, ?> key) {
+        String value = config.getProperty(key.getKey());
+        return Long.parseLong(value);
     }
 
-    public static Long getLong(ConfigKey key, Long defaultValue) {
+    public static Long getLong(ConfigKey<?, ?> key, Long defaultValue) {
+        return ReloadableConfig.getLong(key, defaultValue, Map.of());
+    }
+
+    public static Long getLong(ConfigKey<?, ?> key, Long defaultValue, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return null == value ? defaultValue : Long.valueOf(value);
     }
 
-    public static boolean getBoolean(ConfigKey key) {
-        return Boolean.parseBoolean(config.getProperty(key.getKey()));
+    public static boolean getBoolean(ConfigKey<?, ?> key) {
+        String value = config.getProperty(key.getKey());
+        return Boolean.parseBoolean(value);
     }
 
-    public static Boolean getBoolean(ConfigKey key, Boolean defaultValue) {
+    public static Boolean getBoolean(ConfigKey<?, ?> key, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
+        return Boolean.parseBoolean(value);
+    }
+
+    public static Boolean getBoolean(ConfigKey<?, ?> key, Boolean defaultValue) {
+        return ReloadableConfig.getBoolean(key, defaultValue, Map.of());
+    }
+
+    public static Boolean getBoolean(ConfigKey<?, ?> key, Boolean defaultValue, Map<String, String> args) {
+        String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return StringUtils.isBlank(value) ? defaultValue : Boolean.valueOf(value);
     }
 
-    public static short getShort(ConfigKey key) {
-        return Short.parseShort(config.getProperty(key.getKey()));
+    public static short getShort(ConfigKey<?, ?> key) {
+        String value = config.getProperty(key.getKey());
+        return Short.parseShort(value);
     }
 
-    public static Short getShort(ConfigKey key, Short defaultValue) {
+    public static Short getShort(ConfigKey<?, ?> key, Short defaultValue) {
+        return ReloadableConfig.getShort(key, defaultValue, Map.of());
+    }
+
+    public static Short getShort(ConfigKey<?, ?> key, Short defaultValue, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
+        value = StringTemplateUtils.fillTemplate(value, args);
         return null == value ? defaultValue : Short.valueOf(value);
     }
 
@@ -147,7 +205,7 @@ public class ReloadableConfig {
             if (!aClass.isEnum()) {
                 continue;
             }
-            for (ConfigKey key : aClass.getEnumConstants()) {
+            for (ConfigKey<?, ?> key : aClass.getEnumConstants()) {
                 String value = newConfigs.getProperty(key.getKey());
                 if (key.isRequired()) {
                     if (StringUtils.isBlank(value)) {

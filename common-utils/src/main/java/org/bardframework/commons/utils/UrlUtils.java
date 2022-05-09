@@ -49,6 +49,9 @@ public final class UrlUtils {
      * @return the encoded value.
      */
     public static String urlEncode(String value) {
+        if (StringUtils.isBlank(value)) {
+            return value;
+        }
         try {
             return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
         } catch (final UnsupportedEncodingException e) {
