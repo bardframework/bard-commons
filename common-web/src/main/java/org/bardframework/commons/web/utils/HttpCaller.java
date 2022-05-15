@@ -9,6 +9,8 @@ public class HttpCaller {
     protected final String httpMethod;
     protected final String urlTemplate;
     protected String bodyTemplate;
+    protected int connectTimeoutSeconds = 30;
+    protected int readTimeoutSeconds = 3600;
     protected Map<String, String> headers = new HashMap<>();
 
     public HttpCaller(String httpMethod, String urlTemplate) {
@@ -24,7 +26,7 @@ public class HttpCaller {
      * call with custom headers
      */
     public HttpCallResult call(Map<String, String> headers, Map<String, String> args) throws IOException {
-        return HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), headers, args);
+        return HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, args);
     }
 
     public String getHttpMethod() {
@@ -45,6 +47,22 @@ public class HttpCaller {
 
     public Map<String, String> getHeaders() {
         return headers;
+    }
+
+    public int getConnectTimeoutSeconds() {
+        return connectTimeoutSeconds;
+    }
+
+    public void setConnectTimeoutSeconds(int connectTimeoutSeconds) {
+        this.connectTimeoutSeconds = connectTimeoutSeconds;
+    }
+
+    public int getReadTimeoutSeconds() {
+        return readTimeoutSeconds;
+    }
+
+    public void setReadTimeoutSeconds(int readTimeoutSeconds) {
+        this.readTimeoutSeconds = readTimeoutSeconds;
     }
 
     public void setHeaders(Map<String, String> headers) {

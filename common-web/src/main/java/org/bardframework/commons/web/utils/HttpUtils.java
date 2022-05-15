@@ -25,7 +25,7 @@ public final class HttpUtils {
          */
     }
 
-    public static HttpCallResult httpCall(String httpMethod, String urlTemplate, String bodyTemplate, Map<String, String> headers, Map<String, String> args) throws IOException {
+    public static HttpCallResult httpCall(String httpMethod, String urlTemplate, String bodyTemplate, int connectTimeoutSeconds, int readTimeoutSeconds, Map<String, String> headers, Map<String, String> args) throws IOException {
         if (StringUtils.isBlank(httpMethod)) {
             throw new IllegalStateException("empty http method not acceptable");
         }
@@ -38,6 +38,8 @@ public final class HttpUtils {
             connection = (HttpURLConnection) new URL(urlTemplate).openConnection();
             // optional default is GET
             connection.setRequestMethod(httpMethod);
+            connection.setConnectTimeout(connectTimeoutSeconds * 1000);
+            connection.setReadTimeout(readTimeoutSeconds * 1000);
             if (MapUtils.isNotEmpty(headers)) {
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
                     if (null == entry.getValue()) {
