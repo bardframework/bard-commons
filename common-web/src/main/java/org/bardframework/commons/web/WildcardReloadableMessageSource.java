@@ -29,18 +29,18 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
                 basename = StringUtils.trimToEmpty(basename);
                 resources.addAll(List.of(ResourceUtils.getResources(basename)));
             }
-            LOGGER.debug("[{}] resource found from [{}] wildcard base names:\n\t{}", resources.size(), baseNames, resources.stream().map(Object::toString).collect(Collectors.joining("\n\t")));
+            LOGGER.info("[{}] resource found from [{}] wildcard base names:\n\t{}", resources.size(), baseNames, resources.stream().map(Object::toString).collect(Collectors.joining("\n\t")));
             for (Resource resource : resources) {
-                String uri = resource.getURI().toString();
+                String url = resource.getURL().toString();
                 String basename;
                 if (resource instanceof FileSystemResource) {
-                    basename = "classpath:" + StringUtils.substringBetween(uri, "/classes/", ".properties");
+                    basename = "classpath:" + StringUtils.substringBetween(url, "/classes/", ".properties");
                 } else if (resource instanceof ClassPathResource) {
-                    basename = StringUtils.substringBefore(uri, ".properties");
+                    basename = StringUtils.substringBefore(url, ".properties");
                 } else if (resource instanceof UrlResource) {
                     basename = "classpath:" + this.getBaseName(resource);
                 } else {
-                    basename = uri;
+                    basename = url;
                 }
                 basename = this.processBasename(basename);
                 finalBaseNames.add(basename);
@@ -48,7 +48,7 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
-        LOGGER.debug("final base names from wildcard are:\n\t{}", String.join("\n\t", finalBaseNames));
+        LOGGER.info("final base names from wildcard are:\n\t{}", String.join("\n\t", finalBaseNames));
         super.addBasenames(finalBaseNames.toArray(String[]::new));
     }
 
@@ -68,7 +68,7 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
     }
 
     private String getBaseName(Resource resource) throws IOException {
-        String baseName = StringUtils.substringAfterLast(resource.getURI().toString(), ".jar!/");
+        String baseName = StringUtils.substringAfterLast(resource.getURL().toString(), ".jar!/");
         if (baseName.contains("classes!/")) {
             baseName = StringUtils.substringAfterLast(baseName, "classes!/");
         }

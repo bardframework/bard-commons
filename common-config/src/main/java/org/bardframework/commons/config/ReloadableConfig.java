@@ -2,7 +2,6 @@ package org.bardframework.commons.config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.StringTemplateUtils;
-import org.bardframework.commons.utils.reflection.ReflectionUtils;
 import org.bardframework.commons.web.utils.ResourceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +21,18 @@ public class ReloadableConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReloadableConfig.class);
 
     private static Properties config = new Properties();
-    private final List<String> reloadableConfigPath;
+    private static Collection<Class<? extends ConfigKey>> configClasses;
+    private final Collection<String> reloadableConfigPath;
 
-    public ReloadableConfig(List<String> reloadableConfigPath) throws IOException {
-        LOGGER.debug("reloadableConfigPath [{}]", Arrays.deepToString(reloadableConfigPath.toArray()));
+    public ReloadableConfig(Collection<String> reloadableConfigPath, Collection<Class<? extends ConfigKey>> configClasses) throws IOException {
+        LOGGER.debug("reloadableConfigPath [{}], config entries: [{}]", Arrays.deepToString(reloadableConfigPath.toArray()), configClasses);
         this.reloadableConfigPath = reloadableConfigPath;
+        ReloadableConfig.configClasses = configClasses;
         this.reload();
+    }
+
+    public static Collection<Class<? extends ConfigKey>> getConfigClasses() {
+        return configClasses;
     }
 
     public static String get(ConfigKey<?, ?> key) {
@@ -156,9 +161,9 @@ public class ReloadableConfig {
             resources.addAll(Arrays.asList(ResourceUtils.getResources(path)));
         }
         for (Resource resource : resources) {
-            LOGGER.debug("loading global config from uri [{}]", resource.getURI());
+            LOGGER.debug("loading global config from url [{}]", resource.getURL());
             if (!resource.exists()) {
-                LOGGER.error("can't read config file in given uri [{}], reload config ignored", resource.getURI());
+                LOGGER.error("can't read config file in given url [{}], reload config ignored", resource.getURL());
                 return;
             }
             try (InputStream inputStream = resource.getInputStream()) {
@@ -201,10 +206,7 @@ public class ReloadableConfig {
      */
     private List<String> check(Properties newConfigs) {
         List<String> errors = new ArrayList<>();
-        for (Class<? extends ConfigKey> aClass : ReflectionUtils.getSubTypeOf(ConfigKey.class)) {
-            if (!aClass.isEnum()) {
-                continue;
-            }
+        for (Class<? extends ConfigKey> aClass : configClasses) {
             for (ConfigKey<?, ?> key : aClass.getEnumConstants()) {
                 String value = newConfigs.getProperty(key.getKey());
                 if (key.isRequired()) {

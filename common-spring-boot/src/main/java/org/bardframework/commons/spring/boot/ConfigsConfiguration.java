@@ -47,7 +47,7 @@ public class ConfigsConfiguration {
         ConfigsConfiguration.append(configs, "Active profiles", Arrays.toString(environment.getActiveProfiles()));
         String classpath = environment.getProperty(CLASS_PATH_KEY);
         String separator = environment.getProperty(SEPARATOR_KEY);
-        ConfigsConfiguration.append(configs, "Config Files", resources.stream().map(String::valueOf).collect(Collectors.joining("\n\t")));
+        ConfigsConfiguration.append(configs, "Config Files", resources.stream().map(Object::toString).collect(Collectors.joining("\n\t")));
         if (StringUtils.isNotBlank(classpath) && StringUtils.isNotBlank(separator)) {
             ConfigsConfiguration.append(configs, CLASS_PATH_KEY, Arrays.stream(classpath.split(separator)).map(Object::toString).collect(Collectors.joining("\n\t")));
         } else {

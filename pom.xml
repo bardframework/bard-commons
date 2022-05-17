@@ -11,7 +11,7 @@
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>1.2.19</version>
+    <version>1.2.25</version>
 
     <packaging>pom</packaging>
 
@@ -40,7 +40,6 @@
         <jalali-date.version>0.5.1</jalali-date.version>
         <google.zxing.version>3.5.0</google.zxing.version>
         <guava.version>31.1-jre</guava.version>
-        <mapstruct.version>1.4.2.Final</mapstruct.version>
         <reflection.version>0.10.2</reflection.version>
         <springdoc.version>1.6.8</springdoc.version>
         <spring-boot.version>2.6.7</spring-boot.version>
@@ -94,6 +93,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
                 <version>${commons-text.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflection.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

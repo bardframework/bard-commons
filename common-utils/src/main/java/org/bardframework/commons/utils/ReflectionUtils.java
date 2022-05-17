@@ -1,7 +1,8 @@
-package org.bardframework.commons.utils.reflection;
+package org.bardframework.commons.utils;
 
 import org.apache.commons.lang3.StringUtils;
-import org.bardframework.commons.utils.AssertionUtils;
+import org.reflections.Reflections;
+import org.reflections.scanners.Scanners;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -1159,8 +1160,8 @@ public final class ReflectionUtils {
         }
     }
 
-    public static <T> Collection<Class<? extends T>> getSubTypeOf(Class<T> clazz) {
-        return new JavaClassFinder().findAllMatchingTypes(clazz);
+    public static <T> Set<Class<? extends T>> getSubTypeOf(String packagePrefix, Class<T> clazz) {
+        return new Reflections(packagePrefix, Scanners.SubTypes).getSubTypesOf(clazz);
     }
 
     public static List<Class<?>> getSupersOf(Class<?> clazz, boolean includeInterface, boolean includeAbstractClasses, boolean includeObjectClass) {
