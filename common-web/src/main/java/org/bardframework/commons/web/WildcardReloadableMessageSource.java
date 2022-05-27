@@ -36,7 +36,7 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
                 if (resource instanceof FileSystemResource) {
                     String path = StringUtils.substringBetween(url, "file:/", ".properties");
                     if (StringUtils.isNotBlank(path)) {
-                        basename = "file:" + path;
+                        basename = "file:/" + path;
                     }
                 } else if (resource instanceof ClassPathResource) {
                     String path = StringUtils.substringBefore(url, ".properties");
