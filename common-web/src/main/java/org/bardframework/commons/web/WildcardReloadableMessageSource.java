@@ -32,18 +32,30 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
             LOGGER.info("[{}] resource found from [{}] wildcard base names:\n\t{}", resources.size(), baseNames, resources.stream().map(Object::toString).collect(Collectors.joining("\n\t")));
             for (Resource resource : resources) {
                 String url = resource.getURL().toString();
-                String basename;
+                String basename = null;
                 if (resource instanceof FileSystemResource) {
-                    basename = "classpath:" + StringUtils.substringBetween(url, "/classes/", ".properties");
+                    String path = StringUtils.substringBetween(url, "file:/", ".properties");
+                    if (StringUtils.isNotBlank(path)) {
+                        basename = "file:" + path;
+                    }
                 } else if (resource instanceof ClassPathResource) {
-                    basename = StringUtils.substringBefore(url, ".properties");
+                    String path = StringUtils.substringBefore(url, ".properties");
+                    if (StringUtils.isNotBlank(path)) {
+                        basename = path;
+                    }
                 } else if (resource instanceof UrlResource) {
-                    basename = "classpath:" + this.getBaseName(resource);
+                    String path = this.getBaseName(resource);
+                    if (StringUtils.isNotBlank(path)) {
+                        basename = "classpath:" + path;
+                    }
                 } else {
                     basename = url;
                 }
-                basename = this.processBasename(basename);
-                finalBaseNames.add(basename);
+                if (StringUtils.isNotBlank(basename)) {
+                    finalBaseNames.add(this.processBasename(basename));
+                } else {
+                    LOGGER.error("can't detect base name from i18n file [{}]", resource);
+                }
             }
         } catch (Exception e) {
             throw new IllegalStateException(e);
@@ -72,7 +84,9 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
         if (baseName.contains("classes!/")) {
             baseName = StringUtils.substringAfterLast(baseName, "classes!/");
         }
-        baseName = baseName.replace(".properties", "");
-        return baseName;
+        if (baseName.contains("classes/")) {
+            baseName = StringUtils.substringAfterLast(baseName, "classes/");
+        }
+        return StringUtils.substringBefore(baseName, ".properties");
     }
 }
