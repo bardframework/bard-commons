@@ -3,6 +3,8 @@ package org.bardframework.commons.utils;
 import org.apache.commons.lang3.StringUtils;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -14,18 +16,16 @@ import java.util.stream.Stream;
  * Created by Vahid Zafari on 8/12/2016.
  */
 public final class ReflectionUtils {
-
     /**
      * Pre-built MethodFilter that matches all non-bridge non-synthetic methods
      * which are not declared on {@code java.lang.Object}.
      */
-    public static final MethodFilter USER_DECLARED_METHODS =
-            (method -> !method.isBridge() && !method.isSynthetic());
+    public static final MethodFilter USER_DECLARED_METHODS = (method -> !method.isBridge() && !method.isSynthetic());
     /**
      * Pre-built FieldFilter that matches all non-static, non-final fields.
      */
-    public static final FieldFilter COPYABLE_FIELDS =
-            (field -> !(Modifier.isStatic(field.getModifiers()) || Modifier.isFinal(field.getModifiers())));
+    public static final FieldFilter COPYABLE_FIELDS = (field -> !(Modifier.isStatic(field.getModifiers()) || Modifier.isFinal(field.getModifiers())));
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReflectionUtils.class);
     private static final String UNACCEPTABLE_NULL_CLAZZ = "null clazz not acceptable";
     private static final String UNACCEPTABLE_FIELD_PATH = "null or empty field path not acceptable";
     /**
@@ -38,6 +38,53 @@ public final class ReflectionUtils {
     private static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
 
     private ReflectionUtils() {
+        /*
+            prevent instantiation
+         */
+    }
+
+    public static <T> T newInstance(Class<T> clazz) {
+        try {
+            return clazz.getConstructor().newInstance();
+        } catch (IllegalAccessException | InstantiationException | NoSuchMethodException |
+                 InvocationTargetException e) {
+            LOGGER.error("can't instantiate class using empty constructor {}", clazz, e);
+            throw new IllegalArgumentException("can't instantiate class using empty constructor" + clazz, e);
+        }
+    }
+
+    public static <T> Class<T> getGenericSuperClass(Class<?> clazz, int index) {
+        ParameterizedType parameterizedType = null;
+        while (!(null != parameterizedType && parameterizedType.getActualTypeArguments().length >= 2) && null != clazz) {
+            parameterizedType = clazz.getGenericSuperclass() instanceof ParameterizedType ? (ParameterizedType) clazz.getGenericSuperclass() : null;
+            clazz = clazz.getSuperclass();
+        }
+        if (null == parameterizedType) {
+            throw new IllegalArgumentException("can't determine class from generic type!");
+        }
+        try {
+            Type type = parameterizedType.getActualTypeArguments()[index];
+            if (type instanceof Class<?>) {
+                return (Class<T>) type;
+            }
+            throw new IllegalArgumentException("can't determine class from generic type!");
+        } catch (Exception e) {
+            LOGGER.debug("can't determine class from generic type, at index [{}]", index, e);
+            throw new IllegalArgumentException("can't determine class from generic type!", e);
+        }
+    }
+
+    public static <T> Class<T> getGenericClass(Class<?> clazz, int index) {
+        try {
+            Type type = ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[index];
+            if (type instanceof Class<?>) {
+                return (Class<T>) type;
+            }
+            throw new IllegalArgumentException("can't determine class from generic type!");
+        } catch (Exception e) {
+            LOGGER.debug("can't determine class from generic type, at index [{}]", index, e);
+            throw new IllegalArgumentException("can't determine class from generic type!", e);
+        }
     }
 
     /**
@@ -48,7 +95,6 @@ public final class ReflectionUtils {
      * @return the field matching the filter or {@literal null} in case no field could be found.
      */
     public static Field findField(Class<?> type, FieldFilter filter) {
-
         return findField(type, new DescribedFieldFilter() {
 
             public boolean matches(Field field) {
