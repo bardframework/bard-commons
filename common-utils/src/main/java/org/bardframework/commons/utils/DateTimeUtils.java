@@ -25,7 +25,6 @@ public final class DateTimeUtils {
 
     /**
      * calculate milliseconds past from the epoch of 1970-01-01T00:00:00Z.
-     * <p>
      *
      * @param date an instance of (@code LocalDate)
      * @return past milliseconds from 1970-01-01T00:00:00Z according (!@code date) at 23:59:59:99:999.
@@ -46,7 +45,6 @@ public final class DateTimeUtils {
     /**
      * Obtains an instance of {@code LocalDateTime} using milliseconds from the
      * epoch of 1970-01-01T00:00:00Z.
-     * <p>
      * The seconds and nanoseconds are extracted from the specified milliseconds.
      *
      * @param dateTimeAsMills the number of milliseconds after 1970-01-01T00:00:00Z
@@ -60,7 +58,6 @@ public final class DateTimeUtils {
     /**
      * Obtains an instance of {@code LocalDateTime} using milliseconds from the
      * epoch of 1970-01-01T00:00:00Z.
-     * <p>
      * The seconds and nanoseconds are extracted from the specified milliseconds.
      *
      * @param dateTimeAsMills the number of milliseconds from 1970-01-01T00:00:00Z.
@@ -78,7 +75,6 @@ public final class DateTimeUtils {
 
     /**
      * calculatee milliseconds past from the epoch of 1970-01-01T00:00:00Z.
-     * <p>
      *
      * @param dateTime an instance of (@code LocalDateTime)
      * @return past milliseconds from 1970-01-01T00:00:00Z.

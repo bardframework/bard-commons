@@ -802,7 +802,6 @@ public final class ObjectUtils {
 
     /**
      * <p>Checks if an Object is empty or null.</p>
-     * <p>
      * The following types are supported:
      * <ul>
      * <li>{@link CharSequence}: Considered empty if its length is zero.</li>
@@ -844,7 +843,6 @@ public final class ObjectUtils {
 
     /**
      * <p>Checks if an Object is not empty and not null.</p>
-     * <p>
      * The following types are supported:
      * <ul>
      * <li>{@link CharSequence}: Considered empty if its length is zero.</li>
@@ -926,7 +924,6 @@ public final class ObjectUtils {
     /**
      * Checks if any value in the given array is not {@code null}.
      *
-     * <p>
      * If all the values are {@code null} or the array is {@code null}
      * or empty then {@code false} is returned. Otherwise {@code true} is returned.
      * </p>
@@ -952,7 +949,6 @@ public final class ObjectUtils {
     /**
      * Checks if all values in the array are not {@code nulls}.
      *
-     * <p>
      * If any value is {@code null} or the array is {@code null} then
      * {@code false} is returned. If all elements in array are not
      * {@code null} or the array is empty (contains no elements) {@code true}
@@ -1243,7 +1239,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static boolean MAGIC_FLAG = ObjectUtils.CONST(true);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1284,7 +1279,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static byte MAGIC_BYTE = ObjectUtils.CONST((byte) 127);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1304,7 +1298,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static byte MAGIC_BYTE = ObjectUtils.CONST_BYTE(127);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1330,7 +1323,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static char MAGIC_CHAR = ObjectUtils.CONST('a');
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1350,7 +1342,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static short MAGIC_SHORT = ObjectUtils.CONST((short) 123);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1370,7 +1361,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static short MAGIC_SHORT = ObjectUtils.CONST_SHORT(127);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1396,7 +1386,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static int MAGIC_INT = ObjectUtils.CONST(123);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1416,7 +1405,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static long MAGIC_LONG = ObjectUtils.CONST(123L);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1436,7 +1424,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static float MAGIC_FLOAT = ObjectUtils.CONST(1.0f);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1456,7 +1443,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static double MAGIC_DOUBLE = ObjectUtils.CONST(1.0);
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.
@@ -1476,7 +1462,6 @@ public final class ObjectUtils {
      * <pre>
      *     public final static String MAGIC_STRING = ObjectUtils.CONST("abc");
      * </pre>
-     * <p>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
      * changes at some future date.

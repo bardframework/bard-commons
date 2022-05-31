@@ -41,7 +41,6 @@ public final class CharsetUtils {
 
     /**
      * Supplies the default encoding without using Charset.defaultCharset()
-     * <p>
      * and without accessing System.getProperty("file.encoding").
      *
      * @return Default encoding (default charset).

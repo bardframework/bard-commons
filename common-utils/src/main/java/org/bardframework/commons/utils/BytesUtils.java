@@ -32,7 +32,6 @@ public final class BytesUtils {
 
     /**
      * Returns the index within src of the first occurrence of the specified search bytes.
-     * <p>
      * If no such value of {@code k} exists, then {@code -1} is returned.
      *
      * @param search the bytes to search for.
