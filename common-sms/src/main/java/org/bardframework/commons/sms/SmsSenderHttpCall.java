@@ -14,48 +14,67 @@ public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     protected static final Logger LOGGER = LoggerFactory.getLogger(SmsSenderHttpCall.class);
 
     protected final String successPattern;
-    protected final String insufficientCreditPattern;
+    protected boolean disable;
+    protected boolean logResponse;
 
-    public SmsSenderHttpCall(String httpMethod, String urlTemplate, String successPattern, String insufficientCreditPattern) {
+    public SmsSenderHttpCall(String httpMethod, String urlTemplate, String successPattern) {
         super(httpMethod, urlTemplate);
         this.successPattern = successPattern;
-        this.insufficientCreditPattern = insufficientCreditPattern;
+    }
+
+    @Override
+    public final boolean send(Map<String, String> args) {
+        if (!this.isDisable()) {
+            LOGGER.error("sms sender is disable, can't send sms.");
+            return false;
+        }
+        String receiverNumberForLog = StringUtils.overlay(args.get("to"), "*", 4, args.get("to").length() - 4);
+        LOGGER.info("sending sms to:  " + receiverNumberForLog);
+        try {
+            HttpCallResult callResult = this.call(this.prepareHeadersForSend(), args);
+            LOGGER.info("http status of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());
+            if (this.isLogResponse()) {
+                LOGGER.info("response sending sms to [{}], code: [{}], body: [{}]", receiverNumberForLog, callResult.getResponseCode(), callResult.getBody());
+            }
+            return this.isSuccess(callResult, receiverNumberForLog, args);
+        } catch (Exception e) {
+            LOGGER.error("error sending sms or processing response.", e);
+            return false;
+        }
+    }
+
+    protected boolean isSuccess(HttpCallResult result, String receiverNumberForLog, Map<String, String> args) throws Exception {
+        if (result.hasError()) {
+            return false;
+        }
+        String body = new String(result.getBody(), StandardCharsets.UTF_8);
+        if (null != this.getSuccessPattern()) {
+            return Pattern.matches(this.getSuccessPattern(), body);
+        }
+        return true;
+    }
+
+    protected Map<String, String> prepareHeadersForSend() throws Exception {
+        return headers;
     }
 
     public String getSuccessPattern() {
         return successPattern;
     }
 
-    public String getInsufficientCreditPattern() {
-        return insufficientCreditPattern;
+    public boolean isDisable() {
+        return disable;
     }
 
-    @Override
-    public SendResult send(Map<String, String> args) {
-        String receiverNumberForLog = StringUtils.overlay(args.get("to"), "*", 4, args.get("to").length() - 4);
-        LOGGER.info("sending sms to:  " + receiverNumberForLog);
-        try {
-            HttpCallResult callResult = this.call(headers, args);
-            LOGGER.info("Result of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());
-            if (callResult.hasError()) {
-                LOGGER.info("error response sending sms to [{}], [{}]", receiverNumberForLog, callResult.getBody());
-                return SendResult.ERROR;
-            }
-            String body = new String(callResult.getBody(), StandardCharsets.UTF_8);
-            if (null != this.getInsufficientCreditPattern() && Pattern.matches(this.getInsufficientCreditPattern(), body)) {
-                return SendResult.INSUFFICIENT_CREDIT;
-            }
-            if (null != this.getSuccessPattern()) {
-                if (Pattern.matches(this.getSuccessPattern(), body)) {
-                    return SendResult.SUCCESS;
-                } else {
-                    return SendResult.ERROR;
-                }
-            }
-            return SendResult.SUCCESS;
-        } catch (Exception e) {
-            LOGGER.error("error sending sms", e);
-            return SendResult.ERROR;
-        }
+    public void setDisable(boolean disable) {
+        this.disable = disable;
+    }
+
+    public boolean isLogResponse() {
+        return logResponse;
+    }
+
+    public void setLogResponse(boolean logResponse) {
+        this.logResponse = logResponse;
     }
 }
