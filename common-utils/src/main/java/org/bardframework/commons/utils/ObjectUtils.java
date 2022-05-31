@@ -926,7 +926,6 @@ public final class ObjectUtils {
      *
      * If all the values are {@code null} or the array is {@code null}
      * or empty then {@code false} is returned. Otherwise {@code true} is returned.
-     * </p>
      *
      * <pre>
      * ObjectUtils.anyNotNull(*)                = true
@@ -951,9 +950,7 @@ public final class ObjectUtils {
      *
      * If any value is {@code null} or the array is {@code null} then
      * {@code false} is returned. If all elements in array are not
-     * {@code null} or the array is empty (contains no elements) {@code true}
-     * is returned.
-     * </p>
+     * {@code null} or the array is empty (contains no elements) {@code true} is returned.
      *
      * <pre>
      * ObjectUtils.allNotNull(*)             = true
