@@ -53,36 +53,34 @@ public final class ReflectionUtils {
         }
     }
 
-    public static <T> Class<T> getGenericSuperClass(Class<?> clazz, int index) {
+    public static <T> Class<T> getGenericArgType(Class<?> clazz, int genericArgIndex) {
+        Class<?> targetClazz = clazz;
+        /*
+            find first generic parent
+         */
         ParameterizedType parameterizedType = null;
-        while (!(null != parameterizedType && parameterizedType.getActualTypeArguments().length >= 2) && null != clazz) {
-            parameterizedType = clazz.getGenericSuperclass() instanceof ParameterizedType ? (ParameterizedType) clazz.getGenericSuperclass() : null;
-            clazz = clazz.getSuperclass();
-        }
-        if (null == parameterizedType) {
-            throw new IllegalArgumentException("can't determine class from generic type!");
-        }
-        try {
-            Type type = parameterizedType.getActualTypeArguments()[index];
-            if (type instanceof Class<?>) {
-                return (Class<T>) type;
+        while (null == parameterizedType && null != targetClazz.getGenericSuperclass()) {
+            if (targetClazz.getGenericSuperclass() instanceof ParameterizedType) {
+                if (((ParameterizedType) targetClazz.getGenericSuperclass()).getActualTypeArguments().length >= genericArgIndex + 1) {
+                    parameterizedType = (ParameterizedType) targetClazz.getGenericSuperclass();
+                    continue;
+                }
             }
-            throw new IllegalArgumentException("can't determine class from generic type!");
-        } catch (Exception e) {
-            LOGGER.debug("can't determine class from generic type, at index [{}]", index, e);
-            throw new IllegalArgumentException("can't determine class from generic type!", e);
+            targetClazz = targetClazz.getSuperclass();
         }
-    }
 
-    public static <T> Class<T> getGenericClass(Class<?> clazz, int index) {
+        if (null == parameterizedType) {
+            throw new IllegalArgumentException("can't determine generic arg class at index: " + genericArgIndex + " for class: " + clazz);
+        }
+
         try {
-            Type type = ((ParameterizedType) clazz.getGenericSuperclass()).getActualTypeArguments()[index];
+            Type type = ((ParameterizedType) targetClazz.getGenericSuperclass()).getActualTypeArguments()[genericArgIndex];
             if (type instanceof Class<?>) {
                 return (Class<T>) type;
             }
             throw new IllegalArgumentException("can't determine class from generic type!");
         } catch (Exception e) {
-            LOGGER.debug("can't determine class from generic type, at index [{}]", index, e);
+            LOGGER.debug("can't determine class from generic type, at index [{}]", genericArgIndex, e);
             throw new IllegalArgumentException("can't determine class from generic type!", e);
         }
     }
