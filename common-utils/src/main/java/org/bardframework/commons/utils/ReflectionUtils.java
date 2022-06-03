@@ -956,7 +956,7 @@ public final class ReflectionUtils {
     }
 
     /**
-     * Determine whether the given method is originally declared by {@link java.lang.Object}.
+     * Determine whether the given method is originally declared by {@link Object}.
      */
     public static boolean isObjectMethod(Method method) {
         return (method != null && (method.getDeclaringClass() == Object.class ||

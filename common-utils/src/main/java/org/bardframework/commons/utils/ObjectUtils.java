@@ -104,7 +104,7 @@ public final class ObjectUtils {
     }
 
     /**
-     * Unwrap the given object which is potentially a {@link java.util.Optional}.
+     * Unwrap the given object which is potentially a {@link Optional}.
      *
      * @param obj the candidate object
      * @return either the value held within the {@code Optional}, {@code null}
