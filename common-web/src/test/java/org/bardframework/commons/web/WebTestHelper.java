@@ -24,7 +24,9 @@ public interface WebTestHelper {
 
     ObjectMapper getObjectMapper();
 
-    void setAuthentication(MockHttpServletRequestBuilder request);
+    default void preExecute(MockHttpServletRequestBuilder request) {
+
+    }
 
     default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, TypeReference<T> returnType)
             throws Exception {
@@ -45,7 +47,7 @@ public interface WebTestHelper {
 
     default MvcResult execute(MockHttpServletRequestBuilder request)
             throws Exception {
-        this.setAuthentication(request);
+        this.preExecute(request);
         request.accept(MediaType.APPLICATION_JSON);
         MvcResult result = this.getMockMvc().perform(request).andReturn();
         LOGGER.info("call details:\nurl: {} {}\nstatus: {}\nrequest:\n{}\nresponse:\n{}\n", result.getRequest().getMethod(), result.getRequest().getRequestURI(), result.getResponse().getStatus(), result.getRequest().getContentAsString(), result.getResponse().getContentAsString());
