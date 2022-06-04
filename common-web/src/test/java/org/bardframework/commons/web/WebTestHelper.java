@@ -42,6 +42,7 @@ public interface WebTestHelper {
 
     default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, TypeReference<T> returnType)
             throws Exception {
+        request.accept(MediaType.APPLICATION_JSON);
         MvcResult result = this.execute(request, expectedStatus);
         if (StringUtils.isNotBlank(result.getResponse().getContentAsString())) {
             return this.getObjectMapper().readValue(result.getResponse().getContentAsString(), returnType);
@@ -60,7 +61,6 @@ public interface WebTestHelper {
     default MvcResult execute(MockHttpServletRequestBuilder request)
             throws Exception {
         this.preExecute(request);
-        request.accept(MediaType.APPLICATION_JSON);
         MvcResult result = this.getMockMvc().perform(request).andReturn();
         LOGGER.info("call details:\nurl: {} {}\nstatus: {}\nrequest:\n{}\nresponse:\n{}\n", result.getRequest().getMethod(), result.getRequest().getRequestURI(), result.getResponse().getStatus(), result.getRequest().getContentAsString(), result.getResponse().getContentAsString());
         return result;
