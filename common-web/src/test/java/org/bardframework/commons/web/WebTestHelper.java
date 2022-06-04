@@ -11,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
+import java.lang.reflect.Type;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -26,6 +28,16 @@ public interface WebTestHelper {
 
     default void preExecute(MockHttpServletRequestBuilder request) {
 
+    }
+
+    default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, Class<T> returnType)
+            throws Exception {
+        return this.execute(request, expectedStatus, new TypeReference<T>() {
+            @Override
+            public Type getType() {
+                return returnType;
+            }
+        });
     }
 
     default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, TypeReference<T> returnType)
