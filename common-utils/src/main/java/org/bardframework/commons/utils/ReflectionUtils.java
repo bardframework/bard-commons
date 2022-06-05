@@ -95,10 +95,12 @@ public final class ReflectionUtils {
     public static Field findField(Class<?> type, FieldFilter filter) {
         return findField(type, new DescribedFieldFilter() {
 
+            @Override
             public boolean matches(Field field) {
                 return filter.matches(field);
             }
 
+            @Override
             public String getDescription() {
                 return String.format("FieldFilter %s", filter.toString());
             }
