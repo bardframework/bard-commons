@@ -18,6 +18,12 @@ public final class WebUtils {
     private static final char UNDERLINE = '_';
     private static final char SPACE = ' ';
 
+    private WebUtils() {
+        /*
+            prevent instantiation
+        */
+    }
+
     public static void fillResponse(HttpServletResponse response, byte[] data, String contentType, String name)
             throws IOException {
         response.setContentType(contentType);

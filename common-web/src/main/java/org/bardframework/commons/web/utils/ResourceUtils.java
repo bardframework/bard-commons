@@ -119,6 +119,9 @@ public final class ResourceUtils {
     private static final PathMatchingResourcePatternResolver RESOLVER = new PathMatchingResourcePatternResolver();
 
     private ResourceUtils() {
+        /*
+            prevent instantiation
+        */
     }
 
     /**
