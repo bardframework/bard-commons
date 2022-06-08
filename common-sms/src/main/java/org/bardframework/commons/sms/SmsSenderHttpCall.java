@@ -22,7 +22,7 @@ public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     @Override
     public final boolean send(Map<String, String> args) throws IOException {
         String receiverNumberForLog = StringUtils.overlay(args.get("to"), "*", 4, args.get("to").length() - 4);
-        LOGGER.info("try sending sms to:  " + receiverNumberForLog);
+        LOGGER.info("try sending sms to: {}", receiverNumberForLog);
         HttpCallResult callResult = this.call(this.prepareHeadersForSend(), args);
         LOGGER.info("http status of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());
         return this.isSuccess(callResult, receiverNumberForLog, args);
