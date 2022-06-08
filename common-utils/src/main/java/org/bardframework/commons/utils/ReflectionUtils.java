@@ -292,7 +292,7 @@ public final class ReflectionUtils {
         String[] properties = propertyPath.split("\\.");
         for (String property : properties) {
             if (current == null) {
-                return current;
+                return null;
             }
             current = getGetter(current.getClass(), property).invoke(current);
         }
@@ -1232,7 +1232,7 @@ public final class ReflectionUtils {
         if (includeInterface) {
             for (Class<?> anInterface : clazz.getInterfaces()) {
                 supers.add(anInterface);
-                supers.addAll(ReflectionUtils.getSupersOf(anInterface, includeInterface, includeAbstractClasses, false));
+                supers.addAll(ReflectionUtils.getSupersOf(anInterface, true, includeAbstractClasses, false));
             }
         }
         return supers;

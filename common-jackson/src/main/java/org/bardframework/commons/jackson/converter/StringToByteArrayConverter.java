@@ -9,6 +9,6 @@ public class StringToByteArrayConverter extends ConverterSerializer<String, byte
 
     @Override
     public byte[] convert(String value) {
-        return null == value ? null : value.getBytes(StandardCharsets.UTF_8);
+        return value.getBytes(StandardCharsets.UTF_8);
     }
 }

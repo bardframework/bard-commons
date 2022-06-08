@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -44,6 +45,6 @@ public abstract class ExceptionControllerAdvice {
     @ResponseBody
     public List<String> handle(MethodArgumentNotValidException ex, Locale locale) {
         LOGGER.debug("method argument not valid, [{}]", ex.getMessage());
-        return ex.getBindingResult().getAllErrors().stream().map(error -> messageSource.getMessage(error.getCode(), error.getArguments(), locale)).collect(Collectors.toList());
+        return ex.getBindingResult().getAllErrors().stream().map(error -> messageSource.getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), locale)).collect(Collectors.toList());
     }
 }

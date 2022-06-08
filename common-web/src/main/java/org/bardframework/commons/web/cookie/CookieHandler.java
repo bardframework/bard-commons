@@ -8,6 +8,7 @@ import org.springframework.web.util.WebUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 public class CookieHandler extends CookieGenerator {
 
@@ -15,7 +16,7 @@ public class CookieHandler extends CookieGenerator {
     private String cookieSameSite;
 
     public Cookie get(HttpServletRequest request) {
-        return WebUtils.getCookie(request, this.getCookieName());
+        return WebUtils.getCookie(request, Objects.requireNonNull(this.getCookieName()));
     }
 
     public String getValue(HttpServletRequest request) {
@@ -28,7 +29,7 @@ public class CookieHandler extends CookieGenerator {
      */
     @Override
     protected Cookie createCookie(String cookieValue) {
-        Cookie cookie = new Cookie(this.getCookieName(), cookieValue);
+        Cookie cookie = new Cookie(Objects.requireNonNull(this.getCookieName()), cookieValue);
         /*
             origin implementation set domain when it is empty (not null)
          */

@@ -33,6 +33,6 @@ public class LongToLocalDateConverter extends JsonDeserializer<LocalDate> implem
 
     @Override
     public LocalDate convert(Long mills) {
-        return null == mills ? null : LocalDateTime.ofInstant(Instant.ofEpochMilli(mills), ZoneOffset.UTC).toLocalDate();
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(mills), ZoneOffset.UTC).toLocalDate();
     }
 }

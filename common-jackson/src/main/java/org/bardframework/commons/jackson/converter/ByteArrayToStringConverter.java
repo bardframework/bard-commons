@@ -9,6 +9,6 @@ public class ByteArrayToStringConverter extends ConverterSerializer<byte[], Stri
 
     @Override
     public String convert(byte[] value) {
-        return null == value ? null : new String(value, StandardCharsets.UTF_8);
+        return new String(value, StandardCharsets.UTF_8);
     }
 }

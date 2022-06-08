@@ -63,7 +63,7 @@ public final class UtilityMethods {
 
             if (i == 0) {
                 lengthToSelectFirstPart = tempStringNumber.length() - ((partCount - 1) * 3);
-                numberLength3 = tempStringNumber.substring((i * 3), lengthToSelectFirstPart);
+                numberLength3 = tempStringNumber.substring((0), lengthToSelectFirstPart);
             } else {
                 numberLength3 = tempStringNumber.substring(lengthToSelectFirstPart + ((i - 1) * 3)).substring(0, 3);
             }

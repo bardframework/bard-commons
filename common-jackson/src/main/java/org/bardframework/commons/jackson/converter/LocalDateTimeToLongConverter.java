@@ -32,6 +32,6 @@ public class LocalDateTimeToLongConverter extends JsonSerializer<LocalDateTime> 
 
     @Override
     public Long convert(LocalDateTime value) {
-        return null == value ? null : value.toInstant(ZoneOffset.UTC).toEpochMilli();
+        return value.toInstant(ZoneOffset.UTC).toEpochMilli();
     }
 }
