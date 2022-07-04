@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +39,7 @@ public class HttpCaller {
         }
         HttpCallResult callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, args);
         if (this.isLogResponse()) {
-            LOGGER.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getResponseCode(), Arrays.toString(callResult.getBody()));
+            LOGGER.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getResponseCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
         }
         return callResult;
     }
