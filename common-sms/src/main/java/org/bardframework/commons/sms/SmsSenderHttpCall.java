@@ -11,7 +11,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
-
     protected final Pattern successPattern;
 
     public SmsSenderHttpCall(String httpMethod, String urlTemplate, String successPattern) {

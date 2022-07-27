@@ -5,10 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public interface SmsSender {
+
+    String TO_KEY = "to";
+    String MESSAGE_KEY = "message";
+
     default boolean send(String to, String message, Map<String, String> args) throws IOException {
         args = new HashMap<>(args);
-        args.put("to", to);
-        args.put("message", message);
+        args.put(TO_KEY, to);
+        args.put(MESSAGE_KEY, message);
         return this.send(args);
     }
 
