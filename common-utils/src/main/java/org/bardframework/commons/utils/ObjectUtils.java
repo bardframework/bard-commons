@@ -1234,7 +1234,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static boolean MAGIC_FLAG = ObjectUtils.CONST(true);
+     *     public static final boolean MAGIC_FLAG = ObjectUtils.CONST(true);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1253,7 +1253,7 @@ public final class ObjectUtils {
         These methods ensure constants are not inlined by javac.
         For example, typically a developer might declare a constant like so:
 
-            public final static int MAGIC_NUMBER = 5;
+            public static final int MAGIC_NUMBER = 5;
 
         Should a different jar file refer to this, and the MAGIC_NUMBER
         is changed a later date (e.g., MAGIC_NUMBER = 6), the different jar
@@ -1265,7 +1265,7 @@ public final class ObjectUtils {
         when constants are changed) the original developer can declare
         their constant using one of the CONST() utility methods, instead:
 
-            public final static int MAGIC_NUMBER = CONST(5);
+            public static final int MAGIC_NUMBER = CONST(5);
      */
 
     /**
@@ -1274,7 +1274,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static byte MAGIC_BYTE = ObjectUtils.CONST((byte) 127);
+     *     public static final byte MAGIC_BYTE = ObjectUtils.CONST((byte) 127);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1293,7 +1293,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static byte MAGIC_BYTE = ObjectUtils.CONST_BYTE(127);
+     *     public static final byte MAGIC_BYTE = ObjectUtils.CONST_BYTE(127);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1318,7 +1318,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static char MAGIC_CHAR = ObjectUtils.CONST('a');
+     *     public static final char MAGIC_CHAR = ObjectUtils.CONST('a');
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1337,7 +1337,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static short MAGIC_SHORT = ObjectUtils.CONST((short) 123);
+     *     public static final short MAGIC_SHORT = ObjectUtils.CONST((short) 123);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1356,7 +1356,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static short MAGIC_SHORT = ObjectUtils.CONST_SHORT(127);
+     *     public static final short MAGIC_SHORT = ObjectUtils.CONST_SHORT(127);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1381,7 +1381,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static int MAGIC_INT = ObjectUtils.CONST(123);
+     *     public static final int MAGIC_INT = ObjectUtils.CONST(123);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1400,7 +1400,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static long MAGIC_LONG = ObjectUtils.CONST(123L);
+     *     public static final long MAGIC_LONG = ObjectUtils.CONST(123L);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1419,7 +1419,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static float MAGIC_FLOAT = ObjectUtils.CONST(1.0f);
+     *     public static final float MAGIC_FLOAT = ObjectUtils.CONST(1.0f);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1438,7 +1438,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static double MAGIC_DOUBLE = ObjectUtils.CONST(1.0);
+     *     public static final double MAGIC_DOUBLE = ObjectUtils.CONST(1.0);
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
@@ -1457,7 +1457,7 @@ public final class ObjectUtils {
      * field, e.g.,
      *
      * <pre>
-     *     public final static String MAGIC_STRING = ObjectUtils.CONST("abc");
+     *     public static final String MAGIC_STRING = ObjectUtils.CONST("abc");
      * </pre>
      * This way any jars that refer to this field do not
      * have to recompile themselves if the field's value
