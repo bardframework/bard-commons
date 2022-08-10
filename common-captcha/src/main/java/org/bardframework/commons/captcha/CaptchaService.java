@@ -16,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CaptchaService {
 
-    private Map<CaptchaType, CaptchaTypeInfo> captchaTypeInfoMap = new ConcurrentHashMap<>();
     private final Random random = new Random();
+    private Map<CaptchaType, CaptchaTypeInfo> captchaTypeInfoMap = new ConcurrentHashMap<>();
 
     public CaptchaService() {
         captchaTypeInfoMap.put(CaptchaType.PERSIAN_NUMBER_TEXT, new CaptchaTypeInfo("0123456789", false, new Font("Tahoma", Font.PLAIN, 40)));

@@ -29,7 +29,7 @@ public final class WebUtils {
         response.setContentType(contentType);
         response.setCharacterEncoding(StandardCharsets.UTF_8.displayName());
 
-        String fileName = URLEncoder.encode(name, StandardCharsets.UTF_8.name()).replace("+", "%20");
+        String fileName = URLEncoder.encode(name, StandardCharsets.UTF_8).replace("+", "%20");
         /* "Content-Disposition : inline" will show viewable types [like images/text/pdf/anything viewable by browser] right on browser
             while others(zip e.g) will be directly downloaded [may provide save as popup, based on your browser setting.]*/
 //        response.setHeader("Content-Disposition", String.format("inline; filename*=UTF-8''%s", fileName));

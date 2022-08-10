@@ -64,6 +64,10 @@ public class HttpCaller {
         return headers;
     }
 
+    public void setHeaders(Map<String, String> headers) {
+        this.headers = headers;
+    }
+
     public int getConnectTimeoutSeconds() {
         return connectTimeoutSeconds;
     }
@@ -78,10 +82,6 @@ public class HttpCaller {
 
     public void setReadTimeoutSeconds(int readTimeoutSeconds) {
         this.readTimeoutSeconds = readTimeoutSeconds;
-    }
-
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
     }
 
     public boolean isLogResponse() {

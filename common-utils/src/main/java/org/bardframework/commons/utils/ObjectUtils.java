@@ -923,7 +923,7 @@ public final class ObjectUtils {
 
     /**
      * Checks if any value in the given array is not {@code null}.
-     *
+     * <p>
      * If all the values are {@code null} or the array is {@code null}
      * or empty then {@code false} is returned. Otherwise {@code true} is returned.
      *
@@ -947,7 +947,7 @@ public final class ObjectUtils {
 
     /**
      * Checks if all values in the array are not {@code nulls}.
-     *
+     * <p>
      * If any value is {@code null} or the array is {@code null} then
      * {@code false} is returned. If all elements in array are not
      * {@code null} or the array is empty (contains no elements) {@code true} is returned.

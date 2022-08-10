@@ -30,7 +30,6 @@ public class RequestLimitChecker {
 
     /**
      * post method
-     *
      */
     public RequestLimitChecker(String url, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
         this.httpMethod = null;

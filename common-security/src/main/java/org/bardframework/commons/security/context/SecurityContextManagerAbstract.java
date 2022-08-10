@@ -22,7 +22,6 @@ public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbs
 
     /**
      * used in security context filter
-     *
      */
     @Override
     public void setSecurityContext(HttpServletRequest request, HttpServletResponse response) {
@@ -53,7 +52,6 @@ public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbs
 
     /**
      * used in login filter
-     *
      */
     @Override
     public String putAuthentication(A authentication, HttpServletResponse response) {

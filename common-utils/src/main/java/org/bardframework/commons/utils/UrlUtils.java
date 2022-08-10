@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -52,11 +51,7 @@ public final class UrlUtils {
         if (StringUtils.isBlank(value)) {
             return value;
         }
-        try {
-            return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
-        } catch (final UnsupportedEncodingException e) {
-            throw new IllegalArgumentException(e);
-        }
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
 
 

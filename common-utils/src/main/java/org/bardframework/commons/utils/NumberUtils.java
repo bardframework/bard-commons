@@ -44,7 +44,8 @@ public final class NumberUtils {
                 }
             }
             return Long.valueOf((minus ? "-" : StringUtils.EMPTY) + num);
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | NullPointerException | StringIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | NullPointerException |
+                 StringIndexOutOfBoundsException ex) {
             return 0L;
         }
     }
