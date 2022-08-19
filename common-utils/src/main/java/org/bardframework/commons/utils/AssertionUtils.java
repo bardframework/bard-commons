@@ -3,6 +3,7 @@ package org.bardframework.commons.utils;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
@@ -293,7 +294,7 @@ public class AssertionUtils {
      * @throws IllegalArgumentException if the object array is {@code null} or contains no elements
      */
     public static void notEmpty(Object[] array, String message) {
-        if (ObjectUtils.isEmpty(array)) {
+        if (ArrayUtils.isEmpty(array)) {
             throw new IllegalArgumentException(message);
         }
     }
@@ -311,7 +312,7 @@ public class AssertionUtils {
      * @throws IllegalArgumentException if the object array is {@code null} or contains no elements
      */
     public static void notEmpty(Object[] array, Supplier<String> messageSupplier) {
-        if (ObjectUtils.isEmpty(array)) {
+        if (ArrayUtils.isEmpty(array)) {
             throw new IllegalArgumentException(nullSafeGet(messageSupplier));
         }
     }
