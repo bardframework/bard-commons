@@ -38,7 +38,9 @@ public final class OsUtils {
             Attribute att = (Attribute) list.get(0);
             Double value = (Double) att.getValue();
             // usually takes a couple of seconds before we get real values
-            if (value == -1.0) return 0;
+            if (value == -1.0) {
+                return 0;
+            }
             // returns a percentage value with 1 decimal point precision
             return ((int) (value * 1000) / 10);
         } catch (Exception e) {

@@ -46,7 +46,9 @@ public final class BytesUtils {
                     break;
                 }
             }
-            if (found) return i;
+            if (found) {
+                return i;
+            }
         }
         return -1;
     }

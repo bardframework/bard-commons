@@ -14,8 +14,9 @@ public class NormalPersianCharacterDeserializer extends JsonDeserializer<String>
     @Override
     public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) {
         try {
-            if (jsonParser.getValueAsString() != null)
+            if (jsonParser.getValueAsString() != null) {
                 return LetterConverterUtility.convertArabicCharacters(jsonParser.getValueAsString());
+            }
         } catch (Exception e) {
             logger.error("error when normal '{}' to english number", jsonParser.getCurrentValue());
             logger.debug("exception details:", e);
