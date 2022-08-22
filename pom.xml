@@ -19,7 +19,6 @@
         <module>common-captcha</module>
         <module>common-config</module>
         <module>common-jackson</module>
-        <module>common-monitoring</module>
         <module>common-redis</module>
         <module>common-security</module>
         <module>common-security-redis</module>

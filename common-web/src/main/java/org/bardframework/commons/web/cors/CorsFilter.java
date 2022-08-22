@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
@@ -12,14 +13,14 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CorsFilter implements Filter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CorsFilter.class);
 
-    private final List<RequestMatcher> corsRequestMatchers;
+    private final RequestMatcher corsRequestMatchers;
     private final AntPathMatcher antPathMatcher;
     private List<String> allowedOrigins;
     private List<String> allowedMethods;
@@ -29,10 +30,7 @@ public class CorsFilter implements Filter {
     private int maxAge;
 
     public CorsFilter(List<String> corsMapping) {
-        this.corsRequestMatchers = new ArrayList<>();
-        for (String url : corsMapping) {
-            this.corsRequestMatchers.add(new AntPathRequestMatcher(url));
-        }
+        this.corsRequestMatchers = new OrRequestMatcher(corsMapping.stream().map(AntPathRequestMatcher::new).collect(Collectors.toList()));
         this.antPathMatcher = new AntPathMatcher();
         this.antPathMatcher.setTrimTokens(false);
         this.antPathMatcher.setCaseSensitive(false);
@@ -49,11 +47,11 @@ public class CorsFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) resp;
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
         String origin = request.getHeader("Origin");
-        if (StringUtils.isBlank(origin) || !this.needCorsCheck(request)) {
+        if (StringUtils.isBlank(origin) || !this.getCorsRequestMatchers().matches(request)) {
             chain.doFilter(request, response);
             return;
         }
@@ -82,15 +80,11 @@ public class CorsFilter implements Filter {
         }
     }
 
-    private boolean needCorsCheck(HttpServletRequest request) {
-        return this.getCorsRequestMatchers().stream().anyMatch(corsRequestMatcher -> corsRequestMatcher.matches(request));
-    }
-
     private boolean isAllowedOrigin(String origin) {
         return this.getAllowedOrigins().stream().anyMatch(allowedOrigin -> this.getAntPathMatcher().match(allowedOrigin, origin));
     }
 
-    public List<RequestMatcher> getCorsRequestMatchers() {
+    public RequestMatcher getCorsRequestMatchers() {
         return corsRequestMatchers;
     }
 
