@@ -5,12 +5,10 @@ import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-public class SwaggerSecurityConfigurer {
+public class SwaggerConfiguration {
 
     @Bean
     public GroupedOpenApi publicApi() {
@@ -26,7 +24,8 @@ public class SwaggerSecurityConfigurer {
 
     @Bean
     SecurityFilterChain swaggerSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests().antMatchers("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll();
+        httpSecurity.requestMatchers(configurer -> configurer.antMatchers("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**"))
+                .authorizeRequests(registry -> registry.anyRequest().permitAll());
         return httpSecurity.build();
     }
 }

@@ -9,14 +9,28 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>common-swagger</artifactId>
+    <artifactId>common-monitoring</artifactId>
 
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -31,5 +45,4 @@
             <artifactId>spring-security-config</artifactId>
         </dependency>
     </dependencies>
-
 </project>
