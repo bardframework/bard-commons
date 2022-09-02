@@ -1,22 +1,44 @@
 package org.bardframework.commons.web.cookie;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.lang.Nullable;
-import org.springframework.web.util.CookieGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class CookieHandler extends CookieGenerator {
+public class CookieHandler {
 
-    @Nullable
-    private String cookieSameSite;
+    protected static final Logger LOGGER = LoggerFactory.getLogger(CookieHandler.class);
+
+    private final String name;
+    private final String path;
+    private String domain;
+    private Integer maxAge;
+    private Boolean secure;
+    private Boolean httpOnly;
+    private Boolean hostOnly;
+    private String sameSite;
+
+    /**
+     * Default path that cookies will be visible to: "/", i.e. the entire server.
+     */
+    public CookieHandler(String name) {
+        this(name, "/");
+    }
+
+    public CookieHandler(String name, String path) {
+        this.name = name;
+        this.path = path;
+    }
 
     public Cookie get(HttpServletRequest request) {
-        return WebUtils.getCookie(request, Objects.requireNonNull(this.getCookieName()));
+        return WebUtils.getCookie(request, Objects.requireNonNull(this.getName()));
     }
 
     public String getValue(HttpServletRequest request) {
@@ -24,25 +46,8 @@ public class CookieHandler extends CookieGenerator {
         return null == cookie ? null : cookie.getValue();
     }
 
-    /**
-     * don't set domain when it is empty
-     */
-    @Override
-    protected Cookie createCookie(String cookieValue) {
-        Cookie cookie = new Cookie(Objects.requireNonNull(this.getCookieName()), cookieValue);
-        /*
-            origin implementation set domain when it is empty (not null)
-         */
-        if (StringUtils.isNotBlank(this.getCookieDomain())) {
-            cookie.setDomain(getCookieDomain());
-        }
-        cookie.setPath(this.getCookiePath());
-        return cookie;
-    }
-
-    @Override
     public void addCookie(HttpServletResponse response, String cookieValue) {
-        this.addCookie(response, cookieValue, this.getCookieMaxAge());
+        this.addCookie(response, cookieValue, this.getMaxAge());
     }
 
     /**
@@ -54,34 +59,102 @@ public class CookieHandler extends CookieGenerator {
      * @param maxAge      max age value of the cookie to add
      */
     public void addCookie(HttpServletResponse response, String cookieValue, Integer maxAge) {
-        StringBuilder setCookieHeader = new StringBuilder(String.format("%s=%s;", this.getCookieName(), cookieValue));
+        List<String> attributes = this.constructAttributes(cookieValue, maxAge);
+        response.addHeader("Set-Cookie", String.join(";", attributes));
+    }
+
+    /**
+     * Remove the cookie that this generator describes from the response.
+     * Will generate a cookie with empty value and max age 0.
+     *
+     * @param response the HTTP response to remove the cookie from
+     */
+    public void removeCookie(HttpServletResponse response) {
+        List<String> attributes = this.constructAttributes("", 0);
+        attributes.add("expires=Thu, Jan 01 1970 00:00:00 UTC");
+        response.addHeader("Set-Cookie", String.join(";", attributes));
+    }
+
+    protected List<String> constructAttributes(String cookieValue, Integer maxAge) {
+        List<String> attributes = new ArrayList<>();
+        attributes.add(this.getName() + "=" + cookieValue);
         if (null != maxAge) {
-            setCookieHeader.append(String.format("Max-Age=%d;", maxAge));
+            attributes.add("Max-Age=" + maxAge);
         }
-        if (this.isCookieSecure()) {
-            setCookieHeader.append("Secure;");
+        if (Boolean.TRUE.equals(this.getSecure())) {
+            attributes.add("Secure");
         }
-        if (this.isCookieHttpOnly()) {
-            setCookieHeader.append("HttpOnly;");
+        if (Boolean.TRUE.equals(this.getHttpOnly())) {
+            attributes.add("HttpOnly");
         }
-        if (StringUtils.isNotBlank(this.getCookieDomain())) {
-            setCookieHeader.append(String.format("Domain=%s;", this.getCookieDomain()));
+        if (Boolean.TRUE.equals(this.getHostOnly())) {
+            attributes.add("HostOnly");
         }
-        if (StringUtils.isNotBlank(this.getCookiePath())) {
-            setCookieHeader.append(String.format("Path=%s;", this.getCookiePath()));
+        if (StringUtils.isNotBlank(this.getDomain())) {
+            attributes.add("Domain=" + this.getDomain());
         }
-        if (StringUtils.isNotBlank(this.getCookieSameSite())) {
-            setCookieHeader.append(String.format("SameSite=%s;", this.getCookieSameSite()));
+        if (StringUtils.isNotBlank(this.getPath())) {
+            attributes.add("Path=" + this.getPath());
         }
-        response.addHeader("Set-Cookie", setCookieHeader.toString());
+        if (StringUtils.isNotBlank(this.getSameSite())) {
+            attributes.add("SameSite=" + this.getSameSite());
+        }
+        return attributes;
     }
 
-    @Nullable
-    public String getCookieSameSite() {
-        return cookieSameSite;
+    public String getName() {
+        return name;
     }
 
-    public void setCookieSameSite(@Nullable String cookieSameSite) {
-        this.cookieSameSite = cookieSameSite;
+    public String getPath() {
+        return path;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public Integer getMaxAge() {
+        return maxAge;
+    }
+
+    public void setMaxAge(Integer maxAge) {
+        this.maxAge = maxAge;
+    }
+
+    public Boolean getSecure() {
+        return secure;
+    }
+
+    public void setSecure(Boolean secure) {
+        this.secure = secure;
+    }
+
+    public Boolean getHttpOnly() {
+        return httpOnly;
+    }
+
+    public void setHttpOnly(Boolean httpOnly) {
+        this.httpOnly = httpOnly;
+    }
+
+    public Boolean getHostOnly() {
+        return hostOnly;
+    }
+
+    public void setHostOnly(Boolean hostOnly) {
+        this.hostOnly = hostOnly;
+    }
+
+    public String getSameSite() {
+        return sameSite;
+    }
+
+    public void setSameSite(String sameSite) {
+        this.sameSite = sameSite;
     }
 }
