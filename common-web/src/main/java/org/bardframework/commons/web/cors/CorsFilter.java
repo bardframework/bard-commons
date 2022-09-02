@@ -36,7 +36,7 @@ public class CorsFilter implements Filter {
         this.antPathMatcher.setCaseSensitive(false);
     }
 
-    protected CorsFilter(List<String> corsMapping, List<String> allowedOrigins, List<String> allowedMethods, List<String> allowedHeaders, List<String> exposedHeaders, boolean allowedCredentials, int maxAge) {
+    public CorsFilter(List<String> corsMapping, List<String> allowedOrigins, List<String> allowedMethods, List<String> allowedHeaders, List<String> exposedHeaders, boolean allowedCredentials, int maxAge) {
         this(corsMapping);
         this.allowedOrigins = allowedOrigins;
         this.allowedMethods = allowedMethods;

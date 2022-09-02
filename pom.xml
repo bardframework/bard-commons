@@ -11,7 +11,7 @@
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>1.5.26</version>
+    <version>1.6.6</version>
 
     <packaging>pom</packaging>
 
@@ -33,7 +33,7 @@
     </modules>
 
     <properties>
-        <bardframework.version>1.5.25</bardframework.version>
+        <bardframework.version>1.6.5</bardframework.version>
     </properties>
 
     <dependencyManagement>
