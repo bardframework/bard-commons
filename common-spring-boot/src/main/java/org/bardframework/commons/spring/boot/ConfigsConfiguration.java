@@ -5,7 +5,6 @@ import org.bardframework.commons.utils.CharsetUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.EnumerablePropertySource;
@@ -19,7 +18,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@Configuration
 public class ConfigsConfiguration {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigsConfiguration.class);
     private static final String CLASS_PATH_KEY = "java.class.path";
