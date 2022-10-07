@@ -8,8 +8,9 @@ public class MonitoringConfiguration {
 
     @Bean
     SecurityFilterChain monitoringSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.requestMatchers(configurer -> configurer.antMatchers("/actuator", "/actuator/**"))
-                .authorizeRequests(registry -> registry.anyRequest().permitAll());
-        return httpSecurity.build();
+        return httpSecurity.requestMatchers(configurer -> configurer.antMatchers("/actuator/**"))
+                .authorizeRequests().anyRequest().permitAll()
+                .and()
+                .build();
     }
 }
