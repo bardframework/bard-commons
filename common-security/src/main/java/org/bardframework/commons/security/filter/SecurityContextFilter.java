@@ -1,12 +1,12 @@
 package org.bardframework.commons.security.filter;
 
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.bardframework.commons.security.context.SecurityContextManager;
 import org.bardframework.commons.security.token.AuthenticationAbstract;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**

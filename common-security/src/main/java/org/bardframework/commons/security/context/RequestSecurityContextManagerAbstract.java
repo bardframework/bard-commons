@@ -1,10 +1,9 @@
 package org.bardframework.commons.security.context;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.bardframework.commons.security.token.AuthenticationAbstract;
 import org.bardframework.commons.security.token.manager.TokenManager;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public abstract class RequestSecurityContextManagerAbstract<A extends AuthenticationAbstract<U>, U> extends SecurityContextManagerAbstract<A, U> {
 

@@ -1,9 +1,8 @@
 package org.bardframework.commons.security.context;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.bardframework.commons.security.token.AuthenticationAbstract;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public interface SecurityContextManager<A extends AuthenticationAbstract<U>, U> {
 

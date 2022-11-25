@@ -1,6 +1,8 @@
 package org.bardframework.commons.web.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletResponse;
 import org.bardframework.commons.web.ExceptionControllerAdvice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.method.annotation.ExceptionHandlerMethodResolver;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -50,7 +50,7 @@ public class ExceptionHandlerFilter implements Filter {
         try {
             Object resolverResponse = method.invoke(exceptionControllerAdvice, ex);
             objectMapper.writeValue(response.getWriter(), resolverResponse);
-            response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         } catch (Exception e) {
             LOGGER.error("error calling exception\n \nhandler method [{}] and setting result to response", method.getName(), e);
         }

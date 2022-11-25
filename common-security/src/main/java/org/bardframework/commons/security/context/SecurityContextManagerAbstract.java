@@ -1,14 +1,13 @@
 package org.bardframework.commons.security.context;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.security.token.AuthenticationAbstract;
 import org.bardframework.commons.security.token.manager.TokenManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbstract<U>, U> implements SecurityContextManager<A, U> {
 
