@@ -8,7 +8,7 @@ public class MonitoringConfiguration {
 
     @Bean
     SecurityFilterChain monitoringSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.securityMatchers(configurer -> configurer.requestMatchers("/actuator/**"))
+        return httpSecurity.securityMatcher("/actuator/**")
                 .authorizeHttpRequests().anyRequest().permitAll()
                 .and()
                 .build();

@@ -11,12 +11,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SwaggerConfiguration {
 
     @Bean
-    public GroupedOpenApi publicApi() {
+    GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder().group("public-api").pathsToMatch("/**").build();
     }
 
     @Bean
-    public OpenAPI api() {
+    OpenAPI api() {
         Contact contact = new Contact().name("Vahid Zafari").url("https://www.linkedin.com/in/vzafari").email("va.zafari@gmail.com");
         Info info = new Info().title("API Info").description("API Documentation").contact(contact);
         return new OpenAPI().info(info);
@@ -24,7 +24,7 @@ public class SwaggerConfiguration {
 
     @Bean
     SecurityFilterChain swaggerSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.securityMatchers(configurer -> configurer.requestMatchers("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**"))
+        return httpSecurity.securityMatcher("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**")
                 .authorizeHttpRequests().anyRequest().permitAll()
                 .and()
                 .build();

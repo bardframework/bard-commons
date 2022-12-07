@@ -9,7 +9,6 @@ import java.util.Locale;
 /**
  * Demonstrate default Charset-related details.
  */
-
 public final class CharsetUtils {
 
     private CharsetUtils() {

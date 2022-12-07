@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 /**
  * Created by vahid (va.zafari@gmail.com) on 10/30/17.
  */
-public class AssertionUtils {
+public final class AssertionUtils {
 
     private AssertionUtils() {
         /*

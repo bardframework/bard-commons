@@ -15,7 +15,13 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class JarFileUtils {
+public final class JarFileUtils {
+
+    private JarFileUtils() {
+        /*
+            prevent instantiation
+         */
+    }
 
     public static void update(File file, Map<String, byte[]> newEntries) throws Exception {
         if (MapUtils.isEmpty(newEntries)) {
@@ -54,7 +60,7 @@ public class JarFileUtils {
         }
 
         @Override
-        public void doWork(JarFile jarFile) throws IOException {
+        public void doWork(JarFile jarFile) {
             jarFile.stream().filter(jarEntry -> !jarEntry.isDirectory() && jarEntry.toString().startsWith(this.getZipDirectoryEntry())).forEach(jarEntry -> {
                 File targetFile = this.getSavePath().resolve(jarEntry.toString()).toFile();
                 try {
