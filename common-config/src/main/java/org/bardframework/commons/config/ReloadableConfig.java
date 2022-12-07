@@ -65,7 +65,7 @@ public class ReloadableConfig {
     public static List<String> getList(ConfigKey<?, ?> key, Map<String, String> args) {
         String value = config.getProperty(key.getKey());
         value = StringTemplateUtils.fillTemplate(value, args);
-        return StringUtils.isBlank(value) ? Collections.emptyList() : Arrays.asList(value.split(","));
+        return StringUtils.isBlank(value) ? Collections.emptyList() : List.of(value.split(","));
     }
 
     public static Set<String> getSet(ConfigKey<?, ?> key) {
@@ -158,7 +158,7 @@ public class ReloadableConfig {
         Properties newConfigs = new Properties();
         List<Resource> resources = new ArrayList<>();
         for (String path : reloadableConfigPath) {
-            resources.addAll(Arrays.asList(ResourceUtils.getResources(path)));
+            resources.addAll(List.of(ResourceUtils.getResources(path)));
         }
         for (Resource resource : resources) {
             LOGGER.debug("loading global config from url [{}]", resource.getURL());

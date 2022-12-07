@@ -22,17 +22,17 @@ public class ConfigsConfiguration {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigsConfiguration.class);
     private static final String CLASS_PATH_KEY = "java.class.path";
     private static final String SEPARATOR_KEY = "path.separator";
-    private static final Set<String> SENSITIVE_KEY_PARTS = new HashSet<>(Arrays.asList("password", "credential", "secret", "token"));
+    private static final Set<String> SENSITIVE_KEY_PARTS = new HashSet<>(List.of("password", "credential", "secret", "token"));
     private static final Set<String> NOT_LOG_KEYS = new HashSet<>(Collections.singletonList(CLASS_PATH_KEY));
 
     @Bean
     PropertySourcesPlaceholderConfigurer placeHolderConfigurer(Environment environment) throws IOException {
         PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
-        Set<Resource> resources = new HashSet<>();
+        List<Resource> resources = new ArrayList<>();
+        resources.addAll(List.of(patternResolver.getResources("classpath*:**/**/application.properties")));
         resources.addAll(List.of(patternResolver.getResources("classpath*:**/**-config.properties")));
-        resources.addAll(Arrays.asList(patternResolver.getResources("classpath*:**/**/application.properties")));
         for (String profile : environment.getActiveProfiles()) {
-            resources.addAll(Arrays.asList(patternResolver.getResources("classpath*:**/**/application-" + profile + ".properties")));
+            resources.addAll(List.of(patternResolver.getResources("classpath*:**/**/application-" + profile + ".properties")));
         }
         BardPropertySourcesPlaceholderConfigurer propertyConfigurer = new BardPropertySourcesPlaceholderConfigurer();
         propertyConfigurer.setLocations(resources.toArray(new Resource[0]));
@@ -40,7 +40,7 @@ public class ConfigsConfiguration {
         return propertyConfigurer;
     }
 
-    private void logConfigs(Environment environment, BardPropertySourcesPlaceholderConfigurer configurer, Set<Resource> resources) throws IOException {
+    private void logConfigs(Environment environment, BardPropertySourcesPlaceholderConfigurer configurer, List<Resource> resources) throws IOException {
         final MutablePropertySources sources = ((AbstractEnvironment) environment).getPropertySources();
         Map<String, String> configs = new HashMap<>();
         StreamSupport.stream(sources.spliterator(), false)

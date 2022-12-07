@@ -11,6 +11,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -76,7 +77,7 @@ public class RequestLimitChecker {
     }
 
     public void setWhiteList(String... whiteList) {
-        this.whiteList = new HashSet<>(Arrays.asList(whiteList));
+        this.whiteList = new HashSet<>(List.of(whiteList));
     }
 
     public int getLimit() {

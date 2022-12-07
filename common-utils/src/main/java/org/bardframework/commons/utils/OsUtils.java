@@ -102,9 +102,9 @@ public final class OsUtils {
         while (currentPosition < original.size()) {
             int remaining = original.size() - currentPosition + 1;
             if (remaining <= splitSize) {
-                result.add(new ArrayList(Arrays.asList(Arrays.copyOfRange(original.toArray(), currentPosition, original.size()))));
+                result.add(new ArrayList(List.of(Arrays.copyOfRange(original.toArray(), currentPosition, original.size()))));
             } else {
-                result.add(new ArrayList(Arrays.asList(Arrays.copyOfRange(original.toArray(), currentPosition, currentPosition + splitSize))));
+                result.add(new ArrayList(List.of(Arrays.copyOfRange(original.toArray(), currentPosition, currentPosition + splitSize))));
             }
             currentPosition += splitSize;
         }
@@ -128,6 +128,6 @@ public final class OsUtils {
      * @return List of numbers in Long format
      */
     public static List<Long> getLongList(String... nums) {
-        return getLongList(Arrays.asList(nums));
+        return getLongList(List.of(nums));
     }
 }
