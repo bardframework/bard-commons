@@ -9,7 +9,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,7 +29,7 @@ public class CaptchaService {
         captchaTypeInfoMap.put(CaptchaType.ENGLISH_NUMBER_CHAR, new CaptchaTypeInfo("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", false, new Font("Tahoma", Font.PLAIN, 40)));
     }
 
-    public GeneratedCaptcha generateCaptcha(CaptchaType type, int maxChars) throws IOException {
+    public GeneratedCaptcha generateCaptcha(CaptchaType type, int maxChars) {
         CaptchaTypeInfo captchaTypeInfo = this.getCaptchaTypeInfoMap().get(type);
         if (null == captchaTypeInfo) {
             throw new IllegalStateException(String.format("no chars specify for type %s to generate captcha", type));
@@ -57,7 +56,7 @@ public class CaptchaService {
      * @param text expects string size eight (8) characters.
      * @return byte array that is a PNG image generated with text displayed.
      */
-    private byte[] generateImage(CaptchaType type, String text, Font font) throws IOException {
+    private byte[] generateImage(CaptchaType type, String text, Font font) {
         int height = 40;
         int width = height * text.length();
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -88,6 +87,8 @@ public class CaptchaService {
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             ImageIO.write(image, "png", outputStream);
             return outputStream.toByteArray();
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
         }
     }
 
