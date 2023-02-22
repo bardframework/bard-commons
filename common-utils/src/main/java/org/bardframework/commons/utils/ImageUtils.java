@@ -1,15 +1,12 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public final class ImageUtils {
-
-    private ImageUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class ImageUtils {
 
     /**
      * resize image, keep aspect ratio

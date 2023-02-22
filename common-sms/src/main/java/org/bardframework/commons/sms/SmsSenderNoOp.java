@@ -6,11 +6,11 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 public class SmsSenderNoOp implements SmsSender {
-    protected static final Logger LOGGER = LoggerFactory.getLogger(SmsSenderNoOp.class);
+    protected static final Logger log = LoggerFactory.getLogger(SmsSenderNoOp.class);
 
     @Override
     public boolean send(Map<String, String> args) {
-        LOGGER.warn("sms sender not configured.");
+        log.warn("sms sender not configured.");
         return false;
     }
 }

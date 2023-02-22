@@ -1,4 +1,4 @@
-package org.bardframework.commons.web.utils;
+package org.bardframework.commons.web.http;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HttpCaller {
-    protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
     protected final String httpMethod;
     protected final String urlTemplate;
@@ -34,12 +34,12 @@ public class HttpCaller {
      */
     public HttpCallResult call(Map<String, String> headers, Map<String, String> args) throws IOException {
         if (this.isDisable()) {
-            LOGGER.error("[{}] is disable.", this.getClass().getSimpleName());
+            log.error("[{}] is disable.", this.getClass().getSimpleName());
             return new HttpCallResult(-1, new byte[0], true);
         }
         HttpCallResult callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, args);
         if (this.isLogResponse()) {
-            LOGGER.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getResponseCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
+            log.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getResponseCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
         }
         return callResult;
     }

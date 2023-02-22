@@ -1,5 +1,6 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,16 +17,11 @@ import java.util.List;
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
-public final class OsUtils {
+@UtilityClass
+public class OsUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(OsUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(OsUtils.class);
     private static final MBeanServer M_BEAN_SERVER = ManagementFactory.getPlatformMBeanServer();
-
-    private OsUtils() {
-        /*
-            prevent instantiation
-         */
-    }
 
     public static int getCpuUsagePercent() {
         ObjectName name;
@@ -44,7 +40,7 @@ public final class OsUtils {
             // returns a percentage value with 1 decimal point precision
             return ((int) (value * 1000) / 10);
         } catch (Exception e) {
-            LOGGER.error("");
+            log.error("");
             return 0;
         }
     }

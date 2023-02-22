@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class CorsFilter implements Filter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CorsFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(CorsFilter.class);
 
     private final RequestMatcher corsRequestMatchers;
     private final AntPathMatcher antPathMatcher;

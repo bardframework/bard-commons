@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,13 +11,9 @@ import java.util.Locale;
 /**
  * Demonstrate default Charset-related details.
  */
-public final class CharsetUtils {
+@UtilityClass
+public class CharsetUtils {
 
-    private CharsetUtils() {
-        /*
-            prevent instantiation
-         */
-    }
 
     /**
      * Returns a Charset for the named charset. If the name is null, return the default Charset.

@@ -1,4 +1,4 @@
-package org.bardframework.commons.web.utils;
+package org.bardframework.commons.web.http;
 
 public class HttpCallResult {
 

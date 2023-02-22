@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public interface WebTestHelper {
 
-    Logger LOGGER = LoggerFactory.getLogger(WebTestHelper.class);
+    Logger log = LoggerFactory.getLogger(WebTestHelper.class);
 
     MockMvc getMockMvc();
 
@@ -62,7 +62,7 @@ public interface WebTestHelper {
             throws Exception {
         this.preExecute(request);
         MvcResult result = this.getMockMvc().perform(request).andReturn();
-        LOGGER.info("call details:\nurl: {} {}\nstatus: {}\nrequest:\n{}\nresponse:\n{}\n", result.getRequest().getMethod(), result.getRequest().getRequestURI(), result.getResponse().getStatus(), result.getRequest().getContentAsString(), result.getResponse().getContentAsString());
+        log.info("call details:\nurl: {} {}\nstatus: {}\nrequest:\n{}\nresponse:\n{}\n", result.getRequest().getMethod(), result.getRequest().getRequestURI(), result.getResponse().getStatus(), result.getRequest().getContentAsString(), result.getResponse().getContentAsString());
         return result;
     }
 }

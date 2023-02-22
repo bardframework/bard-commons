@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.bardframework</groupId>
         <artifactId>bard-parent</artifactId>
-        <version>15</version>
+        <version>16</version>
         <relativePath/>
     </parent>
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>1.9.1</version>
+    <version>1.11.1</version>
 
     <packaging>pom</packaging>
 
@@ -33,7 +33,7 @@
     </modules>
 
     <properties>
-        <bardframework.version>1.9.10</bardframework.version>
+        <bardframework.version>1.11.10</bardframework.version>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +52,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>

@@ -13,15 +13,15 @@ import org.slf4j.LoggerFactory;
  */
 public class ArabicToPersianDeserializer extends JsonDeserializer<String> {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ArabicToPersianDeserializer.class);
+    private static final Logger log = LoggerFactory.getLogger(ArabicToPersianDeserializer.class);
 
     @Override
     public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) {
         try {
             return LetterConverterUtility.convertArabicCharacters(jsonParser.getValueAsString());
         } catch (Exception e) {
-            LOGGER.info("error when converting StringLocalDateJalali '{}' to LocalDate.", jsonParser.getCurrentValue());
-            LOGGER.debug("exception details:", e);
+            log.info("error when converting StringLocalDateJalali '{}' to LocalDate.", jsonParser.getCurrentValue());
+            log.debug("exception details:", e);
             return null;
         }
     }

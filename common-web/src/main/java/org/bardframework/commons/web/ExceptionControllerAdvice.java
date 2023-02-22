@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  */
 public abstract class ExceptionControllerAdvice {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(ExceptionControllerAdvice.class);
+    protected static final Logger log = LoggerFactory.getLogger(ExceptionControllerAdvice.class);
 
     @Autowired
     protected MessageSource messageSource;
@@ -28,13 +28,13 @@ public abstract class ExceptionControllerAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public void handle(Exception ex) {
-        LOGGER.error("unhandled exception occur", ex);
+        log.error("unhandled exception occur", ex);
     }
 
     @ExceptionHandler(UnsupportedOperationException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public void handle(UnsupportedOperationException ex) {
-        LOGGER.error("not allowed service called", ex);
+        log.error("not allowed service called", ex);
     }
 
     /**
@@ -44,7 +44,7 @@ public abstract class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ResponseBody
     public List<String> handle(MethodArgumentNotValidException ex, Locale locale) {
-        LOGGER.debug("method argument not valid, [{}]", ex.getMessage());
+        log.debug("method argument not valid, [{}]", ex.getMessage());
         return ex.getBindingResult().getAllErrors().stream().map(error -> messageSource.getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), locale)).collect(Collectors.toList());
     }
 }

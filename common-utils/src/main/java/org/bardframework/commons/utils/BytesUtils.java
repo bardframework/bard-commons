@@ -1,17 +1,14 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.Arrays;
 
 /**
  * Created by Vahid Zafari.
  */
-public final class BytesUtils {
-
-    private BytesUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class BytesUtils {
 
     /**
      * find and replace must have same size

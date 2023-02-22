@@ -1,5 +1,6 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -15,13 +16,8 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class JarFileUtils {
-
-    private JarFileUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class JarFileUtils {
 
     public static void update(File file, Map<String, byte[]> newEntries) throws Exception {
         if (MapUtils.isEmpty(newEntries)) {

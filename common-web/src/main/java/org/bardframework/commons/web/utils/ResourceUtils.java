@@ -1,5 +1,6 @@
 package org.bardframework.commons.web.utils;
 
+import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -114,15 +115,10 @@ import java.io.IOException;
  *
  * @author Vahid Zafari
  */
-public final class ResourceUtils {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ResourceUtils.class);
+@UtilityClass
+public class ResourceUtils {
+    private static final Logger log = LoggerFactory.getLogger(ResourceUtils.class);
     private static final PathMatchingResourcePatternResolver RESOLVER = new PathMatchingResourcePatternResolver();
-
-    private ResourceUtils() {
-        /*
-            prevent instantiation
-        */
-    }
 
     /**
      * Return a Resource handle for the specified resource location.

@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class CookieHandler {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(CookieHandler.class);
+    protected static final Logger log = LoggerFactory.getLogger(CookieHandler.class);
 
     private final String name;
     private final String path;

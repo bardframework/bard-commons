@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -9,15 +11,10 @@ import java.util.Base64;
 /**
  * Created by Vahid Zafari on 4/21/2016.
  */
-public final class EncryptionUtil {
+@UtilityClass
+public class EncryptionUtil {
 
     private static final String ALGORITHM = "AES";
-
-    private EncryptionUtil() {
-        /*
-            prevent instantiation
-         */
-    }
 
     /**
      * @return if rawDate==null then returns  byte object with zero length

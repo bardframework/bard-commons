@@ -1,19 +1,16 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public final class DigestUtils {
+@UtilityClass
+public class DigestUtils {
 
     private static final String SHA512 = "SHA512";
     private static final String SHA = "SHA";
-
-    private DigestUtils() {
-        /*
-            prevent instantiation
-         */
-    }
 
     public static String sha512(String data)
             throws NoSuchAlgorithmException {

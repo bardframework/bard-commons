@@ -1,15 +1,12 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * @author v.zafari@chmail.ir
  */
-public final class IpUtils {
-
-    private IpUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class IpUtils {
 
     public static String formatIp(String ip) {
         StringBuilder builder = new StringBuilder();

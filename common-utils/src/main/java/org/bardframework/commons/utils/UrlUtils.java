@@ -1,8 +1,7 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -12,14 +11,8 @@ import java.util.Map;
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
+@UtilityClass
 public final class UrlUtils {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UrlUtils.class);
-
-    private UrlUtils() {
-        /*
-            prevent instantiation
-         */
-    }
 
     public static String makeCleanUrl(String... parts) {
         if (null == parts) {

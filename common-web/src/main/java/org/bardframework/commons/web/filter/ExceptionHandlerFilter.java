@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 
 public class ExceptionHandlerFilter implements Filter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionHandlerFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(ExceptionHandlerFilter.class);
 
     private final ObjectMapper objectMapper;
     private final ExceptionControllerAdvice exceptionControllerAdvice;
@@ -44,7 +44,7 @@ public class ExceptionHandlerFilter implements Filter {
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         Method method = exceptionHandlerMethodResolver.resolveMethodByExceptionType(ex.getClass());
         if (null == method) {
-            LOGGER.error("{} exception occurred, but can't handle it using advices", ex.getClass(), ex);
+            log.error("{} exception occurred, but can't handle it using advices", ex.getClass(), ex);
             return;
         }
         try {
@@ -52,7 +52,7 @@ public class ExceptionHandlerFilter implements Filter {
             objectMapper.writeValue(response.getWriter(), resolverResponse);
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         } catch (Exception e) {
-            LOGGER.error("error calling exception\n \nhandler method [{}] and setting result to response", method.getName(), e);
+            log.error("error calling exception\n \nhandler method [{}] and setting result to response", method.getName(), e);
         }
     }
 }

@@ -1,6 +1,7 @@
 package org.bardframework.commons.utils;
 
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -13,13 +14,8 @@ import java.util.function.Supplier;
 /**
  * Created by vahid (va.zafari@gmail.com) on 10/30/17.
  */
-public final class AssertionUtils {
-
-    private AssertionUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class AssertionUtils {
 
     public static void ge(long greater, long smaller, String message) {
         if (greater < smaller) {

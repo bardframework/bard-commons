@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class ConfigsConfiguration {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigsConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(ConfigsConfiguration.class);
     private static final String CLASS_PATH_KEY = "java.class.path";
     private static final String SEPARATOR_KEY = "path.separator";
     private static final Set<String> SENSITIVE_KEY_PARTS = new HashSet<>(List.of("password", "credential", "secret", "token"));
@@ -61,7 +61,7 @@ public class ConfigsConfiguration {
         if (StringUtils.isNotBlank(classpath) && StringUtils.isNotBlank(separator)) {
             ConfigsConfiguration.append(aggregatedConfig, CLASS_PATH_KEY, Arrays.stream(classpath.split(separator)).map(Object::toString).collect(Collectors.joining("\n\t")));
         } else {
-            LOGGER.info("classpath[{}] or separator[{}] is not valid", classpath, separator);
+            log.info("classpath[{}] or separator[{}] is not valid", classpath, separator);
             ConfigsConfiguration.append(aggregatedConfig, CLASS_PATH_KEY, classpath);
         }
         ConfigsConfiguration.append(aggregatedConfig, "DefaultCharset", String.valueOf(CharsetUtils.getDefaultCharset()));
@@ -80,7 +80,7 @@ public class ConfigsConfiguration {
             }
         });
 
-        LOGGER.info("\n\n====== configuration ======\n{}====== configuration ======\n", aggregatedConfig);
+        log.info("\n\n====== configuration ======\n{}====== configuration ======\n", aggregatedConfig);
     }
 
     private static void append(StringBuilder configs, String key, String value) {

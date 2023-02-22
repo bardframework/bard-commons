@@ -1,5 +1,6 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,17 +12,12 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
-public final class DateTimeUtils {
+@UtilityClass
+public class DateTimeUtils {
 
     public static final long YEAR_DURATION_MILLS = 365 * 24 * 3600 * 1000L;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DateTimeUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(DateTimeUtils.class);
     private static final ZoneId UTCZone = ZoneOffset.UTC;
-
-    private DateTimeUtils() {
-        /*
-            prevent instantiation
-         */
-    }
 
     /**
      * calculate milliseconds past from the epoch of 1970-01-01T00:00:00Z.

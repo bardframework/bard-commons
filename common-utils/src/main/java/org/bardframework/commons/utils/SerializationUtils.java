@@ -1,19 +1,11 @@
 package org.bardframework.commons.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.experimental.UtilityClass;
 
 import java.io.*;
 
-public final class SerializationUtils {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(SerializationUtils.class);
-
-    private SerializationUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class SerializationUtils {
 
     public static byte[] serialize(Serializable object)
             throws IOException {

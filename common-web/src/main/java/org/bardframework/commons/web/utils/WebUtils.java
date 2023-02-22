@@ -1,6 +1,7 @@
 package org.bardframework.commons.web.utils;
 
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.experimental.UtilityClass;
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.util.FileCopyUtils;
 
@@ -11,18 +12,13 @@ import java.nio.charset.StandardCharsets;
 /**
  * Created by Vahid Zafari on 6/10/2016.
  */
-public final class WebUtils {
+@UtilityClass
+public class WebUtils {
 
     private static final char RLO = '\u202E';
     private static final char EMPTY = '\u0000';
     private static final char UNDERLINE = '_';
     private static final char SPACE = ' ';
-
-    private WebUtils() {
-        /*
-            prevent instantiation
-        */
-    }
 
     public static void fillResponse(HttpServletResponse response, byte[] data, String contentType, String name)
             throws IOException {

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class WildcardReloadableMessageSource extends ReloadableResourceBundleMessageSource {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WildcardReloadableMessageSource.class);
+    private static final Logger log = LoggerFactory.getLogger(WildcardReloadableMessageSource.class);
 
     public void addWildcardBaseNames(String... baseNames) {
         List<Resource> resources = new ArrayList<>();
@@ -29,7 +29,7 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
                 basename = StringUtils.trimToEmpty(basename);
                 resources.addAll(List.of(ResourceUtils.getResources(basename)));
             }
-            LOGGER.info("[{}] resource found from [{}] wildcard base names:\n\t{}", resources.size(), baseNames, resources.stream().map(Object::toString).collect(Collectors.joining("\n\t")));
+            log.info("[{}] resource found from [{}] wildcard base names:\n\t{}", resources.size(), baseNames, resources.stream().map(Object::toString).collect(Collectors.joining("\n\t")));
             for (Resource resource : resources) {
                 String url = resource.getURL().toString();
                 String basename = null;
@@ -54,13 +54,13 @@ public class WildcardReloadableMessageSource extends ReloadableResourceBundleMes
                 if (StringUtils.isNotBlank(basename)) {
                     finalBaseNames.add(this.processBasename(basename));
                 } else {
-                    LOGGER.error("can't detect base name from i18n file [{}]", resource);
+                    log.error("can't detect base name from i18n file [{}]", resource);
                 }
             }
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
-        LOGGER.info("final base names from wildcard are:\n\t{}", String.join("\n\t", finalBaseNames));
+        log.info("final base names from wildcard are:\n\t{}", String.join("\n\t", finalBaseNames));
         super.addBasenames(finalBaseNames.toArray(String[]::new));
     }
 

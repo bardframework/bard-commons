@@ -13,7 +13,7 @@ import java.util.List;
 
 public class WafFilter implements Filter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WafFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(WafFilter.class);
 
     private final List<RequestLimitChecker> checkers;
 
@@ -31,7 +31,7 @@ public class WafFilter implements Filter {
             }
             chain.doFilter(request, response);
         } catch (CallLimitExceedException e) {
-            LOGGER.warn("call limit exceed for [{}]", e.getKey());
+            log.warn("call limit exceed for [{}]", e.getKey());
             ((HttpServletResponse) response).setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
         }
     }

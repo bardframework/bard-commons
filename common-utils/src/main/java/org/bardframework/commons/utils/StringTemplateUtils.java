@@ -5,13 +5,7 @@ import org.apache.commons.text.StringSubstitutor;
 
 import java.util.Map;
 
-public final class StringTemplateUtils {
-
-    private StringTemplateUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+public class StringTemplateUtils {
 
     public static String fillTemplate(String template, Map<String, String> args) {
         return StringTemplateUtils.fillTemplate(template, "::", "::", args);

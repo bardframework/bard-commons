@@ -1,5 +1,6 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
@@ -9,13 +10,8 @@ import java.util.Set;
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
-public final class NumberUtils {
-
-    private NumberUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class NumberUtils {
 
     /**
      * @return count of last digit from number

@@ -1,17 +1,14 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import java.text.NumberFormat;
 
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
-public final class MoneyUtils {
-
-    private MoneyUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class MoneyUtils {
 
     /**
      * @return get long number and return that in string format with money mask

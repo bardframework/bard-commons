@@ -1,18 +1,15 @@
 package org.bardframework.commons.utils;
 
+import lombok.experimental.UtilityClass;
+
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Formatter;
 import java.util.stream.IntStream;
 
-public final class EncodingUtils {
-
-    private EncodingUtils() {
-        /*
-            prevent instantiation
-         */
-    }
+@UtilityClass
+public class EncodingUtils {
 
     public static String hexEncode(byte[] data) {
         StringBuilder stringBuilder = new StringBuilder();

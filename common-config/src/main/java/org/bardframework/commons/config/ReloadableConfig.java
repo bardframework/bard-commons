@@ -1,10 +1,9 @@
 package org.bardframework.commons.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.StringTemplateUtils;
 import org.bardframework.commons.web.utils.ResourceUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -16,16 +15,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 public class ReloadableConfig {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReloadableConfig.class);
 
     private static Properties config = new Properties();
     private static Collection<Class<? extends ConfigKey>> configClasses;
     private final Collection<String> reloadableConfigPath;
 
     public ReloadableConfig(Collection<String> reloadableConfigPath, Collection<Class<? extends ConfigKey>> configClasses) throws IOException {
-        LOGGER.debug("reloadableConfigPath [{}], config entries: [{}]", Arrays.deepToString(reloadableConfigPath.toArray()), configClasses);
+        log.debug("reloadableConfigPath [{}], config entries: [{}]", Arrays.deepToString(reloadableConfigPath.toArray()), configClasses);
         this.reloadableConfigPath = reloadableConfigPath;
         ReloadableConfig.configClasses = configClasses;
         this.reload();
@@ -161,9 +159,9 @@ public class ReloadableConfig {
             resources.addAll(List.of(ResourceUtils.getResources(path)));
         }
         for (Resource resource : resources) {
-            LOGGER.debug("loading global config from url [{}]", resource.getURL());
+            log.debug("loading global config from url [{}]", resource.getURL());
             if (!resource.exists()) {
-                LOGGER.error("can't read config file in given url [{}], reload config ignored", resource.getURL());
+                log.error("can't read config file in given url [{}], reload config ignored", resource.getURL());
                 return;
             }
             try (InputStream inputStream = resource.getInputStream()) {
@@ -172,15 +170,15 @@ public class ReloadableConfig {
         }
         List<String> configErrors = this.check(newConfigs);
         if (!configErrors.isEmpty()) {
-            StringBuilder log = new StringBuilder();
-            log.append("\n**************************************************");
-            log.append("\nconfig reload failed due errors, correct them and wait until next reload.\n");
+            StringBuilder details = new StringBuilder();
+            details.append("\n**************************************************");
+            details.append("\nconfig reload failed due errors, correct them and wait until next reload.\n");
             for (String configError : configErrors) {
-                log.append("\n");
-                log.append(configError);
+                details.append("\n");
+                details.append(configError);
             }
-            log.append("\n**************************************************\n");
-            LOGGER.error("config error {}", log);
+            details.append("\n**************************************************\n");
+            log.error("config error {}", details);
 
             /*
                 first config load, app cant't start via config error.
@@ -195,7 +193,7 @@ public class ReloadableConfig {
             }
         }
         ReloadableConfig.config = newConfigs;
-        LOGGER.debug("load [{}] config entries successfully from [{}] files", newConfigs.keySet().size(), resources.size());
+        log.debug("load [{}] config entries successfully from [{}] files", newConfigs.keySet().size(), resources.size());
     }
 
     /**

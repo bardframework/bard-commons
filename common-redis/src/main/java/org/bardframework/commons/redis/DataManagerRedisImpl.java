@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class DataManagerRedisImpl implements DataManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataManagerRedisImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(DataManagerRedisImpl.class);
     private static final String ERROR_WRITE_VALUE = "error writing value";
 
     protected final RedisTemplate<String, Object> redisTemplate;
@@ -35,7 +35,7 @@ public class DataManagerRedisImpl implements DataManager {
             String valueString = objectMapper.writeValueAsString(value);
             this.redisTemplate.opsForValue().set(key, valueString, expiration, unit);
         } catch (Exception e) {
-            LOGGER.error("error putting [{}] to redis", value);
+            log.error("error putting [{}] to redis", value);
             throw new IllegalArgumentException("error writing value", e);
         }
     }
@@ -45,7 +45,7 @@ public class DataManagerRedisImpl implements DataManager {
         try {
             this.redisTemplate.opsForValue().set(key, value, expiration, unit);
         } catch (Exception e) {
-            LOGGER.error("error putting [{}] to redis", key);
+            log.error("error putting [{}] to redis", key);
             throw new IllegalArgumentException("error writing value", e);
         }
     }
@@ -64,7 +64,7 @@ public class DataManagerRedisImpl implements DataManager {
             }
             return objectMapper.readValue(valueString, clazz);
         } catch (Exception e) {
-            LOGGER.error("error getting value with key [{}] from redis server, and converting to [{}]", tokenId, clazz);
+            log.error("error getting value with key [{}] from redis server, and converting to [{}]", tokenId, clazz);
             throw new IllegalArgumentException("error getting value from server", e);
         }
     }
@@ -81,7 +81,7 @@ public class DataManagerRedisImpl implements DataManager {
             this.redisTemplate.persist(key);
             this.redisTemplate.expire(key, age, ageUnit);
         } catch (Exception e) {
-            LOGGER.error("error putting [{}] to redis", key);
+            log.error("error putting [{}] to redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
         }
     }
@@ -91,7 +91,7 @@ public class DataManagerRedisImpl implements DataManager {
         try {
             return (Set) this.redisTemplate.opsForSet().members(key);
         } catch (Exception e) {
-            LOGGER.error("error reading [{}] to redis", key);
+            log.error("error reading [{}] to redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
         }
     }
@@ -103,7 +103,7 @@ public class DataManagerRedisImpl implements DataManager {
             this.redisTemplate.persist(key);
             this.redisTemplate.expire(key, age, ageUnit);
         } catch (Exception e) {
-            LOGGER.error("error removing set value of [{}] from redis", key);
+            log.error("error removing set value of [{}] from redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
         }
     }
@@ -115,7 +115,7 @@ public class DataManagerRedisImpl implements DataManager {
             this.redisTemplate.persist(key);
             this.redisTemplate.expire(key, age, ageUnit);
         } catch (Exception e) {
-            LOGGER.error("error putting [{}] to redis", key);
+            log.error("error putting [{}] to redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
         }
     }
@@ -136,7 +136,7 @@ public class DataManagerRedisImpl implements DataManager {
             object.init(map);
             return object;
         } catch (Exception e) {
-            LOGGER.error("error getting value with key [{}] from redis server", key);
+            log.error("error getting value with key [{}] from redis server", key);
             throw new IllegalArgumentException("error getting value from server", e);
         }
     }
@@ -146,7 +146,7 @@ public class DataManagerRedisImpl implements DataManager {
         try {
             return this.redisTemplate.opsForHash().get(key, hashKey);
         } catch (Exception e) {
-            LOGGER.error("error getting value with key [{}] from redis server", key);
+            log.error("error getting value with key [{}] from redis server", key);
             throw new IllegalArgumentException("error getting value from server", e);
         }
     }
@@ -157,7 +157,7 @@ public class DataManagerRedisImpl implements DataManager {
             this.redisTemplate.opsForHash().delete(userId, topic);
             this.redisTemplate.expire(userId, age, ageUnit);
         } catch (Exception e) {
-            LOGGER.error("error removing map key of [{}] from redis", userId);
+            log.error("error removing map key of [{}] from redis", userId);
             throw new IllegalArgumentException("error writing value", e);
         }
     }

@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbstract<U>, U> implements SecurityContextManager<A, U> {
 
-    protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    protected final Logger log = LoggerFactory.getLogger(getClass());
     protected final TokenManager<A> tokenManager;
     protected String tokenName = "token";
 
@@ -31,7 +31,7 @@ public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbs
         }
         A token = this.tokenManager.get(tokenId);
         if (null == token) {
-            this.LOGGER.info("detect invalid token, destroying it. '{}'", tokenId);
+            this.log.info("detect invalid token, destroying it. '{}'", tokenId);
             this.deleteTicket(request, response);
             SecurityContextHolder.clearContext();
         } else {
