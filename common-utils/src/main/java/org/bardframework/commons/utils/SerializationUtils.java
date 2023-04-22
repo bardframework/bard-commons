@@ -39,7 +39,7 @@ public class SerializationUtils {
         return serialize(obj);
     }
 
-    public static <T> T deserializeAndCheckObject(byte[] object, Class<? extends Serializable> type)
+    public static <T> T deserializeAndCheckObject(byte[] object, Class<?> type)
             throws IOException, ClassNotFoundException {
         Object result = deserialize(object);
         if (!type.isAssignableFrom(result.getClass())) {

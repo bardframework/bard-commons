@@ -25,6 +25,13 @@ public class ConfigsConfiguration {
     private static final Set<String> SENSITIVE_KEY_PARTS = new HashSet<>(List.of("password", "credential", "secret", "token"));
     private static final Set<String> NOT_LOG_KEYS = new HashSet<>(Collections.singletonList(CLASS_PATH_KEY));
 
+    private static void append(StringBuilder configs, String key, String value) {
+        configs.append(key);
+        configs.append(":\n\t");
+        configs.append(value);
+        configs.append("\n");
+    }
+
     @Bean
     PropertySourcesPlaceholderConfigurer placeHolderConfigurer(Environment environment) throws IOException {
         PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
@@ -81,13 +88,6 @@ public class ConfigsConfiguration {
         });
 
         log.info("\n\n====== configuration ======\n{}====== configuration ======\n", aggregatedConfig);
-    }
-
-    private static void append(StringBuilder configs, String key, String value) {
-        configs.append(key);
-        configs.append(":\n\t");
-        configs.append(value);
-        configs.append("\n");
     }
 
     protected Set<String> getSensitiveKeyParts() {
