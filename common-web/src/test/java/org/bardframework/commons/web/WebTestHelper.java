@@ -1,6 +1,6 @@
 package org.bardframework.commons.web;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -10,8 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-
-import java.lang.reflect.Type;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,23 +30,17 @@ public interface WebTestHelper {
 
     default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, Class<T> returnType)
             throws Exception {
-        return this.execute(request, expectedStatus, new TypeReference<T>() {
-            @Override
-            public Type getType() {
-                return returnType;
-            }
-        });
+        return this.execute(request, expectedStatus, this.getObjectMapper().getTypeFactory().constructType(returnType));
     }
 
-    default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, TypeReference<T> returnType)
+    default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, JavaType returnType)
             throws Exception {
         request.accept(MediaType.APPLICATION_JSON);
         MvcResult result = this.execute(request, expectedStatus);
-        if (StringUtils.isNotBlank(result.getResponse().getContentAsString())) {
-            return this.getObjectMapper().readValue(result.getResponse().getContentAsString(), returnType);
-        } else {
+        if (StringUtils.isBlank(result.getResponse().getContentAsString())) {
             return null;
         }
+        return this.getObjectMapper().readValue(result.getResponse().getContentAsString(), returnType);
     }
 
     default MvcResult execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus)
