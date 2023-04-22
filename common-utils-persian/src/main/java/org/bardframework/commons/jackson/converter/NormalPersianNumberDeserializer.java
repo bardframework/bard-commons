@@ -4,13 +4,11 @@ package org.bardframework.commons.jackson.converter;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import lombok.extern.slf4j.Slf4j;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class NormalPersianNumberDeserializer extends JsonDeserializer<String> {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) {
@@ -19,8 +17,8 @@ public class NormalPersianNumberDeserializer extends JsonDeserializer<String> {
                 return LetterConverterUtility.convertFarsiNumbersToEnglish(jsonParser.getValueAsString());
             }
         } catch (Exception e) {
-            logger.error("error when normal '{}' to english number", jsonParser.getCurrentValue());
-            logger.debug("exception details:", e);
+            log.error("error when normal '{}' to english number", jsonParser.getCurrentValue());
+            log.debug("exception details:", e);
         }
         return "";
 

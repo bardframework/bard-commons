@@ -1,5 +1,6 @@
 package org.bardframework.commons.sms;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.web.http.HttpCallResult;
 import org.bardframework.commons.web.http.HttpCaller;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Slf4j
 public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     protected final Pattern successPattern;
 

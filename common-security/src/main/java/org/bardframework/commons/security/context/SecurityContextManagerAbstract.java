@@ -2,16 +2,15 @@ package org.bardframework.commons.security.context;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.security.token.AuthenticationAbstract;
 import org.bardframework.commons.security.token.manager.TokenManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+@Slf4j
 public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbstract<U>, U> implements SecurityContextManager<A, U> {
 
-    protected final Logger log = LoggerFactory.getLogger(getClass());
     protected final TokenManager<A> tokenManager;
     protected String tokenName = "token";
 
@@ -31,7 +30,7 @@ public abstract class SecurityContextManagerAbstract<A extends AuthenticationAbs
         }
         A token = this.tokenManager.get(tokenId);
         if (null == token) {
-            this.log.info("detect invalid token, destroying it. '{}'", tokenId);
+            log.info("detect invalid token, destroying it. '{}'", tokenId);
             this.deleteTicket(request, response);
             SecurityContextHolder.clearContext();
         } else {

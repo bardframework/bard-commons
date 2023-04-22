@@ -1,12 +1,11 @@
 package org.bardframework.commons.sms;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 
+@Slf4j
 public class SmsSenderNoOp implements SmsSender {
-    protected static final Logger log = LoggerFactory.getLogger(SmsSenderNoOp.class);
 
     @Override
     public boolean send(Map<String, String> args) {

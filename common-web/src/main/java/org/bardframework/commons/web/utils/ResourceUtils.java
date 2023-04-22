@@ -1,8 +1,7 @@
 package org.bardframework.commons.web.utils;
 
 import lombok.experimental.UtilityClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -116,8 +115,9 @@ import java.io.IOException;
  * @author Vahid Zafari
  */
 @UtilityClass
+@Slf4j
 public class ResourceUtils {
-    private static final Logger log = LoggerFactory.getLogger(ResourceUtils.class);
+
     private static final PathMatchingResourcePatternResolver RESOLVER = new PathMatchingResourcePatternResolver();
 
     /**

@@ -1,15 +1,14 @@
 package org.bardframework.commons.web.http;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 public class HttpCaller {
-    protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
     protected final String httpMethod;
     protected final String urlTemplate;

@@ -1,8 +1,7 @@
 package org.bardframework.commons.utils;
 
 import lombok.experimental.UtilityClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.management.Attribute;
 import javax.management.AttributeList;
@@ -18,9 +17,9 @@ import java.util.List;
  * Created by Vahid Zafari on 8/12/2016.
  */
 @UtilityClass
+@Slf4j
 public class OsUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(OsUtils.class);
     private static final MBeanServer M_BEAN_SERVER = ManagementFactory.getPlatformMBeanServer();
 
     public static int getCpuUsagePercent() {

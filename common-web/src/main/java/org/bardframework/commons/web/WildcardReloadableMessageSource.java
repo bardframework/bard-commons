@@ -1,9 +1,8 @@
 package org.bardframework.commons.web;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.web.utils.ResourceUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
@@ -14,9 +13,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class WildcardReloadableMessageSource extends ReloadableResourceBundleMessageSource {
-
-    private static final Logger log = LoggerFactory.getLogger(WildcardReloadableMessageSource.class);
 
     public void addWildcardBaseNames(String... baseNames) {
         List<Resource> resources = new ArrayList<>();

@@ -1,16 +1,16 @@
 package org.bardframework.commons.redis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class DataManagerRedisImpl implements DataManager {
-    private static final Logger log = LoggerFactory.getLogger(DataManagerRedisImpl.class);
+
     private static final String ERROR_WRITE_VALUE = "error writing value";
 
     protected final RedisTemplate<String, Object> redisTemplate;

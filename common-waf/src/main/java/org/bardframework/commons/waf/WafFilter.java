@@ -3,17 +3,15 @@ package org.bardframework.commons.waf;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.bardframework.commons.waf.exception.CallLimitExceedException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 public class WafFilter implements Filter {
-
-    private static final Logger log = LoggerFactory.getLogger(WafFilter.class);
 
     private final List<RequestLimitChecker> checkers;
 

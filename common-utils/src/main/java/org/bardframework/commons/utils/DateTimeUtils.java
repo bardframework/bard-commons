@@ -1,23 +1,71 @@
 package org.bardframework.commons.utils;
 
 import lombok.experimental.UtilityClass;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Vahid Zafari on 8/12/2016.
  */
 @UtilityClass
+@Slf4j
 public class DateTimeUtils {
 
-    public static final long YEAR_DURATION_MILLS = 365 * 24 * 3600 * 1000L;
-    private static final Logger log = LoggerFactory.getLogger(DateTimeUtils.class);
-    private static final ZoneId UTCZone = ZoneOffset.UTC;
+    public final static long ONE_SECOND_MILLS = 1000;
+    public final static long ONE_MINUTE_MILLS = 60 * ONE_SECOND_MILLS;
+    public final static long ONE_HOUR_MILLS = 60 * ONE_MINUTE_MILLS;
+    public final static long ONE_DAY_MILLS = 24 * ONE_HOUR_MILLS;
+    public final static long ONE_WEEK_MILLS = 7 * ONE_DAY_MILLS;
+    public final static long ONE_MONTH_MILLS = 30 * ONE_DAY_MILLS;
+    public final static long ONE_YEAR_MILLS = 12 * ONE_MONTH_MILLS;
+
+    public static long getNowUtc() {
+        return Instant.now().toEpochMilli();
+    }
+
+    public static long getTodayUtc() {
+        return Instant.now().truncatedTo(ChronoUnit.DAYS).toEpochMilli();
+    }
+
+    public static long toEpochMills(LocalDateTime dateTime) {
+        return DateTimeUtils.toEpochMills(dateTime, ZoneOffset.UTC);
+    }
+
+    public static long toEpochMills(LocalDateTime dateTime, ZoneOffset offset) {
+        return dateTime.toInstant(offset).toEpochMilli();
+    }
+
+    public static LocalDateTime fromEpochMills(long dateAsMills) {
+        return DateTimeUtils.fromEpochMills(dateAsMills, ZoneOffset.UTC);
+    }
+
+    /**
+     * Obtains an instance of {@code LocalDateTime} using milliseconds from the epoch of 1970-01-01T00:00:00Z.
+     *
+     * @param dateTimeAsMills the number of milliseconds after 1970-01-01T00:00:00Z
+     * @param zone            the zone
+     * @return a LocalDateTime, not null
+     */
+    public static LocalDateTime fromEpochMills(long dateTimeAsMills, ZoneId zone) {
+        if (null == zone) {
+            throw new IllegalArgumentException("null zone not acceptable.");
+        }
+        return Instant.ofEpochMilli(dateTimeAsMills).atZone(zone).toLocalDateTime();
+    }
+
+    public static long diffDays(long startDateEpochMills, long endDateEpochMills) {
+        return ChronoUnit.DAYS.between(DateTimeUtils.fromEpochMills(startDateEpochMills), DateTimeUtils.fromEpochMills(endDateEpochMills));
+    }
+
+    public static long leftDays(long startDateEpochMills) {
+        return ChronoUnit.DAYS.between(DateTimeUtils.fromEpochMills(startDateEpochMills), LocalDateTime.now());
+    }
+
+    public static long remainDays(long endDateEpochMills) {
+        return ChronoUnit.DAYS.between(LocalDateTime.now(), DateTimeUtils.fromEpochMills(endDateEpochMills));
+    }
 
     /**
      * calculate milliseconds past from the epoch of 1970-01-01T00:00:00Z.
@@ -31,144 +79,5 @@ public class DateTimeUtils {
             throw new IllegalArgumentException("null date not acceptable.");
         }
         return date.toEpochDay() * 24 * 60 * 60 * 1000L;
-    }
-
-
-    public static LocalDate fromEpochMills(long dateAsMills) {
-        return fromEpochMills(dateAsMills, UTCZone).toLocalDate();
-    }
-
-    /**
-     * Obtains an instance of {@code LocalDateTime} using milliseconds from the
-     * epoch of 1970-01-01T00:00:00Z.
-     * The seconds and nanoseconds are extracted from the specified milliseconds.
-     *
-     * @param dateTimeAsMills the number of milliseconds after 1970-01-01T00:00:00Z
-     * @return a LocalDateTime, not null
-     * @throws DateTimeException if the instant exceeds the maximum or minimum instant
-     */
-    public static LocalDateTime dateTimeFromEpochMills(long dateTimeAsMills) {
-        return fromEpochMills(dateTimeAsMills, UTCZone);
-    }
-
-    /**
-     * Obtains an instance of {@code LocalDateTime} using milliseconds from the
-     * epoch of 1970-01-01T00:00:00Z.
-     * The seconds and nanoseconds are extracted from the specified milliseconds.
-     *
-     * @param dateTimeAsMills the number of milliseconds from 1970-01-01T00:00:00Z.
-     * @param zone            an isntance of (@code ZoneId) specify zone id for calculating LocalDateTime
-     * @return a LocalDateTime, not null
-     * @throws DateTimeException        if the instant exceeds the maximum or minimum instant
-     * @throws IllegalArgumentException if null zone passed to method.
-     */
-    public static LocalDateTime fromEpochMills(long dateTimeAsMills, ZoneId zone) {
-        if (null == zone) {
-            throw new IllegalArgumentException("null zone not acceptable.");
-        }
-        return Instant.ofEpochMilli(dateTimeAsMills).atZone(zone).toLocalDateTime();
-    }
-
-    /**
-     * calculatee milliseconds past from the epoch of 1970-01-01T00:00:00Z.
-     *
-     * @param dateTime an instance of (@code LocalDateTime)
-     * @return past milliseconds from 1970-01-01T00:00:00Z.
-     * @throws IllegalArgumentException if null dateTime passed to method.
-     */
-    public static long toEpochMills(LocalDateTime dateTime) {
-        if (null == dateTime) {
-            throw new IllegalArgumentException("null dateTime not acceptable.");
-        }
-        return toEpochMills(dateTime.toLocalDate())
-                + (dateTime.getHour() * 60 * 60 * 1000L)
-                + (dateTime.getMinute() * 60 * 1000L)
-                + (dateTime.getSecond() * 1000L)
-                + dateTime.getNano() / 1000000;
-    }
-
-    public static long toEpochMills(OffsetDateTime dateTime) {
-        if (null == dateTime) {
-            throw new IllegalArgumentException("null dateTime not acceptable.");
-        }
-        return toEpochMills(dateTime.toLocalDate())
-                + (dateTime.getHour() * 60 * 60 * 1000L)
-                + (dateTime.getMinute() * 60 * 1000L)
-                + (dateTime.getSecond() * 1000L)
-                + dateTime.getNano() / 1000000;
-    }
-
-    /**
-     * convert date to string divided by '/'
-     *
-     * @param dateTime the dateTime
-     * @return null if date is null, else date with 'yyyy/MM/dd HH:mm' format
-     */
-    public static String toLocalString(LocalDateTime dateTime) {
-        return null == dateTime ? "" : dateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"));
-    }
-
-    /**
-     * convert date to string divided by '/'
-     *
-     * @param date the dateTime
-     * @return null if date is null, else date with 'yyyy/MM/dd' format
-     */
-    public static String toLocalString(LocalDate date) {
-        return null == date ? "" : date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-    }
-
-    public static TimeUnit toTimeUnit(ChronoUnit unit) {
-        if (unit == null) {
-            return null;
-        }
-        switch (unit) {
-            case DAYS:
-                return TimeUnit.DAYS;
-            case HOURS:
-                return TimeUnit.HOURS;
-            case MINUTES:
-                return TimeUnit.MINUTES;
-            case SECONDS:
-                return TimeUnit.SECONDS;
-            case MICROS:
-                return TimeUnit.MICROSECONDS;
-            case MILLIS:
-                return TimeUnit.MILLISECONDS;
-            case NANOS:
-                return TimeUnit.NANOSECONDS;
-            default:
-                //TODO support the rest
-                throw new UnsupportedOperationException("Man, use a real temporal unit");
-        }
-    }
-
-    public static ChronoUnit toChronoUnit(TimeUnit unit) {
-        if (unit == null) {
-            return null;
-        }
-        switch (unit) {
-            case DAYS:
-                return ChronoUnit.DAYS;
-            case HOURS:
-                return ChronoUnit.HOURS;
-            case MINUTES:
-                return ChronoUnit.MINUTES;
-            case SECONDS:
-                return ChronoUnit.SECONDS;
-            case MICROSECONDS:
-                return ChronoUnit.MICROS;
-            case MILLISECONDS:
-                return ChronoUnit.MILLIS;
-            case NANOSECONDS:
-                return ChronoUnit.NANOS;
-            default:
-                assert false : "there are no other TimeUnit ordinal values";
-                return null;
-        }
-    }
-
-    public static long getNowUtcMills() {
-        return DateTimeUtils.toEpochMills(LocalDateTime.now(ZoneOffset.UTC));
     }
 }

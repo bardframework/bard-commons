@@ -3,9 +3,8 @@ package org.bardframework.commons.web.cors;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
@@ -16,9 +15,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class CorsFilter implements Filter {
-
-    private static final Logger log = LoggerFactory.getLogger(CorsFilter.class);
 
     private final RequestMatcher corsRequestMatchers;
     private final AntPathMatcher antPathMatcher;

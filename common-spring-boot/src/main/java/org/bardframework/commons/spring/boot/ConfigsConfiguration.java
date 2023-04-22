@@ -1,9 +1,8 @@
 package org.bardframework.commons.spring.boot;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.CharsetUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.AbstractEnvironment;
@@ -18,8 +17,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Slf4j
 public class ConfigsConfiguration {
-    private static final Logger log = LoggerFactory.getLogger(ConfigsConfiguration.class);
+
     private static final String CLASS_PATH_KEY = "java.class.path";
     private static final String SEPARATOR_KEY = "path.separator";
     private static final Set<String> SENSITIVE_KEY_PARTS = new HashSet<>(List.of("password", "credential", "secret", "token"));

@@ -4,15 +4,13 @@ package org.bardframework.commons.jackson.converter;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import lombok.extern.slf4j.Slf4j;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+@Slf4j
 public class ArabicToPersianCharacterSerializer extends JsonSerializer<String> {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void serialize(String string, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
@@ -23,7 +21,7 @@ public class ArabicToPersianCharacterSerializer extends JsonSerializer<String> {
                 return;
             }
         } catch (Exception e) {
-            logger.error("error when normal '{}' to persian character", string, e);
+            log.error("error when normal '{}' to persian character", string, e);
         }
         jsonGenerator.writeNull();
     }

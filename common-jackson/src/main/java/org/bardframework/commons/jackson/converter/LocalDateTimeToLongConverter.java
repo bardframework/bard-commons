@@ -4,8 +4,7 @@ package org.bardframework.commons.jackson.converter;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
 
 import java.io.IOException;
@@ -15,9 +14,8 @@ import java.time.ZoneOffset;
 /**
  * Created by Vahid Zafari(v.zafari@chmail.ir) on 7/12/2016.
  */
+@Slf4j
 public class LocalDateTimeToLongConverter extends JsonSerializer<LocalDateTime> implements Converter<LocalDateTime, Long> {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void serialize(LocalDateTime dateTime, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
@@ -25,7 +23,7 @@ public class LocalDateTimeToLongConverter extends JsonSerializer<LocalDateTime> 
         try {
             jsonGenerator.writeNumber(this.convert(dateTime));
         } catch (Exception e) {
-            logger.error("error when toModel local date time '{}' to mills", dateTime, e);
+            log.error("error when toModel local date time '{}' to mills", dateTime, e);
             jsonGenerator.writeNull();
         }
     }

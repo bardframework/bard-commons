@@ -3,18 +3,16 @@ package org.bardframework.commons.web.cookie;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.util.WebUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 public class CookieHandler {
-
-    protected static final Logger log = LoggerFactory.getLogger(CookieHandler.class);
 
     private final String name;
     private final String path;

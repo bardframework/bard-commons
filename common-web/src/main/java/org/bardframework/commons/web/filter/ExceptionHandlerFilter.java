@@ -3,9 +3,8 @@ package org.bardframework.commons.web.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.bardframework.commons.web.ExceptionControllerAdvice;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.method.annotation.ExceptionHandlerMethodResolver;
@@ -13,9 +12,8 @@ import org.springframework.web.method.annotation.ExceptionHandlerMethodResolver;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+@Slf4j
 public class ExceptionHandlerFilter implements Filter {
-
-    private static final Logger log = LoggerFactory.getLogger(ExceptionHandlerFilter.class);
 
     private final ObjectMapper objectMapper;
     private final ExceptionControllerAdvice exceptionControllerAdvice;

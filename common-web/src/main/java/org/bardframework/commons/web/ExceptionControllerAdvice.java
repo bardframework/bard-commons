@@ -1,7 +1,6 @@
 package org.bardframework.commons.web;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -18,9 +17,8 @@ import java.util.stream.Collectors;
 /**
  * Created by Vahid Zafari on 1/14/17.
  */
+@Slf4j
 public abstract class ExceptionControllerAdvice {
-
-    protected static final Logger log = LoggerFactory.getLogger(ExceptionControllerAdvice.class);
 
     @Autowired
     protected MessageSource messageSource;

@@ -3,7 +3,6 @@ package org.bardframework.commons.web;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,14 +17,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public interface WebTestHelper {
 
-    Logger log = LoggerFactory.getLogger(WebTestHelper.class);
-
     MockMvc getMockMvc();
 
     ObjectMapper getObjectMapper();
 
     default void preExecute(MockHttpServletRequestBuilder request) {
-
     }
 
     default <T> T execute(MockHttpServletRequestBuilder request, HttpStatus expectedStatus, Class<T> returnType)
@@ -54,7 +50,7 @@ public interface WebTestHelper {
             throws Exception {
         this.preExecute(request);
         MvcResult result = this.getMockMvc().perform(request).andReturn();
-        log.info("call details:\nurl: {} {}\nstatus: {}\nrequest:\n{}\nresponse:\n{}\n", result.getRequest().getMethod(), result.getRequest().getRequestURI(), result.getResponse().getStatus(), result.getRequest().getContentAsString(), result.getResponse().getContentAsString());
+        LoggerFactory.getLogger(this.getClass()).info("call details:\nurl: {} {}\nstatus: {}\nrequest:\n{}\nresponse:\n{}\n", result.getRequest().getMethod(), result.getRequest().getRequestURI(), result.getResponse().getStatus(), result.getRequest().getContentAsString(), result.getResponse().getContentAsString());
         return result;
     }
 }

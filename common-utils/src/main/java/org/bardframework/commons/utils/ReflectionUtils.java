@@ -1,11 +1,10 @@
 package org.bardframework.commons.utils;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -17,6 +16,7 @@ import java.util.stream.Stream;
  * Created by Vahid Zafari on 8/12/2016.
  */
 @UtilityClass
+@Slf4j
 public class ReflectionUtils {
     /**
      * Pre-built MethodFilter that matches all non-bridge non-synthetic methods
@@ -27,7 +27,7 @@ public class ReflectionUtils {
      * Pre-built FieldFilter that matches all non-static, non-final fields.
      */
     public static final FieldFilter COPYABLE_FIELDS = (field -> !(Modifier.isStatic(field.getModifiers()) || Modifier.isFinal(field.getModifiers())));
-    private static final Logger log = LoggerFactory.getLogger(ReflectionUtils.class);
+
     private static final String UNACCEPTABLE_NULL_CLAZZ = "null clazz not acceptable";
     private static final String UNACCEPTABLE_FIELD_PATH = "null or empty field path not acceptable";
     /**
