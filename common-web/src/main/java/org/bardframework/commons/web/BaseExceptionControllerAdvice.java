@@ -1,7 +1,7 @@
 package org.bardframework.commons.web;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,21 +17,19 @@ import java.util.stream.Collectors;
 /**
  * Created by Vahid Zafari on 1/14/17.
  */
-@Slf4j
-public abstract class ExceptionControllerAdvice {
+public interface BaseExceptionControllerAdvice {
 
-    @Autowired
-    protected MessageSource messageSource;
+    Logger log = LoggerFactory.getLogger(BaseExceptionControllerAdvice.class);
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public void handle(Exception ex) {
+    default void handle(Exception ex) {
         log.error("unhandled exception occur", ex);
     }
 
     @ExceptionHandler(UnsupportedOperationException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public void handle(UnsupportedOperationException ex) {
+    default void handle(UnsupportedOperationException ex) {
         log.error("not allowed service called", ex);
     }
 
@@ -41,8 +39,10 @@ public abstract class ExceptionControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ResponseBody
-    public List<String> handle(MethodArgumentNotValidException ex, Locale locale) {
+    default List<String> handle(MethodArgumentNotValidException ex, Locale locale) {
         log.debug("method argument not valid, [{}]", ex.getMessage());
-        return ex.getBindingResult().getAllErrors().stream().map(error -> messageSource.getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), locale)).collect(Collectors.toList());
+        return ex.getBindingResult().getAllErrors().stream().map(error -> this.getMessageSource().getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), locale)).collect(Collectors.toList());
     }
+
+    MessageSource getMessageSource();
 }

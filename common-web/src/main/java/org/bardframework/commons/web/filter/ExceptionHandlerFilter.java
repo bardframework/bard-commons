@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.bardframework.commons.web.ExceptionControllerAdvice;
+import org.bardframework.commons.web.BaseExceptionControllerAdvice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.method.annotation.ExceptionHandlerMethodResolver;
@@ -16,10 +16,10 @@ import java.lang.reflect.Method;
 public class ExceptionHandlerFilter implements Filter {
 
     private final ObjectMapper objectMapper;
-    private final ExceptionControllerAdvice exceptionControllerAdvice;
+    private final Object exceptionControllerAdvice;
     private final ExceptionHandlerMethodResolver exceptionHandlerMethodResolver;
 
-    public ExceptionHandlerFilter(ExceptionControllerAdvice exceptionControllerAdvice, ObjectMapper objectMapper) {
+    public <T extends BaseExceptionControllerAdvice> ExceptionHandlerFilter(T exceptionControllerAdvice, ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
         this.exceptionControllerAdvice = exceptionControllerAdvice;
         this.exceptionHandlerMethodResolver = new ExceptionHandlerMethodResolver(exceptionControllerAdvice.getClass());
