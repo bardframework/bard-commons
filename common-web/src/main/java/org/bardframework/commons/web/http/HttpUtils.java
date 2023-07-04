@@ -58,9 +58,17 @@ public final class HttpUtils {
                 Otherwise getErrorStream always returns null
              */
             int responseCode = connection.getResponseCode();
-            InputStream stream = null != connection.getErrorStream() ? connection.getErrorStream() : connection.getInputStream();
-            byte[] response = IOUtils.toByteArray(stream);
-            log.debug("http call[{}] response, code: [{}], details: [{}]", urlTemplate, responseCode, IOUtils.toString(response, StandardCharsets.UTF_8.displayName()));
+            InputStream stream = connection.getErrorStream();
+            if (null == stream) {
+                try {
+                    stream = connection.getInputStream();
+                } catch (Exception e) {
+                    log.trace("error reading input stream of http call response when error stream is null", e);
+                }
+            }
+            byte[] response = null == stream ? null : IOUtils.toByteArray(stream);
+            String responseString = null == response ? null : IOUtils.toString(response, StandardCharsets.UTF_8.displayName());
+            log.debug("http call[{}] response, code: [{}], details: [{}]", urlTemplate, responseCode, responseString);
             return new HttpCallResult(responseCode, response, null != connection.getErrorStream());
         } finally {
             if (null != connection) {
