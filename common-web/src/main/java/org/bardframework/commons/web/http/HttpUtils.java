@@ -66,9 +66,8 @@ public final class HttpUtils {
                     log.trace("error reading input stream of http call response when error stream is null", e);
                 }
             }
-            byte[] response = null == stream ? null : IOUtils.toByteArray(stream);
-            String responseString = null == response ? null : IOUtils.toString(response, StandardCharsets.UTF_8.displayName());
-            log.debug("http call[{}] response, code: [{}], details: [{}]", urlTemplate, responseCode, responseString);
+            byte[] response = null == stream ? new byte[0] : IOUtils.toByteArray(stream);
+            log.trace("http call[{}] response, code: [{}], details: [{}]", urlTemplate, responseCode, IOUtils.toString(response, StandardCharsets.UTF_8.displayName()));
             return new HttpCallResult(responseCode, response, null != connection.getErrorStream());
         } finally {
             if (null != connection) {
