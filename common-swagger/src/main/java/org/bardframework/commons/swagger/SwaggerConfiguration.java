@@ -24,9 +24,8 @@ public class SwaggerConfiguration {
 
     @Bean
     SecurityFilterChain swaggerSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.securityMatcher("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**")
-                .authorizeHttpRequests().anyRequest().permitAll()
-                .and()
-                .build();
+        httpSecurity.securityMatcher("/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**");
+        httpSecurity.authorizeHttpRequests(registry -> registry.anyRequest().permitAll());
+        return httpSecurity.build();
     }
 }
