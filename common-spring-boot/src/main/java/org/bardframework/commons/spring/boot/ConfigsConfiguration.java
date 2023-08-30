@@ -1,5 +1,6 @@
 package org.bardframework.commons.spring.boot;
 
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.CharsetUtils;
@@ -33,7 +34,7 @@ public class ConfigsConfiguration {
     }
 
     @Bean
-    PropertySourcesPlaceholderConfigurer placeHolderConfigurer(Environment environment) throws IOException {
+    BardPropertySourcesPlaceholderConfigurer placeHolderConfigurer(Environment environment) throws IOException {
         PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
         List<Resource> resources = new ArrayList<>();
         resources.addAll(List.of(patternResolver.getResources("classpath*:**/**/application.properties")));
@@ -43,11 +44,11 @@ public class ConfigsConfiguration {
         }
         BardPropertySourcesPlaceholderConfigurer propertyConfigurer = new BardPropertySourcesPlaceholderConfigurer();
         propertyConfigurer.setLocations(resources.toArray(new Resource[0]));
-        this.logConfigs(environment, propertyConfigurer, resources);
         return propertyConfigurer;
     }
 
-    private void logConfigs(Environment environment, BardPropertySourcesPlaceholderConfigurer configurer, List<Resource> resources) throws IOException {
+    @Bean("appConfigs")
+    Map<String, String> appConfigs(Environment environment, BardPropertySourcesPlaceholderConfigurer configurer) throws IOException {
         final MutablePropertySources sources = ((AbstractEnvironment) environment).getPropertySources();
         Map<String, String> configs = new HashMap<>();
         StreamSupport.stream(sources.spliterator(), false)
@@ -59,7 +60,11 @@ public class ConfigsConfiguration {
         for (Map.Entry<Object, Object> entry : configurer.mergeProperties().entrySet()) {
             configs.put(entry.getKey().toString(), entry.getValue().toString());
         }
+        return configs;
+    }
 
+    @PostConstruct
+    void logConfigs(Environment environment, List<Resource> resources, Map<String, String> appConfigs) {
         StringBuilder aggregatedConfig = new StringBuilder();
         ConfigsConfiguration.append(aggregatedConfig, "Active profiles", Arrays.toString(environment.getActiveProfiles()));
         String classpath = environment.getProperty(CLASS_PATH_KEY);
@@ -75,7 +80,7 @@ public class ConfigsConfiguration {
         ConfigsConfiguration.append(aggregatedConfig, "DefaultLocale", String.valueOf(CharsetUtils.getDefaultLocale()));
         ConfigsConfiguration.append(aggregatedConfig, "DefaultEncoding", String.valueOf(CharsetUtils.getDefaultEncoding()));
 
-        configs.keySet().stream().sorted().forEach(property -> {
+        appConfigs.keySet().stream().sorted().forEach(property -> {
             if (this.getNotLogKeys().contains(property.toLowerCase())) {
                 /*
                     do nothing
@@ -83,7 +88,7 @@ public class ConfigsConfiguration {
             } else if (this.getSensitiveKeyParts().stream().anyMatch(sensitiveKey -> property.toLowerCase().contains(sensitiveKey))) {
                 ConfigsConfiguration.append(aggregatedConfig, property, "*****");
             } else {
-                ConfigsConfiguration.append(aggregatedConfig, property, configs.get(property));
+                ConfigsConfiguration.append(aggregatedConfig, property, appConfigs.get(property));
             }
         });
 
@@ -98,7 +103,7 @@ public class ConfigsConfiguration {
         return NOT_LOG_KEYS;
     }
 
-    private static class BardPropertySourcesPlaceholderConfigurer extends PropertySourcesPlaceholderConfigurer {
+    public static class BardPropertySourcesPlaceholderConfigurer extends PropertySourcesPlaceholderConfigurer {
         @Override
         public Properties mergeProperties() throws IOException {
             return super.mergeProperties();
