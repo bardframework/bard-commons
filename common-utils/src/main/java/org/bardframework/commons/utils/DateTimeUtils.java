@@ -13,13 +13,13 @@ import java.time.temporal.ChronoUnit;
 @Slf4j
 public class DateTimeUtils {
 
-    public final static long ONE_SECOND_MILLS = 1000;
-    public final static long ONE_MINUTE_MILLS = 60 * ONE_SECOND_MILLS;
-    public final static long ONE_HOUR_MILLS = 60 * ONE_MINUTE_MILLS;
-    public final static long ONE_DAY_MILLS = 24 * ONE_HOUR_MILLS;
-    public final static long ONE_WEEK_MILLS = 7 * ONE_DAY_MILLS;
-    public final static long ONE_MONTH_MILLS = 30 * ONE_DAY_MILLS;
-    public final static long ONE_YEAR_MILLS = 12 * ONE_MONTH_MILLS;
+    public static final long ONE_SECOND_MILLS = 1000;
+    public static final long ONE_MINUTE_MILLS = 60 * ONE_SECOND_MILLS;
+    public static final long ONE_HOUR_MILLS = 60 * ONE_MINUTE_MILLS;
+    public static final long ONE_DAY_MILLS = 24 * ONE_HOUR_MILLS;
+    public static final long ONE_WEEK_MILLS = 7 * ONE_DAY_MILLS;
+    public static final long ONE_MONTH_MILLS = 30 * ONE_DAY_MILLS;
+    public static final long ONE_YEAR_MILLS = 12 * ONE_MONTH_MILLS;
 
     public static long getNowUtc() {
         return Instant.now().toEpochMilli();
