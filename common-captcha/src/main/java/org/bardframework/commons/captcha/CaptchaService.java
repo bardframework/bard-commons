@@ -58,7 +58,7 @@ public class CaptchaService {
      */
     private byte[] generateImage(CaptchaType type, String text, Font font) {
         int height = 40;
-        int width = height * text.length();
+        int width = Math.min(text.length() * height, 400);
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
         graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
@@ -69,19 +69,21 @@ public class CaptchaService {
 
         graphics.setFont(font);
         graphics.setColor(this.getRandomColor());
-        int start = 10;
+        int start = 30;
         if (type != CaptchaType.PERSIAN_NUMBER_TEXT) {
             for (int i = 0; i < text.length(); i++) {
                 graphics.drawString(text.substring(i, i + 1), start + (i * 20), random.nextInt(15) + 25);
             }
         } else {
             String[] parts = text.split(StringUtils.SPACE);
-            for (int i = 0; i < parts.length; i++) {
-                graphics.drawString(parts[i], start + (i * 20), random.nextInt(15) + 25);
+            int j = 0;
+            for (int i = parts.length - 1; i >= 0; i--) {
+                graphics.drawString(parts[i], start + parts[i].length() + (j * 82), random.nextInt(15) + 25);
+                ++j;
             }
         }
-        for (int i = 0; i < random.nextInt(20); i++) {
-            graphics.drawOval(random.nextInt(height), random.nextInt(height), random.nextInt(500), random.nextInt(100));
+        for (int i = 0; i < text.length() - 2; i++) {
+            graphics.drawOval(random.nextInt(width), random.nextInt(height), random.nextInt(500), random.nextInt(100));
         }
         graphics.dispose();
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {

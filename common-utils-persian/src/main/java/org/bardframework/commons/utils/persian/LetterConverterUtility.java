@@ -115,12 +115,22 @@ public final class LetterConverterUtility {
         return !groupArray.isEmpty() ? groupArray : null;
     }
 
-    public static String convertDigitToFarsiLetter(Long number) {
+    public static String convertDigitToFarsiLetter(long number) {
+        List<String> parts = LetterConverterUtility.convertDigitToFarsiLetterParts(Math.abs(number), " ");
+        return String.join(" ", parts);
+    }
+
+    public static String convertDigitToFarsiLetterRial(long number) {
         boolean isNegative = false;
         if (number < 0) {
             number *= -1;
             isNegative = true;
         }
+        List<String> parts = LetterConverterUtility.convertDigitToFarsiLetterParts(number, " و ");
+        return (isNegative ? "منفی " : "") + String.join(" و ", parts) + " ریال";
+    }
+
+    public static List<String> convertDigitToFarsiLetterParts(long number, String delimiter) {
         String formated = commaSeparatedInternal(String.valueOf(number));
         String[] groups = formated.split(",");
 
@@ -132,7 +142,7 @@ public final class LetterConverterUtility {
             List<String> groupWords = groupToWords(group);
             if (groupWords != null) {
                 StringBuilder part = new StringBuilder();
-                part.append(String.join(" و ", groupWords));
+                part.append(String.join(delimiter, groupWords));
                 if (len - step - 1 > 0) {
                     part.append(' ');
                     part.append(steps[len - step - 2]);
@@ -140,6 +150,6 @@ public final class LetterConverterUtility {
                 parts.add(String.valueOf(part));
             }
         }
-        return (isNegative ? "منفی " : "") + String.join(" و ", parts) + " ریال";
+        return parts;
     }
 }
