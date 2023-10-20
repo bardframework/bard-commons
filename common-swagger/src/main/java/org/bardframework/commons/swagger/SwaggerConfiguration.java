@@ -17,7 +17,7 @@ public class SwaggerConfiguration {
 
     @Bean
     OpenAPI api() {
-        Contact contact = new Contact().name("Vahid Zafari").url("https://www.linkedin.com/in/vzafari").email("va.zafari@gmail.com");
+        Contact contact = new Contact().name("Bardframework").url("https://github.com/bardframework").email("info@bardframework.org");
         Info info = new Info().title("API Info").description("API Documentation").contact(contact);
         return new OpenAPI().info(info);
     }

@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.bardframework</groupId>
         <artifactId>bard-parent</artifactId>
-        <version>18</version>
+        <version>19</version>
         <relativePath/>
     </parent>
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>2.5.21</version>
+    <version>2.6.21</version>
 
     <packaging>pom</packaging>
 
@@ -33,7 +33,7 @@
     </modules>
 
     <properties>
-        <bardframework.version>2.5.30</bardframework.version>
+        <bardframework.version>2.6.30</bardframework.version>
     </properties>
 
     <dependencyManagement>
