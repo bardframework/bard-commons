@@ -943,28 +943,6 @@ public enum LocaleCode {
      * <p>
      * The format of the code should be either of the following:
      * </p>
-     *
-     * <ul>
-     * <li><i>language</i></li>
-     * <li><i>language</i><code>-</code><i>country</i>
-     * </ul>
-     *
-     * <p>
-     * where <i>language</i> is an <a
-     * href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> code
-     * and <i>country</i> is an <a
-     * href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1
-     * alpha-2</a> code. The separator between <i>language</i> and
-     * <i>country</i> should be a hyphen (<code>-</code>) or an underscore
-     * (<code>_</code>).
-     * </p>
-     *
-     * <p>
-     * Note that if the language part of the given code is one of legacy
-     * ones { "iw", "ji" and "in" }, it is regarded as its newer official
-     * counterpart { "he", "yi" and "id" }, respectively.
-     * </p>
-     *
      * @param code          A locale code.
      * @param caseSensitive If {@code true}, the <i>language</i> part of the given code must be
      *                      lower-case and the <i>country</i> part, if not {@code null}, must be
@@ -1006,13 +984,11 @@ public enum LocaleCode {
      * getByCode(language, country, false)}.
      * </p>
      *
-     * @param language <a href="href="http://en.wikipedia.org/wiki/ISO_639-1"
-     *                 >ISO 639-1</a> language code. Or "undefined" (case
+     * @param language ISO 639-1language code. Or "undefined" (case
      *                 sensitive). If the given language code is one of legacy
      *                 ones { "iw", "ji" and "in" }, it is regarded as its newer
      *                 official counterpart { "he", "yi" and "id" }, respectively.
-     * @param country  <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"
-     *                 >ISO 3166-1 alpha-2</a> country code. Or "UNDEFINED"
+     * @param country  ISO 3166-1 alpha-2 country code. Or "UNDEFINED"
      *                 (case sensitive).
      * @return A {@code LocaleCode}, or {@code null} if not found.
      * @see #getByCode(String, String, boolean)
@@ -1030,13 +1006,11 @@ public enum LocaleCode {
      * getByCode}{@code (language, country, false)}.
      * </p>
      *
-     * @param language <a href="href="http://en.wikipedia.org/wiki/ISO_639-1"
-     *                 >ISO 639-1</a> language code. Or "undefined" (case
+     * @param language ISO 639-1 language code. Or "undefined" (case
      *                 insensitive). If the given language code is one of legacy
      *                 ones { "iw", "ji" and "in" }, it is regarded as its newer
      *                 official counterpart { "he", "yi" and "id" }, respectively.
-     * @param country  <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"
-     *                 >ISO 3166-1 alpha-2</a> country code. Or "UNDEFINED"
+     * @param country  ISO 3166-1 alpha-2 country code. Or "UNDEFINED"
      *                 (case insensitive).
      * @return A {@code LocaleCode}, or {@code null} if not found.
      * @see #getByCode(String, String, boolean)
@@ -1054,13 +1028,11 @@ public enum LocaleCode {
      * or "UNDEFINED", {@link #undefined LocaleCode.undefined} is returned.
      * </p>
      *
-     * @param language      <a href="href="http://en.wikipedia.org/wiki/ISO_639-1"
-     *                      >ISO 639-1</a> language code. Or "undefined".
+     * @param language      ISO 639-1 language code. Or "undefined".
      *                      If the given language code is one of legacy ones { "iw",
      *                      "ji" and "in" }, it is regarded as its newer official
      *                      counterpart { "he", "yi" and "id" }, respectively.
-     * @param country       <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"
-     *                      >ISO 3166-1 alpha-2</a> country code. Or "UNDEFINED".
+     * @param country       ISO 3166-1 alpha-2 country code. Or "UNDEFINED".
      * @param caseSensitive If {@code true}, the given language code must be lower-case and
      *                      the given country code, if not {@code null}, must be upper-case.
      *                      If {@code false}, this method internally canonicalizes the given
@@ -1356,14 +1328,6 @@ public enum LocaleCode {
      * <li><i>language</i><code>-</code><i>country</i>
      * </ul>
      *
-     * <p>
-     * where <i>language</i> is an <a
-     * href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> code
-     * and <i>country</i> is an <a
-     * href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1
-     * alpha-2</a> code.
-     * </p>
-     *
      * @return The string representation of this locale code.
      */
     @Override
@@ -1382,60 +1346,6 @@ public enum LocaleCode {
      * {@link Locale#ITALIAN}.
      * </p>
      *
-     * <p>
-     * The table below lists {@code LocaleCode} entries whose {@code toLocale()}
-     * does not create a new {@code Locale} instance but returns an entry in
-     * {@code Locale} class.
-     * </p>
-     *
-     * <table border="1" style="border-collapse: collapse;" cellpadding="5">
-     * <tr bgcolor="#FF8C00">
-     *   <th>LocaleCode</th>
-     *   <th>Locale</th>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#de LocaleCode.de}</td>
-     *   <td>{@link Locale#GERMAN}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#en LocaleCode.en}</td>
-     *   <td>{@link Locale#ENGLISH}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#fr LocaleCode.fr}</td>
-     *   <td>{@link Locale#FRENCH}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#fr_CA LocaleCode.fr_CA}</td>
-     *   <td>{@link Locale#CANADA_FRENCH}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#it LocaleCode.it}</td>
-     *   <td>{@link Locale#ITALIAN}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#ja LocaleCode.ja}</td>
-     *   <td>{@link Locale#JAPANESE}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#ko LocaleCode.ko}</td>
-     *   <td>{@link Locale#KOREAN}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#zh LocaleCode.zh}</td>
-     *   <td>{@link Locale#CHINESE}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#zh_CN LocaleCode.zh_CN}</td>
-     *   <td>{@link Locale#SIMPLIFIED_CHINESE}</td>
-     * </tr>
-     * <tr>
-     *   <td>{@link LocaleCode#zh_TW LocaleCode.zh_TW}</td>
-     *   <td>{@link Locale#TRADITIONAL_CHINESE}</td>
-     * </tr>
-     * </table>
-     *
-     * <p>
      * In addition, {@code toLocale()} of {@link LocaleCode#undefined
      * LocaleCode.undefined} behaves a bit differently. It returns
      * {@link Locale#ROOT Locale.ROOT} when it is available (i.e. when
@@ -1443,7 +1353,6 @@ public enum LocaleCode {
      * a {@code Locale} instance whose language and country are empty
      * strings. Even in the latter case, the same instance is returned
      * on every call.
-     * </p>
      *
      * @return A {@code Locale} instance that matches this {@code LocaleCode}.
      */

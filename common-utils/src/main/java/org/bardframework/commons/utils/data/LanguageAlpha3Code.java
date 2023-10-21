@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+ * ISO 639-2
  * language code (3-letter lowercase code).
  * <p>
  * Most languages have just one ISO 639-2 code, but there are some languages
@@ -36,7 +36,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Afar_language">Afar</a>
+     * Afar
      * ({@link LanguageCode#aa aa}).
      */
     aar("Afar") {
@@ -47,12 +47,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Austro-Asiatic_languages">Austro-Asiatic languages</a>
+     * Austro-Asiatic languages
      */
     aav("Austro-Asiatic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Abkhaz_language">Abkhaz</a>
+     * Abkhaz
      * ({@link LanguageCode#ab ab}).
      */
     abk("Abkhaz") {
@@ -63,37 +63,37 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Achinese_language">Achinese</a>
+     * Achinese
      */
     ace("Achinese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Acoli_language">Acoli</a>
+     * Acoli
      */
     ach("Acoli"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Adangme_language">Adangme</a>
+     * Adangme
      */
     ada("Adangme"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Adyghe_language">Adyghe</a>
+     * Adyghe
      */
     ady("Adyghe"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Afro-Asiatic_languages">Afro-Asiatic languages</a>
+     * Afro-Asiatic languages
      */
     afa("Afro-Asiatic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Afrihili_language">Afrihili</a>
+     * Afrihili
      */
     afh("Afrihili"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Afrikaans_language">Afrikaans</a>
+     * Afrikaans
      * ({@link LanguageCode#af af}).
      */
     afr("Afrikaans") {
@@ -104,12 +104,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ainu_language_(Japan)">Ainu (Japan)</a>
+     * Ainu (Japan)
      */
     ain("Ainu (Japan)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Akan_language">Akan</a>
+     * Akan
      * ({@link LanguageCode#ak ak}).
      */
     aka("Akan") {
@@ -120,12 +120,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Akkadian_language">Akkadian</a>
+     * Akkadian
      */
     akk("Akkadian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Albanian_language">Albanian</a>
+     * Albanian
      * ({@link LanguageCode#sq sq}) for bibliographic applications.
      *
      * @see #sqi
@@ -150,27 +150,24 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Aleut_language">Aleut</a>
+     * Aleut
      */
     ale("Aleut"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Algonquian_languages">Algonquian languages</a>
+     * Algonquian languages
      */
     alg("Algonquian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Southern_Altai_language">Southern Altai</a>
+     * Southern Altai
      */
     alt("Southern Altai"),
 
-    /**
-     * <a href="http://en.wikipedia.org/wiki/Atlantic-Congo_languages">Atlantic-Congo languages<a/>
-     */
     alv("Atlantic-Congo languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Amharic_language">Amharic</a>
+     * Amharic
      * ({@link LanguageCode#am am}).
      */
     amh("Amharic") {
@@ -181,32 +178,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Old_English_language">Old English</a> (ca&#0046; 450-1100)
+     * Old English (ca&#0046; 450-1100)
      */
     ang("Old English"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Angika_language">Angika</a>
+     * Angika
      */
     anp("Angika"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Apache_languages">Apache languages</a>
+     * Apache languages
      */
     apa("Apache languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Alacalufan_languages">Alacalufan languages</a>
+     * Alacalufan languages
      */
     aqa("Alacalufan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Algic_languages">Algic languages</a>
+     * Algic languages
      */
     aql("Algic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Arabic_language">Arabic</a>
+     * Arabic
      * ({@link LanguageCode#ar ar}).
      */
     ara("Arabic") {
@@ -217,12 +214,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Official_Aramaic_language">Official Aramaic</a> (700-300 BCE)
+     * Official Aramaic (700-300 BCE)
      */
     arc("Official Aramaic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Aragonese_language">Aragonese</a>
+     * Aragonese
      * ({@link LanguageCode#an an}).
      */
     arg("Aragonese") {
@@ -233,7 +230,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Armenian_language">Armenian</a>
+     * Armenian
      * ({@link LanguageCode#hy hy}) for bibliographic applications.
      *
      * @see #hye
@@ -258,27 +255,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mapudungun_language">Mapudungun</a>
+     * Mapudungun
      */
     arn("Mapudungun"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Arapaho_language">Arapaho</a>
+     * Arapaho
      */
     arp("Arapaho"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Artificial_languages">Artificial languages</a>
+     * Artificial languages
      */
     art("Artificial languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Arawak_language">Arawak</a>
+     * Arawak
      */
     arw("Arawak"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Assamese_language">Assamese</a>
+     * Assamese
      * ({@link LanguageCode#as as}).
      */
     asm("Assamese") {
@@ -289,27 +286,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Asturian_language">Asturian</a>
+     * Asturian
      */
     ast("Asturian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Athapascan_languages">Athapascan languages</a>
+     * Athapascan languages
      */
     ath("Athapascan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Arauan_languages">Arauan languages</a>
+     * Arauan languages
      */
     auf("Arauan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Australian_languages">Australian languages</a>
+     * Australian languages
      */
     aus("Australian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Avar_language">Avaric</a>
+     * Avaric
      * ({@link LanguageCode#av av}).
      */
     ava("Avaric") {
@@ -320,7 +317,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Avestan_language">Avestan</a>
+     * Avestan
      * ({@link LanguageCode#ae ae}).
      */
     ave("Avestan") {
@@ -331,17 +328,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Awadhi_language">Awadhi</a>
+     * Awadhi
      */
     awa("Awadhi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Arawakan_languages">Arawakan languages</a>
+     * Arawakan languages
      */
     awd("Arawakan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Aymara_language">Aymara</a>
+     * Aymara
      * ({@link LanguageCode#ay ay}).
      */
     aym("Aymara") {
@@ -352,7 +349,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Uto-Aztecan_languages">Uto-Aztecan languages</a>
+     * Uto-Aztecan languages
      */
     azc("Uto-Aztecan languages"),
 
@@ -369,17 +366,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Banda_languages">Banda languages</a>
+     * Banda languages
      */
     bad("Banda languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bamileke_languages">Bamileke languages</a>
+     * Bamileke languages
      */
     bai("Bamileke languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bashkir_language">Bashkir</a>
+     * Bashkir
      * ({@link LanguageCode#ba ba}).
      */
     bak("Bashkir") {
@@ -390,12 +387,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Baluchi_language">Baluchi</a>
+     * Baluchi
      */
     bal("Baluchi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bambara_language">Bambara</a>
+     * Bambara
      * ({@link LanguageCode#bm bm}).
      */
     bam("Bambara") {
@@ -406,12 +403,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Balinese_language">Balinese</a>
+     * Balinese
      */
     ban("Balinese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Basque_language">Basque</a>
+     * Basque
      * ({@link LanguageCode#eu eu}) for bibliographic applications.
      *
      * @see #eus
@@ -436,22 +433,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Basa_language_(Cameroon)">Basa (Cameroon)</a>
+     * Basa (Cameroon)
      */
     bas("Basa (Cameroon)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Baltic_languages">Baltic languages</a>
+     * Baltic languages
      */
     bat("Baltic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Beja_language">Beja</a>
+     * Beja
      */
     bej("Beja"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Belarusian_language">Belarusian</a>
+     * Belarusian
      * ({@link LanguageCode#be be}).
      */
     bel("Belarusian") {
@@ -462,12 +459,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bemba_language_(Zambia)">Bemba (Zambia)</a>
+     * Bemba (Zambia)
      */
     bem("Bemba (Zambia)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bengali_language">Bengali</a>
+     * Bengali
      * ({@link LanguageCode#bn bn}).
      */
     ben("Bengali") {
@@ -478,17 +475,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Berber_languages">Berber languages</a>
+     * Berber languages
      */
     ber("Berber languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bhojpuri_language">Bhojpuri</a>
+     * Bhojpuri
      */
     bho("Bhojpuri"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bihari_languages">Bihari</a>
+     * Bihari
      * ({@link LanguageCode#bh bh}).
      */
     bih("Bihari languages") {
@@ -499,17 +496,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bikol_language">Bikol</a>
+     * Bikol
      */
     bik("Bikol"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bini_language">Bini</a>
+     * Bini
      */
     bin("Bini"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bislama_language">Bislama</a>
+     * Bislama
      * ({@link LanguageCode#bi bi}).
      */
     bis("Bislama") {
@@ -520,17 +517,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Siksika_language">Siksika</a>
+     * Siksika
      */
     bla("Siksika"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bantu_languages">Bantu languages</a>
+     * Bantu languages
      */
     bnt("Bantu languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Standard_Tibetan">Tibetan</a>
+     * Tibetan
      * ({@link LanguageCode#bo bo}) for terminology applications.
      *
      * @see #tib
@@ -555,7 +552,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bosnian_language">Bosnian</a>
+     * Bosnian
      * ({@link LanguageCode#bs bs}).
      */
     bos("Bosnian") {
@@ -566,12 +563,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Braj_language">Braj</a>
+     * Braj
      */
     bra("Braj"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Breton_language">Breton</a>
+     * Breton
      * ({@link LanguageCode#br br}).
      */
     bre("Breton") {
@@ -582,22 +579,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Batak_languages">Batak languages</a>
+     * Batak languages
      */
     btk("Batak languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Buriat_language">Buriat</a>
+     * Buriat
      */
     bua("Buriat"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Buginese_language">Buginese</a>
+     * Buginese
      */
     bug("Buginese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bulgarian_language">Bulgarian</a>
+     * Bulgarian
      * ({@link LanguageCode#bg bg}).
      */
     bul("Bulgarian") {
@@ -608,7 +605,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Burmese_language">Burmese</a>
+     * Burmese
      * ({@link LanguageCode#my my}) for bibliographic applications.
      *
      * @see #mya
@@ -633,27 +630,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Bilin_language">Bilin</a>
+     * Bilin
      */
     byn("Bilin"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Caddo_language">Caddo</a>
+     * Caddo
      */
     cad("Caddo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Central_American_Indian_languages">Central American Indian languages</a>
+     * Central American Indian languages
      */
     cai("Central American Indian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Galibi_Carib_language">Galibi Carib</a>
+     * Galibi Carib
      */
     car("Galibi Carib"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Catalan_language">Catalan</a>
+     * Catalan
      * ({@link LanguageCode#ca ca}).
      */
     cat("Catalan") {
@@ -664,47 +661,47 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Caucasian_languages">Caucasian languages</a>
+     * Caucasian languages
      */
     cau("Caucasian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chibchan_languages">Chibchan languages</a>
+     * Chibchan languages
      */
     cba("Chibchan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/North_Caucasian_languages">North Caucasian languages</a>
+     * North Caucasian languages
      */
     ccn("North Caucasian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/South_Caucasian_languages">South Caucasian languages</a>
+     * South Caucasian languages
      */
     ccs("South Caucasian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chadic_languages">Chadic languages</a>
+     * Chadic languages
      */
     cdc("Chadic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Caddoan_languages">Caddoan languages</a>
+     * Caddoan languages
      */
     cdd("Caddoan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Cebuano_language">Cebuano</a>
+     * Cebuano
      */
     ceb("Cebuano"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Celtic_languages">Celtic languages</a>
+     * Celtic languages
      */
     cel("Celtic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Czech_language">Czech</a>
+     * Czech
      * ({@link LanguageCode#cs cs}) for terminology applications.
      *
      * @see #cze
@@ -729,7 +726,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chamorro_language">Chamorro</a>
+     * Chamorro
      * ({@link LanguageCode#ch ch}).
      */
     cha("Chamorro") {
@@ -740,12 +737,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chibcha_language">Chibcha</a>
+     * Chibcha
      */
     chb("Chibcha"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chechen_language">Chechen</a>
+     * Chechen
      * ({@link LanguageCode#ce ce}).
      */
     che("Chechen") {
@@ -756,12 +753,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chagatai_language">Chagatai</a>
+     * Chagatai
      */
     chg("Chagatai"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chinese_language">Chinese</a>
+     * Chinese
      * ({@link LanguageCode#zh zh}) for bibliographic applications.
      *
      * @see #zho
@@ -786,32 +783,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chuukese_language">Chuukese</a>
+     * Chuukese
      */
     chk("Chuukese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mari_language_(Russia)">Mari (Russia)</a>
+     * Mari (Russia)
      */
     chm("Mari (Russia)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chinook_jargon_language">Chinook jargon</a>
+     * Chinook jargon
      */
     chn("Chinook jargon"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Choctaw_language">Choctaw</a>
+     * Choctaw
      */
     cho("Choctaw"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chipewyan_language">Chipewyan</a>
+     * Chipewyan
      */
     chp("Chipewyan"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Cherokee_language">Cherokee</a>
+     * Cherokee
      */
     chr("Cherokee"),
 
@@ -828,7 +825,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chuvash_language">Chuvash</a>
+     * Chuvash
      * ({@link LanguageCode#cv cv}).
      */
     chv("Chuvash") {
@@ -839,22 +836,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Cheyenne_language">Cheyenne</a>
+     * Cheyenne
      */
     chy("Cheyenne"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chamic_languages">Chamic languages</a>
+     * Chamic languages
      */
     cmc("Chamic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Coptic_language">Coptic</a>
+     * Coptic
      */
     cop("Coptic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Cornish_language">Cornish</a>
+     * Cornish
      * ({@link LanguageCode#kw kw}).
      */
     cor("Comish") {
@@ -865,7 +862,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Corsican_language">Corsican</a>
+     * Corsican
      * ({@link LanguageCode#co co}).
      */
     cos("Corsican") {
@@ -900,7 +897,7 @@ public enum LanguageAlpha3Code {
     cpp("Portuguese-Based Creoles and pidgins"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Cree_language">Cree</a>
+     * Cree
      * ({@link LanguageCode#cr cr}).
      */
     cre("Cree") {
@@ -911,7 +908,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Crimean_Tatar_language">Crimean Tatar</a>
+     * Crimean Tatar
      */
     crh("Crimean Tatar"),
 
@@ -924,22 +921,22 @@ public enum LanguageAlpha3Code {
     crp("Creoles and pidgins"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kashubian_language">Kashubian</a>
+     * Kashubian
      */
     csb("Kashubian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Central_Sudanic_languages">Central Sudanic languages</a>
+     * Central Sudanic languages
      */
     csu("Central Sudanic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Cushitic_languages">Cushitic languages</a>
+     * Cushitic languages
      */
     cus("Cushitic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Welsh_language">Welsh</a>
+     * Welsh
      * ({@link LanguageCode#cy cy}) for terminology applications.
      *
      * @see #wel
@@ -964,7 +961,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Czech_language">Czech</a>
+     * Czech
      * ({@link LanguageCode#cs cs}) for bibliographic applications.
      *
      * @see #ces
@@ -989,12 +986,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dakota_language">Dakota</a>
+     * Dakota
      */
     dak("Dakota"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Danish_language">Danish</a>
+     * Danish
      * {@link LanguageCode#da da}).
      */
     dan("Danish") {
@@ -1005,27 +1002,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dargwa_language">Dargwa</a>
+     * Dargwa
      */
     dar("Dargwa"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Land_Dayak_languages">Land Dayak languages</a>
+     * Land Dayak languages
      */
     day("Land Dayak languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Delaware_language">Delaware</a>
+     * Delaware
      */
     del("Delaware"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Slave_language_(Athapascan)">Slave (Athapascan)</a>
+     * Slave (Athapascan)
      */
     den("Slave (Athapascan)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/German_language">German</a>
+     * German
      * ({@link LanguageCode#de de}) for terminology applications.
      *
      * @see #ger
@@ -1050,17 +1047,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dogrib_language">Dogrib</a>
+     * Dogrib
      */
     dgr("Dogrib"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dinka_language">Dinka</a>
+     * Dinka
      */
     din("Dinka"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dhivehi_language">Dhivehi</a>
+     * Dhivehi
      * ({@link LanguageCode#dv dv}).
      */
     div("Dhivehi") {
@@ -1071,37 +1068,37 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mande_languages">Mande languages</a>
+     * Mande languages
      */
     dmn("Mande languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dogri_language">Dogri</a> (macrolanguage)
+     * Dogri (macrolanguage)
      */
     doi("Dogri"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dravidian_languages">Dravidian languages</a>
+     * Dravidian languages
      */
     dra("Dravidian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lower_Sorbian_language">Lower Sorbian</a>
+     * Lower Sorbian
      */
     dsb("Lower Sorbian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Duala_language">Duala</a>
+     * Duala
      */
     dua("Duala"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Middle_Dutch_language">Middle Dutch</a> (ca. 1050-1350)
+     * Middle Dutch (ca. 1050-1350)
      */
     dum("Middle Dutch"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dutch_language">Dutch</a>
+     * Dutch
      * ({@link LanguageCode#nl nl}) for bibliography applications.
      *
      * @see #nld
@@ -1126,12 +1123,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dyula_language">Dyula</a>
+     * Dyula
      */
     dyu("Dyula"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dzongkha_language">Dzongkha</a>
+     * Dzongkha
      * ({@link LanguageCode#dz dz}).
      */
     dzo("Dzongkha") {
@@ -1142,22 +1139,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Efik_language">Efik</a>
+     * Efik
      */
     efi("Efik"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Egyptian_languages">Egyptian languages</a>
+     * Egyptian languages
      */
     egx("Egyptian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Egyptian_language_(Ancient)">Egyptian (Ancient)</a>
+     * Egyptian (Ancient)
      */
     egy("Egyptian (Ancient)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ekajuk_language">Ekajuk</a>
+     * Ekajuk
      */
     eka("Ekajuk"),
 
@@ -1189,12 +1186,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Elamite_language">Elamite</a>
+     * Elamite
      */
     elx("Elamite"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/English_language">English</a>
+     * English
      * ({@link LanguageCode#en en}).
      */
     eng("English") {
@@ -1205,12 +1202,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Middle_English_language">Middle English</a> (1100-1500)
+     * Middle English (1100-1500)
      */
     enm("Middle English"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Esperanto">Esperanto</a>
+     * Esperanto
      * ({@link LanguageCode#eo eo}).
      */
     epo("Esperanto") {
@@ -1221,7 +1218,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Estonian_language">Estonian</a>
+     * Estonian
      * ({@link LanguageCode#et et}).
      */
     est("Estonian") {
@@ -1232,17 +1229,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Eskimo-Aleut_languages">Eskimo-Aleut languages</a>
+     * Eskimo-Aleut languages
      */
     esx("Eskimo-Aleut languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Basque_language">Basque</a> (family)
+     * Basque (family)
      */
     euq("Basque"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Basque_language">Basque</a> (family)
+     * Basque (family)
      * ({@link LanguageCode#eu eu}) for terminology applications.
      *
      * @see #baq
@@ -1267,7 +1264,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ewe_language">Ewe</a>
+     * Ewe
      * ({@link LanguageCode#ee ee}).
      */
     ewe("Ewe") {
@@ -1278,17 +1275,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ewondo_language">Ewondo</a>
+     * Ewondo
      */
     ewo("Ewondo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Fang_language_(Equatorial_Guinea)">Fang (Equatorial Guinea)</a>
+     * Fang (Equatorial Guinea)
      */
     fan("Fang (Equatorial Guinea)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Faroese_language">Faroese</a>
+     * Faroese
      * ({@link LanguageCode#fo fo}).
      */
     fao("Faroese") {
@@ -1299,7 +1296,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Persian_language">Persian</a>
+     * Persian
      * ({@link LanguageCode#fa fa}) for terminology applications.
      *
      * @see #per
@@ -1324,12 +1321,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Fanti_language">Fanti</a>
+     * Fanti
      */
     fat("Fanti"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Fijian_language">Fijian</a>
+     * Fijian
      * ({@link LanguageCode#fj fj}).
      */
     fij("Fijian") {
@@ -1340,12 +1337,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Filipino_language">Filipino</a>
+     * Filipino
      */
     fil("Filipino"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Finnish_language">Finnish</a>
+     * Finnish
      * ({@link LanguageCode#fi fi}).
      */
     fin("Finnish") {
@@ -1356,22 +1353,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Finno-Ugrian_languages">Finno-Ugrian languages</a>
+     * Finno-Ugrian languages
      */
     fiu("Finno-Ugrian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Fon_language">Fon</a>
+     * Fon
      */
     fon("Fon"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Formosan_languages">Formosan languages</a>
+     * Formosan languages
      */
     fox("Formosan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/French_language">French</a>
+     * French
      * ({@link LanguageCode#fr fr}) for terminology applications.
      *
      * @see #fre
@@ -1396,7 +1393,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/French_language">French</a>
+     * French
      * ({@link LanguageCode#fr fr}) for bibliographic applications.
      *
      * @see #fra
@@ -1421,22 +1418,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Middle_French_language">Middle French</a> (ca&#0046; 1400-1600)
+     * Middle French (ca&#0046; 1400-1600)
      */
     frm("Middle French"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Old_French_language">Old French</a> (842-ca&#0046; 1400)
+     * Old French (842-ca&#0046; 1400)
      */
     fro("Old French"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Northern_Frisian_language">Northern Frisian</a>
+     * Northern Frisian
      */
     frr("Northern Frisian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Eastern_Frisian_language">Eastern Frisian</a>
+     * Eastern Frisian
      */
     frs("Eastern Frisian"),
 
@@ -1453,7 +1450,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Fula_language">Fula</a>
+     * Fula
      * ({@link LanguageCode#ff ff}).
      */
     ful("Fula") {
@@ -1464,32 +1461,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Friulian_language">Friulian</a>
+     * Friulian
      */
     fur("Friulian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ga_language">Ga</a>
+     * Ga
      */
     gaa("Ga"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gayo_language">Gayo</a>
+     * Gayo
      */
     gay("Gayo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gbaya_language_(Central_African_Republic)">Gbaya (Central African Republic)</a>
+     * Gbaya (Central African Republic)
      */
     gba("Gbaya (Central African Republic)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Germanic_languages">Germanic languages</a>
+     * Germanic languages
      */
     gem("Germanic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Georgian_language">Georgian</a>
+     * Georgian
      * ({@link LanguageCode#ka ka}) for bibliographic applications.
      *
      * @see #kat
@@ -1514,7 +1511,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/German_language">German</a>
+     * German
      * ({@link LanguageCode#de de}) for bibliographic applications.
      *
      * @see #deu
@@ -1539,12 +1536,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Geez_language">Geez</a>
+     * Geez
      */
     gez("Geez"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gilbertese_language">Gilbertese</a>
+     * Gilbertese
      */
     gil("Gilbertese"),
 
@@ -1561,7 +1558,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Irish_language">Irish</a>
+     * Irish
      * ({@link LanguageCode#ga ga}).
      */
     gle("Irish") {
@@ -1572,7 +1569,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Galician_language">Galician</a>
+     * Galician
      * ({@link LanguageCode#gl gl}).
      */
     glg("Galician") {
@@ -1583,7 +1580,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Manx_language">Manx</a>
+     * Manx
      * ({@link LanguageCode#gv gv}).
      */
     glv("Manx") {
@@ -1594,7 +1591,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/East_Germanic_languages">East Germanic languages</a>
+     * East Germanic languages
      */
     gme("East Germanic languages"),
 
@@ -1623,22 +1620,22 @@ public enum LanguageAlpha3Code {
     goh("Old High German"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gondi_language">Gondi</a>
+     * Gondi
      */
     gon("Gondi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gorontalo_language">Gorontalo</a>
+     * Gorontalo
      */
     gor("Gorontalo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gothic_language">Gothic</a>
+     * Gothic
      */
     got("Gothic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Grebo_language">Grebo</a>
+     * Grebo
      */
     grb("Grebo"),
 
@@ -1678,14 +1675,11 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Greek_languages">Greek languages</a>
+     * Greek languages
      */
     grk("Greek languages"),
 
     /**
-     * <a
-     * href="http://en.wikipedia.org/wiki/Guaran%C3%AD_language">Guaran&iacute
-     * ;</a>
      * ({@link LanguageCode#gn gn}).
      */
     grn("Guaran\u00ED") {
@@ -1696,12 +1690,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Swiss_German_language">Swiss German</a>
+     * Swiss German
      */
     gsw("Swiss German"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gujarati_language">Gujarati</a>
+     * Gujarati
      * ({@link LanguageCode#gu gu}).
      */
     guj("Gujarati") {
@@ -1712,12 +1706,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gwich%CA%BCin_language">Gwich&#x2bc;in</a>
+     * Gwich&#x2bc;in
      */
     gwi("Gwich\u02BCin"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Haida_language">Haida</a>
+     * Haida
      */
     hai("Haida"),
 
@@ -1734,7 +1728,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hausa_language">Hausa</a>
+     * Hausa
      * ({@link LanguageCode#ha ha}).
      */
     hau("Hausa") {
@@ -1745,12 +1739,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hawaiian_language">Hawaiian</a>
+     * Hawaiian
      */
     haw("Hawaiian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hebrew_language">Hebrew</a>
+     * Hebrew
      * ({@link LanguageCode#he he}).
      */
     heb("Hebrew") {
@@ -1761,7 +1755,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Herero_language">Herero</a>
+     * Herero
      * ({@link LanguageCode#hz hz}).
      */
     her("Herero") {
@@ -1772,17 +1766,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hiligaynon_language">Hiligaynon</a>
+     * Hiligaynon
      */
     hil("Hiligaynon"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Himachali_languages">Himachali languages</a>
+     * Himachali languages
      */
     him("Himachali languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hindi">Hindi</a>
+     * Hindi
      * ({@link LanguageCode#hi hi}).
      */
     hin("Hindi") {
@@ -1793,17 +1787,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hittite_language">Hittite</a>
+     * Hittite
      */
     hit("Hittite"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hmong_language">Hmong</a>
+     * Hmong
      */
     hmn("Hmong"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hiri_Motu_language">Hiri Motu</a>
+     * Hiri Motu
      * ({@link LanguageCode#ho ho}).
      */
     hmo("Hiri Motu") {
@@ -1814,17 +1808,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hmong-Mien_languages">Hmong-Mien languages</a>
+     * Hmong-Mien languages
      */
     hmx("Hmong-Mien languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hokan_languages">Hokan languages</a>
+     * Hokan languages
      */
     hok("Hokan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Croatian_language">Croatian</a>
+     * Croatian
      * ({@link LanguageCode#hr hr}).
      */
     hrv("Croatian") {
@@ -1835,12 +1829,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Upper_Sorbian_language">Upper Sorbian</a>
+     * Upper Sorbian
      */
     hsb("Upper Sorbian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hungarian_language">Hungarian</a>
+     * Hungarian
      * ({@link LanguageCode#hu hu}).
      */
     hun("Hungarian") {
@@ -1851,12 +1845,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Hupa_language">Hupa</a>
+     * Hupa
      */
     hup("Hupa"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Armenian_language">Armenian</a>
+     * Armenian
      * ({@link LanguageCode#hy hy}) for terminology applications.
      *
      * @see #arm
@@ -1881,17 +1875,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Armenian_language">Armenian</a> (family)
+     * Armenian (family)
      */
     hyx("Armenian (family)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Iban_language">Iban</a>
+     * Iban
      */
     iba("Iban"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Igbo_language">Igbo</a>
+     * Igbo
      * ({@link LanguageCode#ig ig}).
      */
     ibo("Igbo") {
@@ -1902,7 +1896,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Icelandic_language">Icelandic</a>
+     * Icelandic
      * ({@link LanguageCode#is is}) for biblioraphic applications.
      *
      * @see #isl
@@ -1927,7 +1921,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ido">Ido</a>
+     * Ido
      * ({@link LanguageCode#io io}).
      */
     ido("Ido") {
@@ -1938,7 +1932,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nuosu_language">Nuosu</a>
+     * Nuosu
      * ({@link LanguageCode#ii ii}).
      */
     iii("Nuosu") {
@@ -1949,17 +1943,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Indo-Iranian_languages">Indo-Iranian languages</a>
+     * Indo-Iranian languages
      */
     iir("Indo-Iranian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ijo_languages">Ijo languages</a>
+     * Ijo languages
      */
     ijo("Ijo languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Inuktitut">Inuktitut</a>
+     * Inuktitut
      * ({@link LanguageCode#iu iu}).
      */
     iku("Inuktitut") {
@@ -1982,12 +1976,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Iloko_language">Iloko</a>
+     * Iloko
      */
     ilo("Iloko"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Interlingua">Interlingua</a>
+     * Interlingua
      * {@link LanguageCode#ia ia}).
      */
     ina("Interlingua") {
@@ -2004,7 +1998,7 @@ public enum LanguageAlpha3Code {
     inc("Interlingua (International Auxiliary Language Association)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Indonesian_language">Indonesian</a>
+     * Indonesian
      * ({@link LanguageCode#id id}).
      */
     ind("Indonesian") {
@@ -2015,17 +2009,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Indo-European_languages">Indo-European languages</a>
+     * Indo-European languages
      */
     ine("Indo-European languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ingush_language">Ingush</a>
+     * Ingush
      */
     inh("Ingush"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Inupiaq_language">Inupiaq</a>
+     * Inupiaq
      * ({@link LanguageCode#ik ik}).
      */
     ipk("Inupiaq") {
@@ -2036,17 +2030,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Iranian_languages">Iranian languages</a>
+     * Iranian languages
      */
     ira("Iranian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Iroquoian_languages">Iroquoian languages</a>
+     * Iroquoian languages
      */
     iro("Iroquoian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Icelandic_language">Icelandic</a>
+     * Icelandic
      * ({@link LanguageCode#is is}) for terminology applications.
      *
      * @see #ice
@@ -2071,7 +2065,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Italian_language">Italian</a>
+     * Italian
      * ({@link LanguageCode#it it}).
      */
     ita("Italian") {
@@ -2082,12 +2076,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Italic_languages">Italic languages</a>
+     * Italic languages
      */
     itc("Italic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Javanese_language">Javanese</a>
+     * Javanese
      * ({@link LanguageCode#jv jv}).
      */
     jav("Javanese") {
@@ -2098,12 +2092,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lojban_language">Lojban</a>
+     * Lojban
      */
     jbo("Lojban"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Japanese_language">Japanese</a>
+     * Japanese
      * ({@link LanguageCode#ja ja}).
      */
     jpn("Japanese") {
@@ -2114,32 +2108,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Judeo-Persian_language">Judeo-Persian</a>
+     * Judeo-Persian
      */
     jpr("Judeo-Persian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Japanese_language">Japanese</a> (family)
+     * Japanese (family)
      */
     jpx("Japanese (family)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Judeo-Arabic_language">Judeo-Arabic</a>
+     * Judeo-Arabic
      */
     jrb("Judeo-Arabic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kara-Kalpak_language">Kara-Kalpak</a>
+     * Kara-Kalpak
      */
     kaa("Kara-Kalpak"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kabyle_language">Kabyle</a>
+     * Kabyle
      */
     kab("Kabyle"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kachin_language">Kachin</a>
+     * Kachin
      */
     kac("Kachin"),
 
@@ -2156,12 +2150,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kamba_language_(Kenya)">Kamba (Kenya)</a>
+     * Kamba (Kenya)
      */
     kam("Kamba (Kenya)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kannada_language">Kannada</a>
+     * Kannada
      * ({@link LanguageCode#kn kn}).
      */
     kan("Kannada") {
@@ -2172,12 +2166,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Karen_languages">Karen languages</a>
+     * Karen languages
      */
     kar("Karen languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kashmiri_language">Kashmiri</a>
+     * Kashmiri
      * ({@link LanguageCode#ks ks}).
      */
     kas("Kashmiri") {
@@ -2188,7 +2182,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Georgian_language">Georgian</a>
+     * Georgian
      * ({@link LanguageCode#ka ka}) for terminology applications.
      *
      * @see #geo
@@ -2213,7 +2207,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kanuri_language">Kanuri</a>
+     * Kanuri
      * ({@link LanguageCode#kr kr}).
      */
     kau("Kanuri") {
@@ -2224,12 +2218,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kawi_language">Kawi</a>
+     * Kawi
      */
     kaw("Kawi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kazakh_language">Kazakh</a>
+     * Kazakh
      * ({@link LanguageCode#kk kk}).
      */
     kaz("Kazakh") {
@@ -2240,27 +2234,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kabardian_language">Kabardian</a>
+     * Kabardian
      */
     kbd("Kabardian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kordofanian_languages">Kordofanian languages</a>
+     * Kordofanian languages
      */
     kdo("Kordofanian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Khasi_language">Khasi</a>
+     * Khasi
      */
     kha("Khasi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Khoisan_languages">Khoisan languages</a>
+     * Khoisan languages
      */
     khi("Khoisan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Khmer_language">Khmer</a>
+     * Khmer
      * ({@link LanguageCode#km km}).
      */
     khm("Central Khmer") {
@@ -2271,12 +2265,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Khotanese_language">Khotanese</a>
+     * Khotanese
      */
     kho("Khotanese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Gikuyu_language">Kikuyu</a>
+     * Kikuyu
      * ({@link LanguageCode#ki ki}).
      */
     kik("Kikuyu") {
@@ -2287,7 +2281,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kinyarwanda">Kinyarwanda</a>
+     * Kinyarwanda
      * ({@link LanguageCode#rw rw}).
      */
     kin("Kinyarwanda") {
@@ -2298,7 +2292,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kyrgyz_language">Kyrgyz</a>
+     * Kyrgyz
      * ({@link LanguageCode#ky ky}).
      */
     kir("Kirghiz") {
@@ -2309,17 +2303,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kimbundu_language">Kimbundu</a>
+     * Kimbundu
      */
     kmb("Kimbundu"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Konkani_language">Konkani</a> (macrolanguage)
+     * Konkani (macrolanguage)
      */
     kok("Konkani"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Komi_language">Komi</a>
+     * Komi
      * ({@link LanguageCode#kv kv}).
      */
     kom("Komi") {
@@ -2330,7 +2324,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kongo_language">Kongo</a>
+     * Kongo
      * ({@link LanguageCode#kg kg}).
      */
     kon("Kongo") {
@@ -2341,7 +2335,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Korean_language">Korean</a>
+     * Korean
      * ({@link LanguageCode#ko ko}).
      */
     kor("Korean") {
@@ -2352,37 +2346,37 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kosraean_language">Kosraean</a>
+     * Kosraean
      */
     kos("Kosraean"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kpelle_language">Kpelle</a>
+     * Kpelle
      */
     kpe("Kpelle"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Karachay-Balkar_language">Karachay-Balkar</a>
+     * Karachay-Balkar
      */
     krc("Karachay-Balkar"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Karelian_language">Karelian</a>
+     * Karelian
      */
     krl("Karelian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kru_languages">Kru languages</a>
+     * Kru languages
      */
     kro("Kru languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kurukh_language">Kurukh</a>
+     * Kurukh
      */
     kru("Kurukh"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kwanyama">Kwanyama</a>
+     * Kwanyama
      * ({@link LanguageCode#kj kj}).
      */
     kua("Kuanyama") {
@@ -2393,12 +2387,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kumyk_language">Kumyk</a>
+     * Kumyk
      */
     kum("Kumyk"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kurdish_language">Kurdish</a>
+     * Kurdish
      * ({@link LanguageCode#ku ku}).
      */
     kur("Kurdish") {
@@ -2409,27 +2403,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kutenai_language">Kutenai</a>
+     * Kutenai
      */
     kut("Kutenai"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ladino_language">Ladino</a>
+     * Ladino
      */
     lad("Ladino"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lahnda_language">Lahnda</a>
+     * Lahnda
      */
     lah("Lahnda"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lamba_language">Lamba</a>
+     * Lamba
      */
     lam("Lamba"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lao_language">Lao</a>
+     * Lao
      * ({@link LanguageCode#lo lo}).
      */
     lao("Lao") {
@@ -2440,7 +2434,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Latin">Latin</a>
+     * Latin
      * ({@link LanguageCode#la la}).
      */
     lat("Latin") {
@@ -2451,7 +2445,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Latvian_language">Latvian</a>
+     * Latvian
      * ({@link LanguageCode#lv lv}).
      */
     lav("Latvian") {
@@ -2462,12 +2456,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lezghian_language">Lezghian</a>
+     * Lezghian
      */
     lez("Lezghian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Limburgish_language">Limburgish</a>
+     * Limburgish
      * ({@link LanguageCode#li li}).
      */
     lim("Limburgan") {
@@ -2478,7 +2472,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lingala_language">Lingala</a>
+     * Lingala
      * ({@link LanguageCode#ln ln}).
      */
     lin("Lingala") {
@@ -2489,7 +2483,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lithuanian_language">Lithuanian</a>
+     * Lithuanian
      * ({@link LanguageCode#lt lt}).
      */
     lit("Lithuanian") {
@@ -2500,12 +2494,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mongo_language">Mongo</a>
+     * Mongo
      */
     lol("Mongo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lozi_language">Lozi</a>
+     * Lozi
      */
     loz("Lozi"),
 
@@ -2522,12 +2516,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Luba-Lulua_language">Luba-Lulua</a>
+     * Luba-Lulua
      */
     lua("Luba-Lulua"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tshiluba_language">Luba-Katanga</a>
+     * Luba-Katanga
      * ({@link LanguageCode#lu lu}).
      */
     lub("Luba-Katanga") {
@@ -2538,7 +2532,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Luganda">Ganda</a>
+     * Ganda
      * ({@link LanguageCode#lg lg}).
      */
     lug("Ganda") {
@@ -2549,27 +2543,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Luiseno_language">Luiseno</a>
+     * Luiseno
      */
     lui("Luiseno"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lunda_language">Lunda</a>
+     * Lunda
      */
     lun("Lunda"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Luo_language_(Kenya_and_Tanzania)">Luo (Kenya and Tanzania)</a>
+     * Luo (Kenya and Tanzania)
      */
     luo("Luo (Kenya and Tanzania)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lushai_language">Lushai</a>
+     * Lushai
      */
     lus("Lushai"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Macedonian_language">Macedonian</a>
+     * Macedonian
      * ({@link LanguageCode#mk mk}) for bibliographic applications.
      *
      * @see #mkd
@@ -2594,12 +2588,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Madurese_language">Madurese</a>
+     * Madurese
      */
     mad("Madurese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Magahi_language">Magahi</a>
+     * Magahi
      */
     mag("Magahi"),
 
@@ -2616,17 +2610,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Maithili_language">Maithili</a>
+     * Maithili
      */
     mai("Maithili"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Makasar_language">Makasar</a>
+     * Makasar
      */
     mak("Makasar"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Malayalam_language">Malayalam</a>
+     * Malayalam
      * ({@link LanguageCode#ml ml}).
      */
     mal("Malayalam") {
@@ -2637,12 +2631,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Manding_languages">Mandingo</a>
+     * Mandingo
      */
     man("Mandingo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/M%C4%81ori_language">M&#257;ori</a>
+     * M&#257;ori
      * ({@link LanguageCode#mi mi}) for bibliographic applications.
      *
      * @see #mri
@@ -2667,12 +2661,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Austronesian_languages">Austronesian languages</a>
+     * Austronesian languages
      */
     map("Austronesian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Marathi_language">Marathi</a>
+     * Marathi
      * ({@link LanguageCode#mr mr}).
      */
     mar("Marathi") {
@@ -2683,12 +2677,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Masai_language">Masai</a>
+     * Masai
      */
     mas("Masai"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Malay_language">Malay</a> (macrolanguage)
+     * Malay (macrolanguage)
      * ({@link LanguageCode#ms ms}) for bibliographic applications.
      *
      * @see #msa
@@ -2713,12 +2707,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Moksha_language">Moksha</a>
+     * Moksha
      */
     mdf("Moksha"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mandar_language">Mandar</a>
+     * Mandar
      */
     mdr("Mandar"),
 
@@ -2729,17 +2723,17 @@ public enum LanguageAlpha3Code {
     men("Mende (Sierra Leone)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Middle_Irish_language">Middle Irish</a> (900-1200)
+     * Middle Irish (900-1200)
      */
     mga("Middle Irish"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mi%27kmaq_language">Mi'kmaq</a>
+     * Mi'kmaq
      */
     mic("Mi'kmaq"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Minangkabau_language">Minangkabau</a>
+     * Minangkabau
      */
     min("Minangkabau"),
 
@@ -2749,7 +2743,7 @@ public enum LanguageAlpha3Code {
     mis("Uncoded languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Macedonian_language">Macedonian</a>
+     * Macedonian
      * ({@link LanguageCode#mk mk}) for terminology applications.
      *
      * @see #mac
@@ -2774,12 +2768,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mon-Khmer_languages">Mon-Khmer languages</a>
+     * Mon-Khmer languages
      */
     mkh("Mon-Khmer languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Malagasy_language">Malagasy</a>
+     * Malagasy
      * ({@link LanguageCode#mg mg}).
      */
     mlg("Malagasy") {
@@ -2790,7 +2784,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Maltese_language">Maltese</a>
+     * Maltese
      * ({@link LanguageCode#mt mt}).
      */
     mlt("Maltese") {
@@ -2801,27 +2795,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Manchu_language">Manchu</a>
+     * Manchu
      */
     mnc("Manchu"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Manipuri_language">Manipuri</a>
+     * Manipuri
      */
     mni("Manipuri"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Manobo_languages">Manobo languages</a>
+     * Manobo languages
      */
     mno("Manobo languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mohawk_language">Mohawk</a>
+     * Mohawk
      */
     moh("Mohawk"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mongolian_language">Mongolian</a>
+     * Mongolian
      * ({@link LanguageCode#mn mn}).
      */
     mon("Mongolian") {
@@ -2832,12 +2826,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mossi_language">Mossi</a>
+     * Mossi
      */
     mos("Mossi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/M%C4%81ori_language">M&#257;ori</a>
+     * M&#257;ori
      * ({@link LanguageCode#mi mi}) for terminology applications.
      *
      * @see #mao
@@ -2862,7 +2856,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Malay_language">Malay</a>
+     * Malay
      * ({@link LanguageCode#ms ms}) for terminology applications.
      *
      * @see #may
@@ -2892,27 +2886,27 @@ public enum LanguageAlpha3Code {
     mul("Multiple languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Munda_languages">Munda languages</a>
+     * Munda languages
      */
     mun("Munda languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Creek_language">Creek</a>
+     * Creek
      */
     mus("Creek"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mirandese_language">Mirandese</a>
+     * Mirandese
      */
     mwl("Mirandese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Marwari_language">Marwari</a>
+     * Marwari
      */
     mwr("Marwari"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Burmese_language">Burmese</a>
+     * Burmese
      * ({@link LanguageCode#my my}) for terminology applications.
      *
      * @see #bur
@@ -2937,17 +2931,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mayan_languages">Mayan languages</a>
+     * Mayan languages
      */
     myn("Mayan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Erzya_language">Erzya</a>
+     * Erzya
      */
     myv("Erzya"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nahuatl_languages">Nahuatl languages</a>
+     * Nahuatl languages
      */
     nah("Nahuatl languages"),
 
@@ -2958,12 +2952,12 @@ public enum LanguageAlpha3Code {
     nai("North American Indian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Neapolitan_language">Neapolitan</a>
+     * Neapolitan
      */
     nap("Neapolitan"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nauruan_language">Nauru</a>
+     * Nauru
      * ({@link LanguageCode#na na}).
      */
     nau("Nauru") {
@@ -2974,7 +2968,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Navajo_language">Navajo</a>
+     * Navajo
      * ({@link LanguageCode#nv nv}).
      */
     nav("Navajo") {
@@ -3009,7 +3003,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ndonga">Ndonga</a>
+     * Ndonga
      * ({@link LanguageCode#ng ng}).
      */
     ndo("Ndonga") {
@@ -3020,12 +3014,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Low_German_language">Low German</a>
+     * Low German
      */
     nds("Low German"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nepali_language">Nepali</a> (macrolanguage)
+     * Nepali (macrolanguage)
      * ({@link LanguageCode#ne ne}).
      */
     nep("Nepali") {
@@ -3036,7 +3030,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Newari_language">Newari</a>
+     * Newari
      *
      * <p>
      * Because {@code new} is a special word for Java programming
@@ -3057,12 +3051,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Trans-New_Guinea_languages">Trans-New Guinea languages</a>
+     * Trans-New Guinea languages
      */
     ngf("Trans-New Guinea languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nias_language">Nias</a>
+     * Nias
      */
     nia("Nias"),
 
@@ -3073,12 +3067,12 @@ public enum LanguageAlpha3Code {
     nic("Niger-Kordofanian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Niuean_language">Niuean</a>
+     * Niuean
      */
     niu("Niuean"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Dutch_language">Dutch</a>
+     * Dutch
      * ({@link LanguageCode#nl nl}) for terminology applications.
      *
      * @see #dut
@@ -3103,7 +3097,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nynorsk">Norwegian Nynorsk</a>
+     * Norwegian Nynorsk
      * ({@link LanguageCode#nn nn}).
      */
     nno("Norwegian Nynorsk") {
@@ -3126,17 +3120,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nogai_language">Nogai</a>
+     * Nogai
      */
     nog("Nogai"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Old_Norse_language">Old Norse</a>
+     * Old Norse
      */
     non("Old Norse"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Norwegian_language">Norwegian</a>
+     * Norwegian
      * ({@link LanguageCode#no no}).
      */
     nor("Norwegian") {
@@ -3147,27 +3141,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/N%27Ko_language">N'Ko</a>
+     * N'Ko
      */
     nqo("N'Ko"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Pedi_language">Pedi</a>
+     * Pedi
      */
     nso("Pedi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nubian_languages">Nubian languages</a>
+     * Nubian languages
      */
     nub("Nubian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Classical_Newari_language">Classical Newari</a>
+     * Classical Newari
      */
     nwc("Classical Newari"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chichewa_language">Chichewa</a>
+     * Chichewa
      * ({@link LanguageCode#ny ny}).
      */
     nya("Nyanja") {
@@ -3178,17 +3172,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nyamwezi_language">Nyamwezi</a>
+     * Nyamwezi
      */
     nym("Nyamwezi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nyankole_language">Nyankole</a>
+     * Nyankole
      */
     nyn("Nyankole"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nyoro_language">Nyoro</a>
+     * Nyoro
      */
     nyo("Nyoro"),
 
@@ -3210,7 +3204,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ojibwe_language">Ojibwe</a>
+     * Ojibwe
      * ({@link LanguageCode#oj oj}).
      */
     oji("Ojibwa") {
@@ -3221,12 +3215,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Oto-Manguean_languages">Oto-Manguean languages</a>
+     * Oto-Manguean languages
      */
     omq("Oto-Manguean languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Omotic_languages">Omotic languages</a>
+     * Omotic languages
      */
     omv("Omotic languages"),
 
@@ -3243,7 +3237,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Oromo_language">Oromo</a>
+     * Oromo
      * ({@link LanguageCode#om om}).
      */
     orm("Oromo") {
@@ -3254,12 +3248,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Osage_language">Osage</a>
+     * Osage
      */
     osa("Osage"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ossetic_language">Ossetian</a>
+     * Ossetian
      * ({@link LanguageCode#os os}).
      */
     oss("Ossetian") {
@@ -3276,32 +3270,32 @@ public enum LanguageAlpha3Code {
     ota("Ottoman Turkish"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Otomian_languages">Otomian languages</a>
+     * Otomian languages
      */
     oto("Otomian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Papuan_languages">Papuan languages</a>
+     * Papuan languages
      */
     paa("Papuan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Pangasinan_language">Pangasinan</a>
+     * Pangasinan
      */
     pag("Pangasinan"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Pahlavi_language">Pahlavi</a>
+     * Pahlavi
      */
     pal("Pahlavi"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Pampanga_language">Pampanga</a>
+     * Pampanga
      */
     pam("Pampanga"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Punjabi_language">Punjabi</a>
+     * Punjabi
      * ({@link LanguageCode#pa pa}).
      */
     pan("Panjabi") {
@@ -3312,12 +3306,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Papiamento_language">Papiamento</a>
+     * Papiamento
      */
     pap("Papiamento"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Palauan_language">Palauan</a>
+     * Palauan
      */
     pau("Palauan"),
 
@@ -3328,7 +3322,7 @@ public enum LanguageAlpha3Code {
     peo("Old Persian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Persian_language">Persian</a>
+     * Persian
      * ({@link LanguageCode#fa fa}) for bibliographic applications.
      *
      * @see #fas
@@ -3353,22 +3347,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Philippine_languages">Philippine languages</a>
+     * Philippine languages
      */
     phi("Philippine languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Phoenician_language">Phoenician</a>
+     * Phoenician
      */
     phn("Phoenician"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Central_Malayo-Polynesian_languages">Central Malayo-Polynesian languages</a>
+     * Central Malayo-Polynesian languages
      */
     plf("Central Malayo-Polynesian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/P%C4%81li_language">P&#257;li</a>
+     * P&#257;li
      * ({@link LanguageCode#pi pi}).
      */
     pli("P\u0101li") {
@@ -3379,7 +3373,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Polish_language">Polish</a>
+     * Polish
      * ({@link LanguageCode#pl pl}).
      */
     pol("Polish") {
@@ -3390,12 +3384,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Pohnpeian_language">Pohnpeian</a>
+     * Pohnpeian
      */
     pon("Pohnpeian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Portuguese_language">Portuguese</a>
+     * Portuguese
      * ({@link LanguageCode#pt pt}).
      */
     por("Portuguese") {
@@ -3406,32 +3400,29 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Malayo-Polynesian_languages">Malayo-Polynesian languages</a>
+     * Malayo-Polynesian languages
      */
     poz("Malayo-Polynesian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Eastern_Malayo-Polynesian_languages">Eastern Malayo-Polynesian languages</a>
+     * Eastern Malayo-Polynesian languages
      */
     pqe("Eastern Malayo-Polynesian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Western_Malayo-Polynesian_languages">Western Malayo-Polynesian languages</a>
+     * Western Malayo-Polynesian languages
      */
     pqw("Western Malayo-Polynesian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Prakrit_languages">Prakrit languages</a>
+     * Prakrit languages
      */
     pra("Prakrit languages"),
 
-    /**
-     * <a href="">Old Proven&ccedil;al</a> (to 1500)
-     */
     pro("Old Proven\u00E7al"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Pashto_language">Pashto</a>
+     * Pashto
      * ({@link LanguageCode#ps ps}).
      */
     pus("Pushto") {
@@ -3442,7 +3433,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Quechua_language">Quechua</a>
+     * Quechua
      * ({@link LanguageCode#qu qu}).
      */
     que("Quechua") {
@@ -3453,32 +3444,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Quechuan_language">Quechuan</a> (family)
+     * Quechuan (family)
      */
     qwe("Quechuan (family)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Rajasthani_language">Rajasthani</a>
+     * Rajasthani
      */
     raj("Rajasthani"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Rapanui_language">Rapanui</a>
+     * Rapanui
      */
     rap("Rapanui"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Rarotongan_language">Rarotongan</a>
+     * Rarotongan
      */
     rar("Rarotongan"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Romance_languages">Romance languages</a>
+     * Romance languages
      */
     roa("Romance languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Romansh_language">Romansh</a>
+     * Romansh
      * ({@link LanguageCode#rm rm})
      */
     roh("Romansh") {
@@ -3489,12 +3480,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Romany_language">Romany</a>
+     * Romany
      */
     rom("Romany"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Romanian_language">Romanian</a>
+     * Romanian
      * ({@link LanguageCode#ro ro}) for terminology applications.
      *
      * @see #rum
@@ -3519,7 +3510,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Romanian_language">Romanian</a>
+     * Romanian
      * ({@link LanguageCode#ro ro}) for bibliographic applications.
      *
      * @see #ron
@@ -3544,7 +3535,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kirundi">Kirundi</a>
+     * Kirundi
      * ({@link LanguageCode#rn rn}).
      */
     run("Kirundi") {
@@ -3555,12 +3546,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Macedo-Romanian_language">Macedo-Romanian</a>
+     * Macedo-Romanian
      */
     rup("Macedo-Romanian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Russian_language">Russian</a>
+     * Russian
      * ({@link LanguageCode#ru ru}).
      */
     rus("Russian") {
@@ -3571,12 +3562,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sango_language">Sango</a>
+     * Sango
      */
     sad("Sango"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sango_language">Sango</a>
+     * Sango
      * ({@link LanguageCode#sg sg}).
      */
     sag("Sango") {
@@ -3587,27 +3578,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Yakut_language">Yakut</a>
+     * Yakut
      */
     sah("Yakut"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/South_American_Indian_languages">South American Indian languages</a>
+     * South American Indian languages
      */
     sai("South American Indian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Salishan_languages">Salishan languages</a>
+     * Salishan languages
      */
     sal("Salishan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Samaritan_Aramaic_language">Samaritan Aramaic</a>
+     * Samaritan Aramaic
      */
     sam("Samaritan Aramaic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sanskrit">Sanskrit</a>
+     * Sanskrit
      * ({@link LanguageCode#sa sa}).
      */
     san("Sanskrit") {
@@ -3618,37 +3609,37 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sasak_language">Sasak</a>
+     * Sasak
      */
     sas("Sasak"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Santali_language">Santali</a>
+     * Santali
      */
     sat("Santali"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sicilian_language">Sicilian</a>
+     * Sicilian
      */
     scn("Sicilian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Scots_language">Scots</a>
+     * Scots
      */
     sco("Scots"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Eastern_Sudanic_languages">Eastern Sudanic languages</a>
+     * Eastern Sudanic languages
      */
     sdv("Eastern Sudanic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Selkup_language">Selkup</a>
+     * Selkup
      */
     sel("Selkup"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Semitic_languages">Semitic languages</a>
+     * Semitic languages
      */
     sem("Semitic languages"),
 
@@ -3659,22 +3650,22 @@ public enum LanguageAlpha3Code {
     sga("Old Irish"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sign_languages">Sign languages</a>
+     * Sign languages
      */
     sgn("Sign languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Shan_language">Shan</a>
+     * Shan
      */
     shn("Shan"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sidamo_language">Sidamo</a>
+     * Sidamo
      */
     sid("Sidamo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sinhala_language">Sinhala</a>
+     * Sinhala
      * ({@link LanguageCode#si si}).
      */
     sin("Sinhala") {
@@ -3685,22 +3676,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Siouan_languages">Siouan languages</a>
+     * Siouan languages
      */
     sio("Siouan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sino-Tibetan_languages">Sino-Tibetan languages</a>
+     * Sino-Tibetan languages
      */
     sit("Sino-Tibetan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Slavic_languages">Slavic languages</a>
+     * Slavic languages
      */
     sla("Slavic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Slovak_language">Slovak</a>
+     * Slovak
      * ({@link LanguageCode#sk sk}) for terminology aplications.
      *
      * @see #slo
@@ -3725,7 +3716,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Slovak_language">Slovak</a>
+     * Slovak
      * ({@link LanguageCode#sk sk}) for bibliographic aplications.
      *
      * @see #slk
@@ -3750,7 +3741,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Slovene_language">Slovene</a>
+     * Slovene
      * ({@link LanguageCode#sl sl}).
      */
     slv("Slovene") {
@@ -3761,12 +3752,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Southern_Sami_language">Southern Sami</a>
+     * Southern Sami
      */
     sma("Southern Sami"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Northern_Sami">Northern Sami</a>
+     * Northern Sami
      * ({@link LanguageCode#se se}).
      */
     sme("Northern Sami") {
@@ -3777,22 +3768,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sami_languages">Sami languages</a>
+     * Sami languages
      */
     smi("Sami languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Lule_Sami_language">Lule Sami</a>
+     * Lule Sami
      */
     smj("Lule Sami"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Inari_Sami_language">Inari Sami</a>
+     * Inari Sami
      */
     smn("Inari Sami"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Samoan_language">Samoan</a>
+     * Samoan
      * ({@link LanguageCode#sm sm}).
      */
     smo("Samoan") {
@@ -3803,12 +3794,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Skolt_Sami_language">Skolt Sami</a>
+     * Skolt Sami
      */
     sms("Skolt Sami"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Shona_language">Shona</a>
+     * Shona
      * ({@link LanguageCode#sn sn}).
      */
     sna("Shona") {
@@ -3819,7 +3810,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sindhi_language">Sindhi</a>
+     * Sindhi
      * ({@link LanguageCode#sd sd}).
      */
     snd("Sindhi") {
@@ -3830,17 +3821,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Soninke_language">Soninke</a>
+     * Soninke
      */
     snk("Soninke"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sogdian_language">Sogdian</a>
+     * Sogdian
      */
     sog("Sogdian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Somali_language">Somali</a>
+     * Somali
      * ({@link LanguageCode#so so}).
      */
     som("Somali") {
@@ -3851,12 +3842,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Songhai_languages">Songhai languages</a>
+     * Songhai languages
      */
     son("Songhai languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sotho_language">Southern Sotho</a>
+     * Southern Sotho
      * ({@link LanguageCode#st st}).
      */
     sot("Southern Sotho") {
@@ -3867,7 +3858,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Spanish_language">Spanish</a>
+     * Spanish
      * ({@link LanguageCode#es es}).
      */
     spa("Spanish") {
@@ -3878,7 +3869,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Albanian_language">Albanian</a>
+     * Albanian
      * ({@link LanguageCode#sq sq}) for terminology applications.
      *
      * @see #alb
@@ -3903,12 +3894,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Albanian_languages">Albanian languages</a>
+     * Albanian languages
      */
     sqj("Albanian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sardinian_language">Sardinian</a>
+     * Sardinian
      * ({@link LanguageCode#sc sc}).
      */
     srd("Sardinian") {
@@ -3919,12 +3910,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sranan_Tongo_language">Sranan Tongo</a>
+     * Sranan Tongo
      */
     srn("Sranan Tongo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Serbian_language">Serbian</a>
+     * Serbian
      * ({@link LanguageCode#sr sr}).
      */
     srp("Serbian") {
@@ -3935,17 +3926,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Serer_language">Serer</a>
+     * Serer
      */
     srr("Serer"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Nilo-Saharan_languages">Nilo-Saharan languages</a>
+     * Nilo-Saharan languages
      */
     ssa("Nilo-Saharan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Swati_language">Swati</a>
+     * Swati
      * ({@link LanguageCode#ss ss}).
      */
     ssw("Swati") {
@@ -3956,12 +3947,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sukuma_language">Sukuma</a>
+     * Sukuma
      */
     suk("Sukuma"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sundanese_language">Sundanese</a>
+     * Sundanese
      * ({@link LanguageCode#su su}).
      */
     sun("Sundanese") {
@@ -3972,12 +3963,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Susu_language">Susu</a>
+     * Susu
      */
     sus("Susu"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sumerian_language">Sumerian</a>
+     * Sumerian
      */
     sux("Sumerian"),
 
@@ -3994,7 +3985,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Swedish_language">Swedish</a>
+     * Swedish
      * ({@link LanguageCode#sv sv}).
      */
     swe("Swedish") {
@@ -4005,22 +3996,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Classical_Syriac_language">Classical Syriac</a>
+     * Classical Syriac
      */
     syc("Classical Syriac"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Samoyedic_languages">Samoyedic languages</a>
+     * Samoyedic languages
      */
     syd("Samoyedic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Syriac_language">Syriac</a>
+     * Syriac
      */
     syr("Syriac"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tahitian_language">Tahitian</a>
+     * Tahitian
      * ({@link LanguageCode#ty ty}).
      */
     tah("Tahitian") {
@@ -4031,12 +4022,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tai_languages">Tai languages</a>
+     * Tai languages
      */
     tai("Tai languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tamil_language">Tamil</a>
+     * Tamil
      * ({@link LanguageCode#ta ta}).
      */
     tam("Tamil") {
@@ -4047,7 +4038,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tatar_language">Tatar</a>
+     * Tatar
      * ({@link LanguageCode#tt tt}).
      */
     tat("Tatar") {
@@ -4058,12 +4049,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tibeto-Burman_languages">Tibeto-Burman languages</a>
+     * Tibeto-Burman languages
      */
     tbq("Tibeto-Burman languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Telugu_language">Telugu</a>
+     * Telugu
      * ({@link LanguageCode#te te}).
      */
     tel("Telugu") {
@@ -4074,22 +4065,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Timne_language">Timne</a>
+     * Timne
      */
     tem("Timne"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tereno_language">Tereno</a>
+     * Tereno
      */
     ter("Tereno"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tetum_language">Tetum</a>
+     * Tetum
      */
     tet("Tetum"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tajik_language">Tajik</a>
+     * Tajik
      * ({@link LanguageCode#tg tg}).
      */
     tgk("Tajik") {
@@ -4100,7 +4091,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tagalog_language">Tagalog</a>
+     * Tagalog
      * ({@link LanguageCode#tl tl}).
      */
     tgl("Tagalog") {
@@ -4111,7 +4102,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Thai_language">Thai</a>
+     * Thai
      * ({@link LanguageCode#th th}).
      */
     tha("Thai") {
@@ -4122,7 +4113,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Standard_Tibetan">Tibetan</a>
+     * Tibetan
      * ({@link LanguageCode#bo bo}) for terminology applications.
      *
      * @see #bod
@@ -4147,12 +4138,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tigre_language">Tigre</a>
+     * Tigre
      */
     tig("Tigre"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tigrinya_language">Tigrinya</a>
+     * Tigrinya
      * ({@link LanguageCode#ti ti}).
      */
     tir("Tigrinya") {
@@ -4163,37 +4154,37 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tiv_language">Tiv</a>
+     * Tiv
      */
     tiv("Tiv"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tokelau_language">Tokelau</a>
+     * Tokelau
      */
     tkl("Tokelau"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Klingon_language">Klingon</a>
+     * Klingon
      */
     tlh("Klingon"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tlingit_language">Tlingit</a>
+     * Tlingit
      */
     tli("Tlingit"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tamashek_language">Tamashek</a>
+     * Tamashek
      */
     tmh("Tamashek"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tonga_language_(Nyasa)">Tonga (Nyasa)</a>
+     * Tonga (Nyasa)
      */
     tog("Tonga (Nyasa)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tonga_language_(Tonga_Islands)">Tonga (Tonga Islands)</a>
+     * Tonga (Tonga Islands)
      * ({@link LanguageCode#to to}).
      */
     ton("Tonga (Tonga Islands)") {
@@ -4204,22 +4195,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tok_Pisin_language">Tok Pisin</a>
+     * Tok Pisin
      */
     tpi("Tok Pisin"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Turkic_languages">Turkic languages</a>
+     * Turkic languages
      */
     trk("Turkic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tsimshian_language">Tsimshian</a>
+     * Tsimshian
      */
     tsi("Tsimshian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tswana_language">Tswana</a>
+     * Tswana
      * ({@link LanguageCode#tn tn}).
      */
     tsn("Tswana") {
@@ -4230,7 +4221,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tsonga_language">Tsonga</a>
+     * Tsonga
      * ({@link LanguageCode#ts ts}).
      */
     tso("Tsonga") {
@@ -4241,7 +4232,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Turkmen_language">Turkmen</a>
+     * Turkmen
      * ({@link LanguageCode#tk tk}).
      */
     tuk("Turkmen") {
@@ -4252,17 +4243,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tumbuka_language">Tumbuka</a>
+     * Tumbuka
      */
     tum("Tumbuka"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tupi_languages">Tupi languages</a>
+     * Tupi languages
      */
     tup("Tupi languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Turkish_language">Turkish</a>
+     * Turkish
      * ({@link LanguageCode#tr tr}).
      */
     tur("Turkish") {
@@ -4273,22 +4264,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Altaic_languages">Altaic languages</a>
+     * Altaic languages
      */
     tut("Altaic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tungus_languages">Tungus languages</a>
+     * Tungus languages
      */
     tuw("Tungus languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tuvalu_language">Tuvalu</a>
+     * Tuvalu
      */
     tvl("Tuvalu"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Twi">Twi</a>
+     * Twi
      * ({@link LanguageCode#tw tw}).
      */
     twi("Twi") {
@@ -4299,22 +4290,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Tuvinian_language">Tuvinian</a>
+     * Tuvinian
      */
     tyv("Tuvinian"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Udmurt_language">Udmurt</a>
+     * Udmurt
      */
     udm("Udmurt"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ugaritic_language">Ugaritic</a>
+     * Ugaritic
      */
     uga("Ugaritic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Uyghur_language">Uighur</a>
+     * Uighur
      * ({@link LanguageCode#ug ug}).
      */
     uig("Uighur") {
@@ -4325,7 +4316,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Ukrainian_language">Ukrainian</a>
+     * Ukrainian
      * ({@link LanguageCode#uk uk}).
      */
     ukr("Ukrainian") {
@@ -4336,7 +4327,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Umbundu_language">Umbundu</a>
+     * Umbundu
      */
     umb("Umbundu"),
 
@@ -4346,7 +4337,7 @@ public enum LanguageAlpha3Code {
     und("Undetermined"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Urdu">Urdu</a>
+     * Urdu
      * ({@link LanguageCode#ur ur}).
      */
     urd("Urdu") {
@@ -4357,12 +4348,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Uralic_languages">Uralic languages</a>
+     * Uralic languages
      */
     urj("Uralic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Uzbek_language">Uzbek</a>
+     * Uzbek
      * ({@link LanguageCode#uz uz}).
      */
     uzb("Uzbek") {
@@ -4373,12 +4364,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Vai_language">Vai</a>
+     * Vai
      */
     vai("Vai"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Venda_language">Venda</a>
+     * Venda
      * ({@link LanguageCode#ve ve}).
      */
     ven("Venda") {
@@ -4389,7 +4380,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Vietnamese_language">Vietnamese</a>
+     * Vietnamese
      * ({@link LanguageCode#vi vi}).
      */
     vie("Vietnamese") {
@@ -4400,7 +4391,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Volap%C3%BCk">Volap&uuml;k</a>
+     * Volap&uuml;k
      * ({@link LanguageCode#vo vo}).
      */
     vol("Volap\u00FCk") {
@@ -4411,32 +4402,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Votic_language">Votic</a>
+     * Votic
      */
     vot("Votic"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Wakashan_languages">Wakashan languages</a>
+     * Wakashan languages
      */
     wak("Wakashan languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Wolaytta_language">Wolaytta</a>
+     * Wolaytta
      */
     wal("Wolaytta"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Waray_language_(Philippines)">Waray (Philippines)</a>
+     * Waray (Philippines)
      */
     war("Waray (Philippines)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Washo_language">Washo</a>
+     * Washo
      */
     was("Washo"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Welsh_language">Welsh</a>
+     * Welsh
      * ({@link LanguageCode#cy cy}) for bibliographic applications.
      *
      * @see #cym
@@ -4461,12 +4452,12 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Sorbian_languages">Sorbian languages</a>
+     * Sorbian languages
      */
     wen("Sorbian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Walloon_language">Walloon</a>
+     * Walloon
      * ({@link LanguageCode#wa wa}).
      */
     wln("Walloon") {
@@ -4477,7 +4468,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Wolof_language">Wolof</a>
+     * Wolof
      * ({@link LanguageCode#wo wo}).
      */
     wol("Wolof") {
@@ -4488,17 +4479,17 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Kalmyk_language">Kalmyk</a>
+     * Kalmyk
      */
     xal("Kalmyk"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Mongolian_languages">Mongolian languages</a>
+     * Mongolian languages
      */
     xgn("Mongolian languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Xhosa_language">Xhosa</a>
+     * Xhosa
      * ({@link LanguageCode#xh xh}).
      */
     xho("Xhosa") {
@@ -4509,22 +4500,22 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Na-Dene_languages">Na-Dene languages</a>
+     * Na-Dene languages
      */
     xnd("Na-Dene languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Yao_language">Yao</a>
+     * Yao
      */
     yao("Yao"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Yapese_language">Yapese</a>
+     * Yapese
      */
     yap("Yapese"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Yiddish_language">Yiddish</a>
+     * Yiddish
      * ({@link LanguageCode#yi yi}).
      */
     yid("Yiddish") {
@@ -4535,7 +4526,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Yoruba_language">Yoruba</a>
+     * Yoruba
      * ({@link LanguageCode#yo yo}).
      */
     yor("Yoruba") {
@@ -4546,27 +4537,27 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Yupik_languages">Yupik languages</a>
+     * Yupik languages
      */
     ypk("Yupik languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zapotec_language">Zapotec</a>
+     * Zapotec
      */
     zap("Zapotec"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Blissymbols_language">Blissymbols</a>
+     * Blissymbols
      */
     zbl("Blissymbols"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zenaga_language">Zenaga</a>
+     * Zenaga
      */
     zen("Zenaga"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zhuang_languages">Zhuang</a>
+     * Zhuang
      * ({@link LanguageCode#za za}).
      */
     zha("Zhuang") {
@@ -4577,7 +4568,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chinese_language">Chinese</a>
+     * Chinese
      * ({@link LanguageCode#zh zh}) for terminology applications.
      *
      * @see #chi
@@ -4602,32 +4593,32 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Chinese_language">Chinese</a> (family)
+     * Chinese (family)
      */
     zhx("Chinese (family)"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/East_Slavic_languages">East Slavic languages</a>
+     * East Slavic languages
      */
     zle("East Slavic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/South_Slavic_languages">South Slavic languages</a>
+     * South Slavic languages
      */
     zls("South Slavic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/West_Slavic_languages">West Slavic languages</a>
+     * West Slavic languages
      */
     zlw("West Slavic languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zande_languages">Zande languages</a>
+     * Zande languages
      */
     znd("Zande languages"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zulu_language">Zulu</a>
+     * Zulu
      * ({@link LanguageCode#zu zu}).
      */
     zul("Zulu") {
@@ -4638,7 +4629,7 @@ public enum LanguageAlpha3Code {
     },
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zuni_language">Zuni</a>
+     * Zuni
      */
     zun("Zuni"),
 
@@ -4648,7 +4639,7 @@ public enum LanguageAlpha3Code {
     zxx("No linguistic content"),
 
     /**
-     * <a href="http://en.wikipedia.org/wiki/Zaza_language">Zaza</a>
+     * Zaza
      */
     zza("Zaza");
 
@@ -4665,9 +4656,9 @@ public enum LanguageAlpha3Code {
 
     /**
      * Get a {@code LanguageAlpha3Code} that corresponds to a given
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> code
+     * ISO 639-1 code
      * (2-letter lowercase code) or
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a> code
+     * ISO 639-2 code
      * (3-letter lowercase code).
      *
      * <p>
@@ -4676,18 +4667,18 @@ public enum LanguageAlpha3Code {
      * this method was an alias of {@code getByCode(code, false)}.
      * </p>
      *
-     * @param code An <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * @param code An ISO 639-1
      *             code (2-letter lowercase code) or an
-     *             <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     *             ISO 639-2
      *             code (3-letter lowercase code). Or "undefined".
      *             Note that if the given code is one of legacy language codes
      *             ("iw", "ji" and "in"), it is treated as its official counterpart
      *             ("he", "yi" and "id"), respectively. For example, if "in" is
      *             given, this method returns {@link #ind LanguageAlpha3Code.ind}.
      * @return A {@code LanguageAlpha3Code} instance, or {@code null} if not found.
-     * If <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * If ISO 639-1
      * code (2-letter code) is given and the language has two
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     * ISO 639-2
      * codes, ISO 639/T code ("terminological" code) is returned.
      */
     public static LanguageAlpha3Code getByCode(String code) {
@@ -4696,27 +4687,27 @@ public enum LanguageAlpha3Code {
 
     /**
      * Get a {@code LanguageAlpha3Code} that corresponds to a given
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> code
+     * ISO 639-1 code
      * (2-letter lowercase code) or
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a> code
+     * ISO 639-2 code
      * (3-letter lowercase code).
      *
      * <p>
      * This method calls {@link #getByCode(String, boolean) getByCode}{@code (code, false)}.
      * </p>
      *
-     * @param code An <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * @param code An ISO 639-1
      *             code (2-letter lowercase code) or an
-     *             <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     *             ISO 639-2
      *             code (3-letter lowercase code). Or "undefined" (case insensitive).
      *             Note that if the given code is one of legacy language codes
      *             ("iw", "ji" and "in"), it is treated as its official counterpart
      *             ("he", "yi" and "id"), respectively. For example, if "in" is
      *             given, this method returns {@link #ind LanguageAlpha3Code.ind}.
      * @return A {@code LanguageAlpha3Code} instance, or {@code null} if not found.
-     * If <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * If ISO 639-1
      * code (2-letter code) is given and the language has two
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     * ISO 639-2
      * codes, ISO 639/T code ("terminological" code) is returned.
      */
     public static LanguageAlpha3Code getByCodeIgnoreCase(String code) {
@@ -4725,14 +4716,14 @@ public enum LanguageAlpha3Code {
 
     /**
      * Get a {@code LanguageAlpha3Code} that corresponds to a given
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a> code
+     * ISO 639-1 code
      * (2-letter lowercase code) or
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a> code
+     * ISO 639-2 code
      * (3-letter lowercase code).
      *
-     * @param code          An <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * @param code          An ISO 639-1
      *                      code (2-letter lowercase code) or an
-     *                      <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     *                      ISO 639-2
      *                      code (3-letter lowercase code). Or "undefined" (its case
      *                      sensitivity depends on the value of {@code caseSensitive}).
      *                      Note that if the given code is one of legacy language codes
@@ -4749,9 +4740,9 @@ public enum LanguageAlpha3Code {
      *                      As an exceptional case, both {@code getByCode("New", true)} and
      *                      {@code getByCode("new", true)} return {@link #New} (Newari).
      * @return A {@code LanguageAlpha3Code} instance, or {@code null} if not found.
-     * If <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * If ISO 639-1
      * code (2-letter code) is given and the language has two
-     * <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     * ISO 639-2
      * codes, ISO 639/T code ("terminological" code) is returned.
      */
     public static LanguageAlpha3Code getByCode(String code, boolean caseSensitive) {
@@ -4891,10 +4882,10 @@ public enum LanguageAlpha3Code {
     }
 
     /**
-     * Get <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * Get ISO 639-1
      * language code.
      *
-     * @return <a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>
+     * @return ISO 639-1
      * language code. This method may return {@code null}.
      */
     public LanguageCode getAlpha2() {
@@ -4926,7 +4917,7 @@ public enum LanguageAlpha3Code {
      * {@link #ger LanguageAlpha3Code.ger}.
      * </p>
      *
-     * @return <a href="http://en.wikipedia.org/wiki/ISO_639-2">ISO 639-2</a>
+     * @return ISO 639-2
      * language code.
      */
     public LanguageAlpha3Code getSynonym() {
