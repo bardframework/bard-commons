@@ -18,10 +18,5 @@
             <groupId>org.bardframework.commons</groupId>
             <artifactId>common-utils</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.bardframework.commons</groupId>
-            <artifactId>common-web</artifactId>
-        </dependency>
     </dependencies>
-
 </project>

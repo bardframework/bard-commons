@@ -12,6 +12,10 @@
     <artifactId>common-utils-persian</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.bardframework.commons</groupId>
@@ -26,5 +30,4 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
     </dependencies>
-
 </project>

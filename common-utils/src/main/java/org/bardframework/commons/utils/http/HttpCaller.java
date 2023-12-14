@@ -1,5 +1,7 @@
-package org.bardframework.commons.web.http;
+package org.bardframework.commons.utils.http;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -8,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
+@Getter
+@Setter
 public class HttpCaller {
 
     protected final String httpMethod;
@@ -41,61 +45,5 @@ public class HttpCaller {
             log.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getResponseCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
         }
         return callResult;
-    }
-
-    public String getHttpMethod() {
-        return httpMethod;
-    }
-
-    public String getUrlTemplate() {
-        return urlTemplate;
-    }
-
-    public String getBodyTemplate() {
-        return bodyTemplate;
-    }
-
-    public void setBodyTemplate(String bodyTemplate) {
-        this.bodyTemplate = bodyTemplate;
-    }
-
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
-    }
-
-    public int getConnectTimeoutSeconds() {
-        return connectTimeoutSeconds;
-    }
-
-    public void setConnectTimeoutSeconds(int connectTimeoutSeconds) {
-        this.connectTimeoutSeconds = connectTimeoutSeconds;
-    }
-
-    public int getReadTimeoutSeconds() {
-        return readTimeoutSeconds;
-    }
-
-    public void setReadTimeoutSeconds(int readTimeoutSeconds) {
-        this.readTimeoutSeconds = readTimeoutSeconds;
-    }
-
-    public boolean isLogResponse() {
-        return logResponse;
-    }
-
-    public void setLogResponse(boolean logResponse) {
-        this.logResponse = logResponse;
-    }
-
-    public boolean isDisable() {
-        return disable;
-    }
-
-    public void setDisable(boolean disable) {
-        this.disable = disable;
     }
 }

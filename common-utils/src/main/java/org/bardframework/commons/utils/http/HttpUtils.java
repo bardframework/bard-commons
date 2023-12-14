@@ -1,4 +1,4 @@
-package org.bardframework.commons.web.http;
+package org.bardframework.commons.utils.http;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
