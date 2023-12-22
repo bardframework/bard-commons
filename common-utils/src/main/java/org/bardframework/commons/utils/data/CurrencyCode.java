@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * Currency code (ISO 4217).
  * <p>
- * The initial entries in this enum was created based on
+ * The initial entries in this enum were created based on
  * <a href="http://www.currency-iso.org/en/home/tables/table-a1.html"
  * >the official currency &amp; funds code list</a> (ISO 4217) of January 1, 2014.
  */
