@@ -1,28 +1,35 @@
 package org.bardframework.commons.spring.boot;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.bardframework.commons.web.cors.CorsFilter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 
 import java.util.List;
 
+@ConfigurationProperties(prefix = "bard.web.cors")
+@Getter
+@Setter
 public class CorsConfiguration {
-    private final CorsFilter corsFilter;
 
-    public CorsConfiguration(List<String> corsMapping, List<String> corsAllowedOrigins, List<String> corsAllowedMethods, List<String> corsAllowedHeaders, List<String> corsExposedHeaders, boolean corsAllowCredentials, int corsMaxAge) {
-        this.corsFilter = new CorsFilter(corsMapping, corsAllowedOrigins, corsAllowedMethods, corsAllowedHeaders, corsExposedHeaders, corsAllowCredentials, corsMaxAge);
-    }
+    private List<String> mapping;
+    private List<String> allowedOrigins;
+    private List<String> allowedMethods;
+    private List<String> allowedHeaders;
+    private List<String> exposedHeaders;
+    private boolean allowCredentials;
+    private int maxAgeSecond;
 
-    public CorsFilter getCorsFilter() {
-        return corsFilter;
-    }
-
+    @ConditionalOnProperty(value = "bard.web.cors.enabled", havingValue = "true")
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilterRegistrationBean() {
-        FilterRegistrationBean<CorsFilter> registrationBean = new FilterRegistrationBean<>(this.getCorsFilter());
+        CorsFilter corsFilter = new CorsFilter(mapping, allowedOrigins, allowedMethods, allowedHeaders, exposedHeaders, allowCredentials, maxAgeSecond);
+        FilterRegistrationBean<CorsFilter> registrationBean = new FilterRegistrationBean<>(corsFilter);
         registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
         return registrationBean;
     }
-
 }

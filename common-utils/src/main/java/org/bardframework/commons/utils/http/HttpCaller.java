@@ -28,21 +28,21 @@ public class HttpCaller {
         this.urlTemplate = urlTemplate;
     }
 
-    public HttpCallResult call(Map<String, String> args) throws IOException {
+    public HttpCallResponse call(Map<String, String> args) throws IOException {
         return this.call(this.getHeaders(), args);
     }
 
     /**
      * call with custom headers
      */
-    public HttpCallResult call(Map<String, String> headers, Map<String, String> args) throws IOException {
+    public HttpCallResponse call(Map<String, String> headers, Map<String, String> args) throws IOException {
         if (this.isDisable()) {
             log.error("[{}] is disable.", this.getClass().getSimpleName());
-            return new HttpCallResult(-1, new byte[0], true);
+            return new HttpCallResponse(-1, new byte[0], new byte[0], Map.of());
         }
-        HttpCallResult callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, args);
+        HttpCallResponse callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, args);
         if (this.isLogResponse()) {
-            log.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getResponseCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
+            log.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getStatusCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
         }
         return callResult;
     }

@@ -2,7 +2,7 @@ package org.bardframework.commons.sms;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.bardframework.commons.utils.http.HttpCallResult;
+import org.bardframework.commons.utils.http.HttpCallResponse;
 import org.bardframework.commons.utils.http.HttpCaller;
 
 import java.io.IOException;
@@ -24,13 +24,13 @@ public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     public final boolean send(Map<String, String> args) throws IOException {
         String receiverNumberForLog = StringUtils.overlay(args.get("to"), "*", 4, args.get("to").length() - 4);
         log.info("try sending sms to: {}", receiverNumberForLog);
-        HttpCallResult callResult = this.call(this.prepareHeadersForSend(), args);
-        log.info("http status of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getResponseCode());
+        HttpCallResponse callResult = this.call(this.prepareHeadersForSend(), args);
+        log.info("http status of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getStatusCode());
         return this.isSuccess(callResult, receiverNumberForLog, args);
     }
 
-    protected boolean isSuccess(HttpCallResult result, String receiverNumberForLog, Map<String, String> args) throws IOException {
-        if (result.isError()) {
+    protected boolean isSuccess(HttpCallResponse result, String receiverNumberForLog, Map<String, String> args) throws IOException {
+        if (null != result.getError()) {
             return false;
         }
         String body = new String(result.getBody(), StandardCharsets.UTF_8);

@@ -3,8 +3,10 @@ package org.bardframework.commons.web.cors;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
@@ -16,9 +18,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Getter
 public class CorsFilter implements Filter {
 
-    private final RequestMatcher corsRequestMatchers;
+    private final RequestMatcher corsRequestMatcher;
     private final AntPathMatcher antPathMatcher;
     private List<String> allowedOrigins;
     private List<String> allowedMethods;
@@ -28,7 +31,7 @@ public class CorsFilter implements Filter {
     private int maxAge;
 
     public CorsFilter(List<String> corsMapping) {
-        this.corsRequestMatchers = new OrRequestMatcher(corsMapping.stream().map(AntPathRequestMatcher::new).collect(Collectors.toList()));
+        this.corsRequestMatcher = new OrRequestMatcher(corsMapping.stream().map(AntPathRequestMatcher::new).collect(Collectors.toList()));
         this.antPathMatcher = new AntPathMatcher();
         this.antPathMatcher.setTrimTokens(false);
         this.antPathMatcher.setCaseSensitive(false);
@@ -48,28 +51,28 @@ public class CorsFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        String origin = request.getHeader("Origin");
-        if (StringUtils.isBlank(origin) || !this.getCorsRequestMatchers().matches(request)) {
+        String origin = request.getHeader(HttpHeaders.ORIGIN);
+        if (StringUtils.isBlank(origin) || !this.getCorsRequestMatcher().matches(request)) {
             chain.doFilter(request, response);
             return;
         }
         if (this.isAllowedOrigin(origin)) {
-            response.setHeader("Access-Control-Allow-Origin", origin);
+            response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, origin);
         }
         if (null != this.getAllowedMethods()) {
-            response.setHeader("Access-Control-Allow-Methods", String.join(",", this.getAllowedMethods()));
+            response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, String.join(",", this.getAllowedMethods()));
         }
         if (0 < this.getMaxAge()) {
-            response.setHeader("Access-Control-Max-Age", String.valueOf(this.getMaxAge()));
+            response.setHeader(HttpHeaders.ACCESS_CONTROL_MAX_AGE, String.valueOf(this.getMaxAge()));
         }
         if (null != this.getAllowedHeaders()) {
-            response.setHeader("Access-Control-Allow-Headers", String.join(",", this.getAllowedHeaders()));
+            response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, String.join(",", this.getAllowedHeaders()));
         }
         if (this.isAllowedCredentials()) {
-            response.setHeader("Access-Control-Allow-Credentials", "true");
+            response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
         }
         if (null != this.getExposedHeaders()) {
-            response.addHeader("Access-Control-Expose-Headers", String.join(",", this.getExposedHeaders()));
+            response.addHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, String.join(",", this.getExposedHeaders()));
         }
         if (HttpMethod.OPTIONS.matches(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
@@ -80,37 +83,5 @@ public class CorsFilter implements Filter {
 
     private boolean isAllowedOrigin(String origin) {
         return this.getAllowedOrigins().stream().anyMatch(allowedOrigin -> this.getAntPathMatcher().match(allowedOrigin, origin));
-    }
-
-    public RequestMatcher getCorsRequestMatchers() {
-        return corsRequestMatchers;
-    }
-
-    public List<String> getAllowedOrigins() {
-        return allowedOrigins;
-    }
-
-    public List<String> getAllowedMethods() {
-        return allowedMethods;
-    }
-
-    public List<String> getAllowedHeaders() {
-        return allowedHeaders;
-    }
-
-    public boolean isAllowedCredentials() {
-        return allowedCredentials;
-    }
-
-    public List<String> getExposedHeaders() {
-        return exposedHeaders;
-    }
-
-    public int getMaxAge() {
-        return maxAge;
-    }
-
-    public AntPathMatcher getAntPathMatcher() {
-        return antPathMatcher;
     }
 }

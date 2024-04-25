@@ -1,6 +1,7 @@
 package org.bardframework.commons.redis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -18,7 +19,7 @@ public class DataManagerRedisImpl implements DataManager {
     /**
      * must not failed on unknown properties
      */
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     public DataManagerRedisImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;

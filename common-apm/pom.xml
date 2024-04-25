@@ -9,25 +9,22 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>common-utils-persian</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>common-apm</artifactId>
 
-    <properties>
-        <maven.compiler.release>11</maven.compiler.release>
-    </properties>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>org.bardframework.commons</groupId>
-            <artifactId>common-utils</artifactId>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.bardframework</groupId>
-            <artifactId>jalali-date</artifactId>
+            <groupId>co.elastic.apm</groupId>
+            <artifactId>apm-agent-attach</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 </project>
