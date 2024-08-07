@@ -1,5 +1,8 @@
 package org.bardframework.commons.captcha;
 
+import lombok.Getter;
+
+@Getter
 public class GeneratedCaptcha {
     private final String value;
     private final byte[] image;
@@ -9,11 +12,4 @@ public class GeneratedCaptcha {
         this.image = image;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
 }

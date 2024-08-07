@@ -2,6 +2,7 @@ package org.bardframework.commons.waf;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.bardframework.commons.waf.exception.CallLimitExceedException;
 import org.bardframework.commons.waf.extractor.RequestKeyDetector;
@@ -14,6 +15,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
+@Getter
 public class RequestLimitChecker {
 
     private static final String PREFIX = "CALL_LIMITER_";
@@ -78,15 +80,4 @@ public class RequestLimitChecker {
         this.whiteList = new HashSet<>(List.of(whiteList));
     }
 
-    public int getLimit() {
-        return limit;
-    }
-
-    public int getPeriod() {
-        return period;
-    }
-
-    public TimeUnit getPeriodUnit() {
-        return periodUnit;
-    }
 }

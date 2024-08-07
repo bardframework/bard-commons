@@ -1,5 +1,6 @@
 package org.bardframework.commons.security.token.manager;
 
+import lombok.Getter;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Implements simple token manager, that keeps a single token for each user. If user logs in again,
  * older token is invalidated.
  */
+@Getter
 public abstract class TokenManagerInMemory<T extends Token> implements TokenManager<T> {
 
     protected final Map<String, T> tokensMap = new ConcurrentHashMap<>();
@@ -45,14 +47,6 @@ public abstract class TokenManagerInMemory<T extends Token> implements TokenMana
             return null;
         }
         return tokenInfo;
-    }
-
-    public long getTokenExpirationMills() {
-        return tokenExpirationMills;
-    }
-
-    public Map<String, T> getTokensMap() {
-        return tokensMap;
     }
 
     /**

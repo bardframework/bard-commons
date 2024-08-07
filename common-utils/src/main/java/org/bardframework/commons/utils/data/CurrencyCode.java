@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils.data;
 
+import lombok.Getter;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -10,6 +12,7 @@ import java.util.regex.Pattern;
  * <a href="http://www.currency-iso.org/en/home/tables/table-a1.html"
  * >the official currency &amp; funds code list</a> (ISO 4217) of January 1, 2014.
  */
+@Getter
 public enum CurrencyCode {
     /**
      * Undefined.
@@ -2588,7 +2591,6 @@ public enum CurrencyCode {
     public List<CountryCode> getCountryList() {
         return countryList;
     }
-
     /**
      * Check if this currency code represents a fund.
      *

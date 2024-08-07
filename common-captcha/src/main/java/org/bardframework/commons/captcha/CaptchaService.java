@@ -1,5 +1,7 @@
 package org.bardframework.commons.captcha;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +15,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Setter
+@Getter
 public class CaptchaService {
 
     private final Random random = new Random();
@@ -120,11 +124,4 @@ public class CaptchaService {
         return new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
     }
 
-    public Map<CaptchaType, CaptchaTypeInfo> getCaptchaTypeInfoMap() {
-        return captchaTypeInfoMap;
-    }
-
-    public void setCaptchaTypeInfoMap(Map<CaptchaType, CaptchaTypeInfo> captchaTypeInfoMap) {
-        this.captchaTypeInfoMap = captchaTypeInfoMap;
-    }
 }

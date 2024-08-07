@@ -1,10 +1,12 @@
 package org.bardframework.commons.security.token.manager;
 
+import lombok.Getter;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+@Getter
 public abstract class TokenManagerRedis<T extends Token> implements TokenManager<T> {
 
     /**
@@ -36,11 +38,4 @@ public abstract class TokenManagerRedis<T extends Token> implements TokenManager
         return this.getRedisTemplate().delete(tokenId) == Boolean.TRUE;
     }
 
-    public RedisTemplate<String, T> getRedisTemplate() {
-        return redisTemplate;
-    }
-
-    public long getTokenExpirationMills() {
-        return tokenExpirationMills;
-    }
 }

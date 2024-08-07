@@ -3,6 +3,8 @@ package org.bardframework.commons.web.cookie;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.util.WebUtils;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Getter
+@Setter
 @Slf4j
 public class CookieHandler {
 
@@ -100,59 +104,4 @@ public class CookieHandler {
         return attributes;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-
-    public Integer getMaxAge() {
-        return maxAge;
-    }
-
-    public void setMaxAge(Integer maxAge) {
-        this.maxAge = maxAge;
-    }
-
-    public Boolean getSecure() {
-        return secure;
-    }
-
-    public void setSecure(Boolean secure) {
-        this.secure = secure;
-    }
-
-    public Boolean getHttpOnly() {
-        return httpOnly;
-    }
-
-    public void setHttpOnly(Boolean httpOnly) {
-        this.httpOnly = httpOnly;
-    }
-
-    public Boolean getHostOnly() {
-        return hostOnly;
-    }
-
-    public void setHostOnly(Boolean hostOnly) {
-        this.hostOnly = hostOnly;
-    }
-
-    public String getSameSite() {
-        return sameSite;
-    }
-
-    public void setSameSite(String sameSite) {
-        this.sameSite = sameSite;
-    }
 }

@@ -1,5 +1,8 @@
 package org.bardframework.commons.waf.exception;
 
+import lombok.Getter;
+
+@Getter
 public class CallLimitExceedException extends Exception {
 
     private final String key;
@@ -8,7 +11,4 @@ public class CallLimitExceedException extends Exception {
         this.key = url;
     }
 
-    public String getKey() {
-        return key;
-    }
 }

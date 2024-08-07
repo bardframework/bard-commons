@@ -1,11 +1,14 @@
 package org.bardframework.commons.utils.data;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+@Getter
 public enum ScriptCode {
 
     /**
@@ -1016,12 +1019,14 @@ public enum ScriptCode {
 
     /**
      * The numeric code of this script code.
+
      */
     private final int numeric;
 
 
     /**
      * English name of this script code.
+
      */
     private final String name;
 
@@ -1238,21 +1243,4 @@ public enum ScriptCode {
         return list;
     }
 
-    /**
-     * Get the numeric code of this script code.
-     *
-     * @return Numeric code.
-     */
-    public int getNumeric() {
-        return numeric;
-    }
-
-    /**
-     * Get English name of this script code.
-     *
-     * @return English name.
-     */
-    public String getName() {
-        return name;
-    }
 }

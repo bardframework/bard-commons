@@ -37,8 +37,12 @@ public class DateTimeUtils {
         return dateTime.toInstant(offset).toEpochMilli();
     }
 
-    public static LocalDateTime fromEpochMills(long dateAsMills) {
-        return DateTimeUtils.fromEpochMills(dateAsMills, ZoneOffset.UTC);
+    public static LocalDateTime fromEpochMills(long dateTimeAsMills) {
+        return DateTimeUtils.fromEpochMills(dateTimeAsMills, ZoneOffset.UTC);
+    }
+
+    public static LocalDate dateFromEpochMills(long dateAsMills) {
+        return Instant.ofEpochMilli(dateAsMills).atZone(ZoneOffset.UTC).toLocalDate();
     }
 
     /**

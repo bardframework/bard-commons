@@ -1,5 +1,6 @@
 package org.bardframework.commons.config;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.StringTemplateUtils;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
+@Getter
 public class ReloadableConfig {
 
     private static Properties config = new Properties();
@@ -27,10 +29,6 @@ public class ReloadableConfig {
         this.reloadableConfigPath = reloadableConfigPath;
         ReloadableConfig.configClasses = configClasses;
         this.reload();
-    }
-
-    public static Collection<Class<? extends ConfigKey>> getConfigClasses() {
-        return configClasses;
     }
 
     public static String get(ConfigKey<?, ?> key) {

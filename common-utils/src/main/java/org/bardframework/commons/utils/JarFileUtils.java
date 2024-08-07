@@ -1,5 +1,6 @@
 package org.bardframework.commons.utils;
 
+import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.FileUtils;
@@ -46,6 +47,7 @@ public class JarFileUtils {
         void doWork(JarFile jarFile) throws IOException;
     }
 
+    @Getter
     public static class JarDirectoryExtractor implements JarModifier {
         protected final String zipDirectoryEntry;
         protected final Path savePath;
@@ -67,15 +69,9 @@ public class JarFileUtils {
             });
         }
 
-        public String getZipDirectoryEntry() {
-            return zipDirectoryEntry;
-        }
-
-        public Path getSavePath() {
-            return savePath;
-        }
     }
 
+    @Getter
     public static class JarTextFileExtractor implements JarModifier {
         protected final String zipEntry;
         protected final File savePath;
@@ -107,19 +103,9 @@ public class JarFileUtils {
             FileUtils.writeStringToFile(this.getSavePath(), content, StandardCharsets.UTF_8);
         }
 
-        public String getZipEntry() {
-            return zipEntry;
-        }
-
-        public File getSavePath() {
-            return savePath;
-        }
-
-        public Map<String, String> getReplacements() {
-            return replacements;
-        }
     }
 
+    @Getter
     public static class JarFileEntrySaver implements JarModifier {
         protected final String zipEntry;
         protected final File savePath;
@@ -150,16 +136,5 @@ public class JarFileUtils {
             FileUtils.writeByteArrayToFile(this.getSavePath(), entryBytes);
         }
 
-        public String getZipEntry() {
-            return zipEntry;
-        }
-
-        public File getSavePath() {
-            return savePath;
-        }
-
-        public Map<byte[], byte[]> getReplacements() {
-            return replacements;
-        }
     }
 }

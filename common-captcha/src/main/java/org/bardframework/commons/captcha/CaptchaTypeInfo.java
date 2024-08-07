@@ -1,7 +1,10 @@
 package org.bardframework.commons.captcha;
 
+import lombok.Getter;
+
 import java.awt.*;
 
+@Getter
 public class CaptchaTypeInfo {
     private final String chars;
     private final Font font;
@@ -13,15 +16,4 @@ public class CaptchaTypeInfo {
         this.font = font;
     }
 
-    public String getChars() {
-        return chars;
-    }
-
-    public boolean isRtl() {
-        return rtl;
-    }
-
-    public Font getFont() {
-        return font;
-    }
 }

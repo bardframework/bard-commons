@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils.data;
 
+import lombok.Getter;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Locale;
  * The list of the enum entries was generated based on the output from
  * {@link Locale#getAvailableLocales() Locale.getAvailableLocales()}, but locales whose format do not match either 'xx' or 'xx-XX' were excluded.
  */
+@Getter
 public enum LocaleCode {
     /**
      * {@link LanguageCode#undefined Undefined}, {@link CountryCode#UNDEFINED Undefined}
@@ -1298,25 +1301,6 @@ public enum LocaleCode {
             // Simulate Locale.ROOT.
             return new Locale("", "");
         }
-    }
-
-    /**
-     * Get the language code.
-     *
-     * @return The language code. This method always returns a non-null value.
-     */
-    public LanguageCode getLanguage() {
-        return language;
-    }
-
-    /**
-     * Get the country code.
-     *
-     * @return The country code. This method may return null.
-     * For example, {@link #en LocaleCode.en}.getCountry() returns null.
-     */
-    public CountryCode getCountry() {
-        return country;
     }
 
     /**

@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils.data;
 
+import lombok.Getter;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -13,6 +15,7 @@ import java.util.regex.Pattern;
  * In addition, there are static methods to get a {@code CountryCode} instance that
  * corresponds to a given alpha-2/alpha-3/numeric code ({@link #getByCode(String)}, {@link #getByCode(int)}).
  */
+@Getter
 public enum CountryCode {
 
     /**
@@ -896,7 +899,6 @@ public enum CountryCode {
     public String getName() {
         return name;
     }
-
     public String getAlpha2() {
         return name();
     }
@@ -908,7 +910,6 @@ public enum CountryCode {
     public int getNumeric() {
         return numeric;
     }
-
     /**
      * Convert this {@code CountryCode} instance to a {@link Locale} instance.
      *

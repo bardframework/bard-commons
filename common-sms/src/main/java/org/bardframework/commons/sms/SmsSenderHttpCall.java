@@ -1,5 +1,6 @@
 package org.bardframework.commons.sms;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Slf4j
+@Getter
 public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     protected final Pattern successPattern;
 
@@ -46,7 +48,4 @@ public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
         return headers;
     }
 
-    public Pattern getSuccessPattern() {
-        return successPattern;
-    }
 }

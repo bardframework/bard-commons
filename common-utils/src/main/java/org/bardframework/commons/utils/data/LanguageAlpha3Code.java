@@ -1,5 +1,7 @@
 package org.bardframework.commons.utils.data;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -17,6 +19,7 @@ import java.util.regex.Pattern;
  * is not {@code new} but {@link #New} (the first letter is capital),
  * because {@code new} is a special word for Java programming language.
  */
+@Getter
 public enum LanguageAlpha3Code {
     /**
      * Undefined.
@@ -4646,6 +4649,7 @@ public enum LanguageAlpha3Code {
 
     /**
      * Language name.
+
      */
     private final String name;
 
@@ -4870,15 +4874,6 @@ public enum LanguageAlpha3Code {
         }
 
         return list;
-    }
-
-    /**
-     * Get the language name.
-     *
-     * @return The language name.
-     */
-    public String getName() {
-        return name;
     }
 
     /**

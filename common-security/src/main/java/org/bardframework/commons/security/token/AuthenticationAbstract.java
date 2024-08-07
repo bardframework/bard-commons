@@ -1,12 +1,16 @@
 package org.bardframework.commons.security.token;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.bardframework.commons.security.token.manager.Token;
 import org.springframework.security.core.Authentication;
 
 /**
  * Contains information about authentication.
  */
+@Getter
+@Setter
 public abstract class AuthenticationAbstract<U> implements Authentication, Token {
     protected U user;
     protected long created;
@@ -22,14 +26,6 @@ public abstract class AuthenticationAbstract<U> implements Authentication, Token
     @Override
     public boolean isExpired(long validAgeMills) {
         return this.created + validAgeMills <= System.currentTimeMillis();
-    }
-
-    public U getUser() {
-        return user;
-    }
-
-    public void setUser(U user) {
-        this.user = user;
     }
 
     @JsonIgnore
@@ -60,14 +56,6 @@ public abstract class AuthenticationAbstract<U> implements Authentication, Token
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
 
-    }
-
-    public long getCreated() {
-        return created;
-    }
-
-    public void setCreated(long created) {
-        this.created = created;
     }
 
     @JsonIgnore
