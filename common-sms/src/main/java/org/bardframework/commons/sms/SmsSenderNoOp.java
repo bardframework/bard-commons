@@ -10,6 +10,6 @@ public class SmsSenderNoOp implements SmsSender {
     @Override
     public boolean send(Map<String, String> args) {
         log.warn("sms sender not configured.");
-        return false;
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package org.bardframework.commons.sms;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bardframework.commons.utils.http.HttpCallResponse;
 import org.bardframework.commons.utils.http.HttpCaller;
@@ -30,7 +31,7 @@ public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     }
 
     protected boolean isSuccess(HttpCallResponse result, String receiverNumberForLog, Map<String, String> args) throws IOException {
-        if (null != result.getError()) {
+        if (ArrayUtils.isNotEmpty(result.getError())) {
             return false;
         }
         String body = new String(result.getBody(), StandardCharsets.UTF_8);
