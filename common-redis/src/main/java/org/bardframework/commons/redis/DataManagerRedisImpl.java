@@ -5,9 +5,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.time.Duration;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class DataManagerRedisImpl implements DataManager {
@@ -31,10 +31,10 @@ public class DataManagerRedisImpl implements DataManager {
     }
 
     @Override
-    public void putAsJson(String key, Object value, int expiration, TimeUnit unit) {
+    public void putAsJson(String key, Object value, Duration expiration) {
         try {
             String valueString = objectMapper.writeValueAsString(value);
-            this.redisTemplate.opsForValue().set(key, valueString, expiration, unit);
+            this.redisTemplate.opsForValue().set(key, valueString, expiration);
         } catch (Exception e) {
             log.error("error putting [{}] to redis", value);
             throw new IllegalArgumentException("error writing value", e);
@@ -42,9 +42,9 @@ public class DataManagerRedisImpl implements DataManager {
     }
 
     @Override
-    public void put(String key, String value, int expiration, TimeUnit unit) {
+    public void put(String key, String value, Duration expiration) {
         try {
-            this.redisTemplate.opsForValue().set(key, value, expiration, unit);
+            this.redisTemplate.opsForValue().set(key, value, expiration);
         } catch (Exception e) {
             log.error("error putting [{}] to redis", key);
             throw new IllegalArgumentException("error writing value", e);
@@ -76,11 +76,11 @@ public class DataManagerRedisImpl implements DataManager {
     }
 
     @Override
-    public void addToSet(String key, String value, Long age, TimeUnit ageUnit) {
+    public void addToSet(String key, String value, Duration expiration) {
         try {
             this.redisTemplate.opsForSet().add(key, value);
             this.redisTemplate.persist(key);
-            this.redisTemplate.expire(key, age, ageUnit);
+            this.redisTemplate.expire(key, expiration);
         } catch (Exception e) {
             log.error("error putting [{}] to redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
@@ -98,11 +98,11 @@ public class DataManagerRedisImpl implements DataManager {
     }
 
     @Override
-    public void removeFromSet(String key, String value, Long age, TimeUnit ageUnit) {
+    public void removeFromSet(String key, String value, Duration expiration) {
         try {
             this.redisTemplate.opsForSet().remove(key, value);
             this.redisTemplate.persist(key);
-            this.redisTemplate.expire(key, age, ageUnit);
+            this.redisTemplate.expire(key, expiration);
         } catch (Exception e) {
             log.error("error removing set value of [{}] from redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
@@ -110,35 +110,14 @@ public class DataManagerRedisImpl implements DataManager {
     }
 
     @Override
-    public void putAsMap(String key, Map<?, ?> map, Long age, TimeUnit ageUnit) {
+    public void putAsMap(String key, Map<?, ?> map, Duration expiration) {
         try {
             this.redisTemplate.opsForHash().putAll(key, map);
             this.redisTemplate.persist(key);
-            this.redisTemplate.expire(key, age, ageUnit);
+            this.redisTemplate.expire(key, expiration);
         } catch (Exception e) {
             log.error("error putting [{}] to redis", key);
             throw new IllegalArgumentException(ERROR_WRITE_VALUE, e);
-        }
-    }
-
-    @Override
-    public void putAsMap(String key, AsMapSerializer object, Long age, TimeUnit ageUnit) {
-        this.putAsMap(key, object.getAsMap(), age, ageUnit);
-    }
-
-    @Override
-    public <T extends AsMapDeserializer> T getFromMap(String key, Class<T> clazz) {
-        try {
-            Map<Object, Object> map = this.redisTemplate.opsForHash().entries(key);
-            if (map.isEmpty()) {
-                return null;
-            }
-            T object = clazz.newInstance();
-            object.init(map);
-            return object;
-        } catch (Exception e) {
-            log.error("error getting value with key [{}] from redis server", key);
-            throw new IllegalArgumentException("error getting value from server", e);
         }
     }
 
@@ -153,10 +132,10 @@ public class DataManagerRedisImpl implements DataManager {
     }
 
     @Override
-    public void removeFromMap(String userId, String topic, Long age, TimeUnit ageUnit) {
+    public void removeFromMap(String userId, String topic, Duration expiration) {
         try {
             this.redisTemplate.opsForHash().delete(userId, topic);
-            this.redisTemplate.expire(userId, age, ageUnit);
+            this.redisTemplate.expire(userId, expiration);
         } catch (Exception e) {
             log.error("error removing map key of [{}] from redis", userId);
             throw new IllegalArgumentException("error writing value", e);
