@@ -2283,9 +2283,35 @@ public enum CurrencyCode {
     }
 
 
+    /**
+     * -- GETTER --
+     * Get the currency name.
+     *
+     * @return The currency name.
+     */
     private final String name;
+    /**
+     * -- GETTER --
+     * Get the <a href="http://en.wikipedia.org/wiki/ISO_4217"
+     * >ISO 4217</a> numeric code.
+     *
+     * @return The <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>
+     * numeric code.
+     */
     private final int numeric;
+    /**
+     * -- GETTER --
+     * Get the minor unit.
+     *
+     * @return The minor unit. {@code -1} means N.A.
+     */
     private final int minorUnit;
+    /**
+     * -- GETTER --
+     * Get the list of countries using this currency.
+     *
+     * @return The list of countries using this currency.
+     */
     private final List<CountryCode> countryList;
 
 
@@ -2554,43 +2580,6 @@ public enum CurrencyCode {
         return list;
     }
 
-    /**
-     * Get the currency name.
-     *
-     * @return The currency name.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Get the <a href="http://en.wikipedia.org/wiki/ISO_4217"
-     * >ISO 4217</a> numeric code.
-     *
-     * @return The <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>
-     * numeric code.
-     */
-    public int getNumeric() {
-        return numeric;
-    }
-
-    /**
-     * Get the minor unit.
-     *
-     * @return The minor unit. {@code -1} means N.A.
-     */
-    public int getMinorUnit() {
-        return minorUnit;
-    }
-
-    /**
-     * Get the list of countries using this currency.
-     *
-     * @return The list of countries using this currency.
-     */
-    public List<CountryCode> getCountryList() {
-        return countryList;
-    }
     /**
      * Check if this currency code represents a fund.
      *
