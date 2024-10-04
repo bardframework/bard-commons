@@ -16,10 +16,17 @@ import java.util.regex.Pattern;
 @Slf4j
 @Getter
 public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
-    protected final Pattern successPattern;
+    protected Pattern successPattern;
+
+    public SmsSenderHttpCall() {
+    }
 
     public SmsSenderHttpCall(String httpMethod, String urlTemplate, String successPattern) {
         super(httpMethod, urlTemplate);
+        this.setSuccessPattern(successPattern);
+    }
+
+    public void setSuccessPattern(String successPattern) {
         this.successPattern = Pattern.compile(successPattern);
     }
 

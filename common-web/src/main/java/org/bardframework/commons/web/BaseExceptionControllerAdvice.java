@@ -42,7 +42,7 @@ public interface BaseExceptionControllerAdvice {
     }
 
     /**
-     * handle exception occur in @Validated annotation in RequestMapping methods
+     * handle exception occurs in @Validated annotation in RequestMapping methods
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
@@ -55,7 +55,7 @@ public interface BaseExceptionControllerAdvice {
     }
 
     /**
-     * BindException:   occur in @ModelAttribute annotation in RequestMapping methods
+     * BindException: occur in @ModelAttribute annotation in RequestMapping methods
      */
     @ExceptionHandler({
             HttpMediaTypeNotSupportedException.class,

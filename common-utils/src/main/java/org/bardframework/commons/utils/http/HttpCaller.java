@@ -14,14 +14,17 @@ import java.util.Map;
 @Setter
 public class HttpCaller {
 
-    protected final String httpMethod;
-    protected final String urlTemplate;
+    protected String httpMethod;
+    protected String urlTemplate;
     protected String bodyTemplate;
     protected int connectTimeoutSeconds = 30;
     protected int readTimeoutSeconds = 3600;
     protected boolean logResponse;
     protected boolean disable;
     protected Map<String, String> headers = new HashMap<>();
+
+    public HttpCaller() {
+    }
 
     public HttpCaller(String httpMethod, String urlTemplate) {
         this.httpMethod = httpMethod;
@@ -40,10 +43,16 @@ public class HttpCaller {
             log.error("[{}] is disable.", this.getClass().getSimpleName());
             return new HttpCallResponse(-1, new byte[0], new byte[0], Map.of());
         }
-        HttpCallResponse callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, args);
+        Map<String, String> allArgs = new HashMap<>(args);
+        allArgs.putAll(this.getDefaultArgs());
+        HttpCallResponse callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, allArgs);
         if (this.isLogResponse()) {
             log.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getStatusCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
         }
         return callResult;
+    }
+
+    protected Map<String, String> getDefaultArgs() {
+        return Map.of();
     }
 }
