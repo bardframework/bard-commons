@@ -47,19 +47,18 @@ public final class UrlUtils {
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
 
-
-    public static String fillUrlTemplate(String urlTemplate, Map<String, String> args) {
+    public static String fillUrlTemplate(String urlTemplate, Map<String, ?> args) {
         return StringTemplateUtils.fillTemplate(urlTemplate, UrlUtils.urlEncodeValues(args));
     }
 
-    public static String fillUrlTemplate(String urlTemplate, String prefix, String suffix, Map<String, String> args) {
+    public static String fillUrlTemplate(String urlTemplate, String prefix, String suffix, Map<String, Object> args) {
         return StringTemplateUtils.fillTemplate(urlTemplate, prefix, suffix, UrlUtils.urlEncodeValues(args));
     }
 
-    public static Map<String, String> urlEncodeValues(Map<String, String> args) {
+    public static Map<String, String> urlEncodeValues(Map<String, ?> args) {
         Map<String, String> map = new HashMap<>();
-        for (Map.Entry<String, String> entry : args.entrySet()) {
-            String value = StringTemplateUtils.fillTemplate(entry.getValue(), args);
+        for (Map.Entry<String, ?> entry : args.entrySet()) {
+            String value = StringTemplateUtils.fillTemplate(entry.getValue().toString(), args);
             map.put(entry.getKey(), UrlUtils.urlEncode(value));
         }
         return map;

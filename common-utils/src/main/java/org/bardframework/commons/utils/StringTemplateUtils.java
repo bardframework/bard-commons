@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class StringTemplateUtils {
 
-    public static String fillTemplate(String template, Map<String, String> args) {
+    public static String fillTemplate(String template, Map<String, ?> args) {
         return StringTemplateUtils.fillTemplate(template, "::", "::", args);
     }
 
-    public static String fillTemplate(String template, String prefix, String suffix, Map<String, String> args) {
+    public static String fillTemplate(String template, String prefix, String suffix, Map<String, ?> args) {
         if (StringUtils.isBlank(template)) {
             return template;
         }

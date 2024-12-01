@@ -15,6 +15,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,39 +34,58 @@ public final class HttpUtils {
     }
 
     public static HttpCallResponse httpCall(HttpCallRequest request, int connectTimeoutSeconds, int readTimeoutSeconds, Map<String, String> args) throws IOException {
-        if (StringUtils.isBlank(request.getHttpMethod())) {
+        String url = UrlUtils.fillUrlTemplate(request.getUrlTemplate(), args);
+        String body = null;
+        if (StringUtils.isNotBlank(request.getBodyTemplate())) {
+            body = StringTemplateUtils.fillTemplate(request.getBodyTemplate(), args);
+        }
+        Map<String, List<String>> headers = new HashMap<>();
+        if (MapUtils.isNotEmpty(request.getHeaders())) {
+            for (Map.Entry<String, List<String>> entry : request.getHeaders().entrySet()) {
+                for (String valueTemplate : entry.getValue()) {
+                    String headerKey = StringTemplateUtils.fillTemplate(entry.getKey(), args);
+                    String headerValue = StringTemplateUtils.fillTemplate(valueTemplate, args);
+                    headers.put(headerKey, new ArrayList<>());
+                    headers.get(headerKey).add(headerValue);
+                }
+
+            }
+        }
+        return HttpUtils.httpCall(request.getHttpMethod(), url, null == body ? null : body.getBytes(), headers, connectTimeoutSeconds, readTimeoutSeconds);
+    }
+
+    public static HttpCallResponse httpCall(String httpMethod, String url, byte[] body, Map<String, List<String>> headers, int connectTimeoutSeconds, int readTimeoutSeconds) throws IOException {
+        if (StringUtils.isBlank(httpMethod)) {
             throw new IllegalStateException("empty http method not acceptable");
         }
-        if (StringUtils.isBlank(request.getUrlTemplate())) {
+        if (StringUtils.isBlank(url)) {
             throw new IllegalStateException("empty url not acceptable");
         }
         HttpURLConnection connection = null;
         try {
-            String url = UrlUtils.fillUrlTemplate(request.getUrlTemplate(), args);
             connection = (HttpURLConnection) URI.create(url).toURL().openConnection();
             // optional default is GET
-            connection.setRequestMethod(request.getHttpMethod());
+            connection.setRequestMethod(httpMethod);
             connection.setConnectTimeout(connectTimeoutSeconds * 1000);
             connection.setReadTimeout(readTimeoutSeconds * 1000);
-            if (MapUtils.isNotEmpty(request.getHeaders())) {
-                for (Map.Entry<String, List<String>> entry : request.getHeaders().entrySet()) {
-                    for (String valueTemplate : entry.getValue()) {
-                        if (null == valueTemplate) {
-                            log.debug("value of header [{}] is null, ignoring it", entry.getKey());
-                            continue;
-                        }
-                        String headerValue = StringTemplateUtils.fillTemplate(valueTemplate, args);
-                        connection.setRequestProperty(entry.getKey(), headerValue);
+            if (MapUtils.isNotEmpty(headers)) {
+                for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
+                    if (StringUtils.isBlank(entry.getKey())) {
+                        throw new IllegalArgumentException("empty header name not acceptable: " + entry.getKey());
                     }
-
+                    for (String value : entry.getValue()) {
+                        if (StringUtils.isBlank(value)) {
+                            throw new IllegalArgumentException("empty header value not acceptable: " + entry.getKey());
+                        }
+                        connection.setRequestProperty(entry.getKey(), value);
+                    }
                 }
             }
-            if (StringUtils.isNotBlank(request.getBodyTemplate())) {
-                log.debug("setting request body, http method [{}] ", request.getHttpMethod());
+            if (null != body) {
+                log.debug("setting request body, http method [{}] ", httpMethod);
                 connection.setDoOutput(true);
-                String body = StringTemplateUtils.fillTemplate(request.getBodyTemplate(), args);
                 try (OutputStream outputStream = connection.getOutputStream()) {
-                    outputStream.write(body.getBytes(StandardCharsets.UTF_8));
+                    outputStream.write(body);
                 }
             }
             /*
@@ -72,12 +93,26 @@ public final class HttpUtils {
                 Otherwise getErrorStream always returns null
              */
             int responseCode = connection.getResponseCode();
-            InputStream errorStream = connection.getErrorStream();
-            InputStream responseStream = connection.getInputStream();
+            InputStream errorStream = null;
+            try {
+                errorStream = connection.getErrorStream();
+            } catch (Exception e) {
+                log.trace("error reading error stream of calling url: [{}]", url, e);
+            }
+
+            InputStream responseStream = null;
+            try {
+                responseStream = connection.getInputStream();
+            } catch (Exception e) {
+                log.trace("error reading response stream of calling url: [{}]", url, e);
+            }
             byte[] response = null == responseStream ? new byte[0] : IOUtils.toByteArray(responseStream);
             byte[] error = null == errorStream ? new byte[0] : IOUtils.toByteArray(errorStream);
             log.trace("http call[{}] response, code: [{}], details: [{}]", url, responseCode, IOUtils.toString(response, StandardCharsets.UTF_8.displayName()));
-            return new HttpCallResponse(responseCode, response, error, connection.getHeaderFields());
+            HttpCallResponse callResponse = new HttpCallResponse(responseCode, response, error);
+            callResponse.setHeaders(connection.getHeaderFields());
+            callResponse.setUrl(url);
+            return callResponse;
         } finally {
             if (null != connection) {
                 connection.disconnect();

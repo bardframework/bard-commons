@@ -31,15 +31,16 @@ public class SmsSenderHttpCall extends HttpCaller implements SmsSender {
     }
 
     @Override
-    public final boolean send(Map<String, String> args) throws IOException {
-        String receiverNumberForLog = StringUtils.overlay(args.get("to"), "*", 4, args.get("to").length() - 4);
+    public final boolean send(Map<String, Object> args) throws IOException {
+        String to = args.get("to").toString();
+        String receiverNumberForLog = StringUtils.overlay(to, "*", 4, to.length() - 4);
         log.info("try sending sms to: {}", receiverNumberForLog);
         HttpCallResponse callResult = this.call(this.prepareHeadersForSend(), args);
         log.info("http status of sending sms to [{}] is [{}]", receiverNumberForLog, callResult.getStatusCode());
         return this.isSuccess(callResult, receiverNumberForLog, args);
     }
 
-    protected boolean isSuccess(HttpCallResponse result, String receiverNumberForLog, Map<String, String> args) throws IOException {
+    protected boolean isSuccess(HttpCallResponse result, String receiverNumberForLog, Map<String, Object> args) throws IOException {
         if (ArrayUtils.isNotEmpty(result.getError())) {
             return false;
         }

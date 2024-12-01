@@ -9,12 +9,12 @@ public interface SmsSender {
     String TO_KEY = "to";
     String MESSAGE_KEY = "message";
 
-    default boolean send(String to, String message, Map<String, String> args) throws IOException {
+    default boolean send(String to, String message, Map<String, Object> args) throws IOException {
         args = new HashMap<>(args);
         args.put(TO_KEY, to);
         args.put(MESSAGE_KEY, message);
         return this.send(args);
     }
 
-    boolean send(Map<String, String> args) throws IOException;
+    boolean send(Map<String, Object> args) throws IOException;
 }

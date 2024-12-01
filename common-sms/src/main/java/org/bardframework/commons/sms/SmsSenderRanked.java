@@ -17,7 +17,7 @@ public class SmsSenderRanked implements SmsSender {
     }
 
     @Override
-    public boolean send(Map<String, String> args) throws IOException {
+    public boolean send(Map<String, Object> args) throws IOException {
         Stack<SmsSender> sendersStack = new Stack<>();
         this.senders.stream().sorted(this.comparator()).forEach(sendersStack::add);
         return sendersStack.pop().send(args);

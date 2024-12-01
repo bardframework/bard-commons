@@ -8,7 +8,7 @@ import java.util.Map;
 public class SmsSenderNoOp implements SmsSender {
 
     @Override
-    public boolean send(Map<String, String> args) {
+    public boolean send(Map<String, Object> args) {
         log.warn("sms sender not configured.");
         return true;
     }

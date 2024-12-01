@@ -31,20 +31,21 @@ public class HttpCaller {
         this.urlTemplate = urlTemplate;
     }
 
-    public HttpCallResponse call(Map<String, String> args) throws IOException {
+    public HttpCallResponse call(Map<String, Object> args) throws IOException {
         return this.call(this.getHeaders(), args);
     }
 
     /**
      * call with custom headers
      */
-    public HttpCallResponse call(Map<String, String> headers, Map<String, String> args) throws IOException {
+    public HttpCallResponse call(Map<String, String> headers, Map<String, Object> args) throws IOException {
         if (this.isDisable()) {
             log.error("[{}] is disable.", this.getClass().getSimpleName());
-            return new HttpCallResponse(-1, new byte[0], new byte[0], Map.of());
+            return new HttpCallResponse(-1, new byte[0], new byte[0]);
         }
-        Map<String, String> allArgs = new HashMap<>(args);
-        allArgs.putAll(this.getDefaultArgs());
+        Map<String, String> allArgs = new HashMap<>();
+        args.forEach((key, value) -> allArgs.put(key, value.toString()));
+        this.getDefaultArgs().forEach((key, value) -> allArgs.put(key, value.toString()));
         HttpCallResponse callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, allArgs);
         if (this.isLogResponse()) {
             log.info("calling url[{}], response code: [{}], response body: [{}]", this.getUrlTemplate(), callResult.getStatusCode(), new String(callResult.getBody(), StandardCharsets.UTF_8));
@@ -52,7 +53,7 @@ public class HttpCaller {
         return callResult;
     }
 
-    protected Map<String, String> getDefaultArgs() {
+    protected Map<String, Object> getDefaultArgs() {
         return Map.of();
     }
 }

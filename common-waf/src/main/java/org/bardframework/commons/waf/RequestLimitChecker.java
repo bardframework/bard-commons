@@ -34,6 +34,29 @@ public class RequestLimitChecker {
     @Autowired
     private RequestKeyDetector requestKeyDetector;
 
+    public RequestLimitChecker() {
+    }
+
+    public RequestLimitChecker(String url, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
+        this.httpMethod = null;
+        this.requestMatcher = new AntPathRequestMatcher(url);
+        this.requestCallCounter = requestCallCounter;
+        this.requestKeyDetector = requestKeyDetector;
+        this.limit = limit;
+        this.period = period;
+        this.periodUnit = periodUnit;
+    }
+
+    public RequestLimitChecker(HttpMethod httpMethod, String url, RequestCallCounter requestCallCounter, RequestKeyDetector requestKeyDetector, int limit, int period, TimeUnit periodUnit) {
+        this.httpMethod = httpMethod;
+        this.requestMatcher = new AntPathRequestMatcher(url, httpMethod.name());
+        this.requestCallCounter = requestCallCounter;
+        this.requestKeyDetector = requestKeyDetector;
+        this.limit = limit;
+        this.period = period;
+        this.periodUnit = periodUnit;
+    }
+
     public void checkCallLimit(HttpServletRequest request, HttpServletResponse response) throws CallLimitExceedException {
         String key = this.getRequestKeyDetector().getUniqueKey(request, response);
         if (null == key) {
