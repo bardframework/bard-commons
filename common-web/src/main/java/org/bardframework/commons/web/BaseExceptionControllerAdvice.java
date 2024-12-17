@@ -4,12 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -52,6 +54,12 @@ public interface BaseExceptionControllerAdvice {
         return ex.getBindingResult().getAllErrors().stream()
                 .map(error -> this.getMessageSource().getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), locale))
                 .collect(Collectors.toList());
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    default ResponseEntity<?> handle(HttpRequestMethodNotSupportedException ex) {
+        log.trace("http method not supported.", ex);
+        return new ResponseEntity<>("%s not supported, supported methods are: %s".formatted(ex.getMethod(), ex.getSupportedHttpMethods()), HttpStatus.METHOD_NOT_ALLOWED);
     }
 
     /**
