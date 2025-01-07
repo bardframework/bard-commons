@@ -28,7 +28,7 @@ public class HttpCallResponse {
     }
 
     public String getBodyAsString() {
-        return null == error ? null : new String(error);
+        return null == body ? null : new String(body);
     }
 
     public String getErrorAsString() {
