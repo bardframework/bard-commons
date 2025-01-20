@@ -33,6 +33,10 @@ public class IpDetector implements RequestKeyDetector {
 
     @Override
     public String getUniqueKey(HttpServletRequest request, HttpServletResponse response) {
+        return this.detect(request);
+    }
+
+    public String detect(HttpServletRequest request) {
         for (String header : headerIpCandidates) {
             String headerValue = request.getHeader(header);
             if (StringUtils.isNotEmpty(headerValue) && !"unknown".equalsIgnoreCase(headerValue)) {
