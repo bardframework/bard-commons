@@ -35,7 +35,7 @@ public abstract class TokenManagerRedis<T extends Token> implements TokenManager
 
     @Override
     public boolean remove(String tokenId) {
-        return this.getRedisTemplate().delete(tokenId) == Boolean.TRUE;
+        return this.getRedisTemplate().delete(tokenId);
     }
 
 }

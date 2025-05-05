@@ -27,7 +27,7 @@ public class DataManagerRedisImpl implements DataManager {
 
     @Override
     public boolean isExist(String key) {
-        return Boolean.TRUE.equals(redisTemplate.hasKey(key));
+        return redisTemplate.hasKey(key);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class DataManagerRedisImpl implements DataManager {
 
     @Override
     public boolean remove(String key) {
-        return Boolean.TRUE.equals(redisTemplate.delete(key));
+        return redisTemplate.delete(key);
     }
 
     @Override
