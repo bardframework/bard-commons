@@ -64,6 +64,7 @@ public final class HttpUtils {
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection) URI.create(url).toURL().openConnection();
+            connection.setInstanceFollowRedirects(false);
             // optional default is GET
             connection.setRequestMethod(httpMethod);
             connection.setConnectTimeout(connectTimeoutSeconds * 1000);

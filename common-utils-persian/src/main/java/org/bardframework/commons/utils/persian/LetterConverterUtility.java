@@ -8,10 +8,10 @@ import java.util.List;
 public final class LetterConverterUtility {
 
     private static final String ENGLISH_NUM = "0123456789";
-    private static final String PERSIAN_NUM = "\u06F0\u06F1\u06F2\u06F3\u06F4\u06F5\u06F6\u06F7\u06F8\u06F9";
-    private static final String ARABIC_NUM = "\u0660\u0661\u0662\u0663\u0664\u0665\u0666\u0667\u0668\u0669";
-    private static final String ARABIC_CHR = "\u0643\u0626\u064A\u0649\u0624";
-    private static final String PERSIAN_CHR = "\u06A9\u06CC\u06CC\u06CC\u0648";
+    private static final String PERSIAN_NUM = "۰۱۲۳۴۵۶۷۸۹";
+    private static final String ARABIC_NUM = "٠١٢٣٤٥٦٧٨٩";
+    private static final String ARABIC_CHR = "كئيىؤ";
+    private static final String PERSIAN_CHR = "کیییو";
     private static final String PERSIAN_ALL = PERSIAN_CHR + ENGLISH_NUM;
     private static final String ARABIC_ALL = ARABIC_CHR + ARABIC_NUM;
     private static final String[] digit1 = {"صفر", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه"};

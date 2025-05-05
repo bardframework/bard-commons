@@ -44,7 +44,7 @@ public class HttpCaller {
             return new HttpCallResponse(-1, new byte[0], new byte[0]);
         }
         Map<String, String> allArgs = new HashMap<>();
-        args.forEach((key, value) -> allArgs.put(key, value.toString()));
+        args.forEach((key, value) -> allArgs.put(key, null == value ? null : value.toString()));
         this.getDefaultArgs().forEach((key, value) -> allArgs.put(key, value.toString()));
         HttpCallResponse callResult = HttpUtils.httpCall(this.getHttpMethod(), this.getUrlTemplate(), this.getBodyTemplate(), this.getConnectTimeoutSeconds(), this.getReadTimeoutSeconds(), headers, allArgs);
         if (this.isLogResponse()) {
