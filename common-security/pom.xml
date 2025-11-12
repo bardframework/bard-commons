@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-security</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Security</name>
 
     <dependencies>
         <dependency>

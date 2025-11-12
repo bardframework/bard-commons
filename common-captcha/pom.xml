@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-captcha</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Captcha</name>
 
     <properties>
         <maven.compiler.release>11</maven.compiler.release>

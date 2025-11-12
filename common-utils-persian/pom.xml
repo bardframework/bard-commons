@@ -11,6 +11,7 @@
 
     <artifactId>common-utils-persian</artifactId>
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Persian Utils</name>
 
     <properties>
         <maven.compiler.release>11</maven.compiler.release>

@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-utils</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Utils</name>
 
     <properties>
         <maven.compiler.release>11</maven.compiler.release>

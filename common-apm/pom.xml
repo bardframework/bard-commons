@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-apm</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - APM</name>
 
     <dependencies>
         <dependency>

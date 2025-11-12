@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-swagger</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Swagger</name>
 
     <properties>
         <micrometer.version>1.14.1</micrometer.version>

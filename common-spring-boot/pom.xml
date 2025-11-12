@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-spring-boot</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Spring Boot</name>
 
     <dependencies>
         <dependency>

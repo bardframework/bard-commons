@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>common-security-redis</artifactId>
-
     <packaging>jar</packaging>
+    <name>Bard Framework - Common - Redis Security</name>
 
     <dependencies>
         <dependency>
