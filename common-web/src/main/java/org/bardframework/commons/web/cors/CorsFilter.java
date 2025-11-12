@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.AntPathMatcher;
@@ -31,7 +31,7 @@ public class CorsFilter implements Filter {
     private int maxAge;
 
     public CorsFilter(List<String> corsMapping) {
-        this.corsRequestMatcher = new OrRequestMatcher(corsMapping.stream().map(AntPathRequestMatcher::new).collect(Collectors.toList()));
+        this.corsRequestMatcher = new OrRequestMatcher(corsMapping.stream().map(pattern -> PathPatternRequestMatcher.withDefaults().matcher(pattern)).collect(Collectors.toList()));
         this.antPathMatcher = new AntPathMatcher();
         this.antPathMatcher.setTrimTokens(false);
         this.antPathMatcher.setCaseSensitive(false);
