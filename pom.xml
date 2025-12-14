@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.bardframework</groupId>
         <artifactId>bard-parent</artifactId>
-        <version>26</version>
+        <version>27</version>
         <relativePath/>
     </parent>
 
     <groupId>org.bardframework.commons</groupId>
     <artifactId>bard-commons</artifactId>
-    <version>4.5.1</version>
+    <version>4.7.1</version>
     <packaging>pom</packaging>
     <name>Bard Framework - Commons</name>
 
@@ -20,6 +20,7 @@
         <module>common-captcha</module>
         <module>common-jackson</module>
         <module>common-monitoring</module>
+        <module>common-opentelemetry</module>
         <module>common-redis</module>
         <module>common-security</module>
         <module>common-security-redis</module>
@@ -33,7 +34,7 @@
     </modules>
 
     <properties>
-        <bardframework.version>4.5.10</bardframework.version>
+        <bardframework.version>4.7.10</bardframework.version>
     </properties>
 
     <dependencyManagement>

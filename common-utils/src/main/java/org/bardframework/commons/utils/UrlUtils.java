@@ -2,6 +2,7 @@ package org.bardframework.commons.utils;
 
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -29,8 +30,8 @@ public final class UrlUtils {
         while (url.contains("//")) {
             url = url.replace("//", "/");
         }
-        url = StringUtils.removeEnd(url, "/");
-        url = StringUtils.removeStart(url, "/");
+        url = Strings.CS.removeEnd(url, "/");
+        url = Strings.CS.removeStart(url, "/");
         return url.replaceFirst("%%%%", "://").replaceFirst("///", "//");
     }
 

@@ -9,30 +9,34 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>common-spring-boot</artifactId>
+    <artifactId>common-opentelemetry</artifactId>
     <packaging>jar</packaging>
-    <name>Bard Framework - Common - Spring Boot</name>
+    <name>Bard Framework - Common - OpenTelemetry</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.bardframework.commons</groupId>
-            <artifactId>common-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.bardframework.commons</groupId>
-            <artifactId>common-utils</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-starter-opentelemetry</artifactId>
         </dependency>
         <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-micrometer-metrics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-logback-appender-1.0</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.servlet</groupId>

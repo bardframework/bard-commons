@@ -17,7 +17,7 @@ public class MonitoringConfiguration {
     private String enabled;
 
     @Bean
-    SecurityFilterChain monitoringSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    SecurityFilterChain monitoringSecurityFilterChain(HttpSecurity httpSecurity) {
         return httpSecurity.securityMatchers(configurer -> configurer.requestMatchers(PathPatternRequestMatcher.withDefaults().matcher(HttpMethod.GET, "/actuator/**")))
                 .authorizeHttpRequests(registry -> {
                     if ("true".equals(enabled)) {
