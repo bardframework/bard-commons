@@ -1,20 +1,18 @@
 package org.bardframework.commons.jackson.converter;
 
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.SerializationContext;
 import lombok.extern.slf4j.Slf4j;
 import org.bardframework.commons.utils.persian.LetterConverterUtility;
 
-import java.io.IOException;
 
 @Slf4j
-public class ArabicToPersianCharacterSerializer extends JsonSerializer<String> {
+public class ArabicToPersianCharacterSerializer extends ValueSerializer<String> {
 
     @Override
-    public void serialize(String string, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
-            throws IOException {
+    public void serialize(String string, JsonGenerator jsonGenerator, SerializationContext serializerProvider) {
         try {
             if (string != null) {
                 jsonGenerator.writeString(LetterConverterUtility.convertArabicCharacters(string));

@@ -34,9 +34,15 @@ List<Class<?>> supers = ReflectionUtils.getSupersOf(clazz, true, true, false);
 ## Text and templates
 
 ```java
-StringTemplateUtils.fillTemplate("Hello ${name}, you have ${count} messages",
+StringTemplateUtils.fillTemplate("Hello ::name::, you have ::count:: messages",
                                  Map.of("name", "Ali", "count", 3));
+
+// or with your own delimiters
+StringTemplateUtils.fillTemplate("Hello ${name}", "${", "}", Map.of("name", "Ali"));
 ```
+
+The default delimiter is `::name::`. An unknown placeholder is left in place rather than blanked, so
+a typo is visible instead of silently producing empty text.
 
 Every form label, table header and message body in Bard goes through this, which is why any
 configured text can carry placeholders resolved from the current data map.
@@ -47,7 +53,7 @@ A small templated HTTP client — the URL, method, headers and body are template
 so an integration becomes configuration rather than code.
 
 ```java
-HttpCaller caller = new HttpCaller("POST", "https://api.example.com/send?to=${to}&text=${message}");
+HttpCaller caller = new HttpCaller("POST", "https://api.example.com/send?to=::to::&text=::message::");
 HttpCallResponse response = caller.call(headers, Map.of("to", "0912…", "message", "…"));
 ```
 

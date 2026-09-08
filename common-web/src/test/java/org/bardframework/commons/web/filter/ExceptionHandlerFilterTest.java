@@ -1,6 +1,6 @@
 package org.bardframework.commons.web.filter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import org.assertj.core.api.Assertions;
 import org.bardframework.commons.web.BaseExceptionControllerAdvice;

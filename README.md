@@ -49,7 +49,7 @@ Pure Java plus Apache Commons — usable outside Spring entirely.
 | `ReflectionUtils` | `getGenericArgType(clazz, index)` — resolves a generic type argument at runtime, the mechanism most Bard base classes use to discover their own model/criteria/DTO types. Also `getPropertyValue`, `newInstance`, `getSupersOf`. |
 | `DateTimeUtils` | Conversions between epoch, `LocalDate(Time)` and `Instant`. |
 | `DigestUtils`, `EncryptionUtil`, `EncodingUtils`, `BytesUtils` | Hashing, symmetric encryption, Base64/hex. |
-| `StringTemplateUtils` | `fillTemplate(text, args)` — the placeholder substitution used by every form/table label. |
+| `StringTemplateUtils` | `fillTemplate(text, args)` — placeholder substitution (`::name::` by default) used by every form and table label. |
 | `HttpCaller` / `HttpCallRequest` / `HttpCallResponse` | Small templated HTTP client: URL template, method, headers and body are all filled from a `Map`. Base class for `SmsSenderHttpCall` and the flow's HTTP data provider. |
 | `ImageUtils`, `MoneyUtils`, `NumberUtils`, `IpUtils`, `UrlUtils`, `OsUtils`, `JarFileUtils`, `CharsetUtils`, `SerializationUtils` | Focused helpers. |
 | `AssertionUtils` | `notNull` / `notEmpty` / `isNotBlank` guards used throughout the framework. |
@@ -57,7 +57,7 @@ Pure Java plus Apache Commons — usable outside Spring entirely.
 
 ```java
 Class<M> modelClass = ReflectionUtils.getGenericArgType(getClass(), 0);
-String greeting = StringTemplateUtils.fillTemplate("Hello ${name}", Map.of("name", "Ali"));
+String greeting = StringTemplateUtils.fillTemplate("Hello ::name::", Map.of("name", "Ali"));
 ```
 
 ## common-utils-persian
@@ -77,7 +77,7 @@ serializers/deserializers (`ConverterSerializer`, `ConverterDeserializer`), plus
 
 `LocalDate(Time)ToLong`, `LongToLocalDate(Time)`, `LocalDate(Time)ToString`, `StringToByte/Short/
 Integer/Long/Double/Boolean`, `StringToByteArray`, `ByteArrayToString`, `StringToEnumSerializer`,
-`JsonRloRemoverHtmlScapeDeserializer` (strips bidi-override characters and HTML-escapes on input).
+`JsonRloRemoverHtmlScapeDeserializer` (neutralises bidi-override characters on input; despite the name it does not HTML-escape).
 
 ## common-web
 

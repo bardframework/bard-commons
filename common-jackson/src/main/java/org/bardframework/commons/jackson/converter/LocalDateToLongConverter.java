@@ -1,12 +1,11 @@
 package org.bardframework.commons.jackson.converter;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.ValueSerializer;
+import tools.jackson.databind.SerializationContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.converter.Converter;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 
@@ -14,11 +13,10 @@ import java.time.ZoneOffset;
  * Created by Vahid Zafari(v.zafari@chmail.ir) on 7/12/2016.
  **/
 @Slf4j
-public class LocalDateToLongConverter extends JsonSerializer<LocalDate> implements Converter<LocalDate, Long> {
+public class LocalDateToLongConverter extends ValueSerializer<LocalDate> implements Converter<LocalDate, Long> {
 
     @Override
-    public void serialize(LocalDate date, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
-            throws IOException {
+    public void serialize(LocalDate date, JsonGenerator jsonGenerator, SerializationContext serializerProvider) {
         try {
             jsonGenerator.writeNumber(this.convert(date));
         } catch (Exception e) {

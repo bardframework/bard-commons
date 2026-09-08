@@ -1,7 +1,6 @@
 package org.bardframework.commons.redis;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import tools.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -17,9 +16,10 @@ public class DataManagerRedisImpl implements DataManager {
     protected final RedisTemplate<String, Object> redisTemplate;
 
     /**
-     * must not failed on unknown properties
+     * از جکسون ۳ پشتیبانی java.time درون databind است و نیازی به ثبت ماژول جداگانه ندارد.
+     * همچنین نادیده گرفتن ویژگی‌های ناشناخته، رفتار پیش‌فرض است.
      */
-    private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public DataManagerRedisImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;

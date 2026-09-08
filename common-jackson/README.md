@@ -16,6 +16,26 @@ Part of [**Bard Commons**](../README.md) · [Bard Framework](https://github.com/
 </dependency>
 ```
 
+## Jackson 3
+
+This module targets **Jackson 3** (`tools.jackson.core:jackson-databind`). If you are coming from
+Jackson 2, the differences that matter here are:
+
+| Jackson 2 | Jackson 3 |
+| --- | --- |
+| `com.fasterxml.jackson.core` / `.databind` | `tools.jackson.core` / `tools.jackson.databind` |
+| `com.fasterxml.jackson.annotation.*` | unchanged — annotations keep their package |
+| `JsonSerializer` / `JsonDeserializer` | `ValueSerializer` / `ValueDeserializer` |
+| `SerializerProvider` | `SerializationContext` |
+| `JsonProcessingException`, `IOException` | `JacksonException` — unchecked |
+| `JsonGenerator.writeObject(...)` | `writePOJO(...)` |
+| `parser.getCurrentValue()` | `parser.currentValue()` |
+| `TextNode` | `StringNode` |
+| `jackson-datatype-jsr310` | built into `jackson-databind` |
+| `new ObjectMapper().configure(...)` | `JsonMapper.builder()....build()` — mappers are immutable |
+
+Spring Boot 4 manages both generations, so a project can migrate one module at a time.
+
 ## The bridge
 
 Rather than writing a `JsonSerializer` per type, write a Spring `Converter` — which you can also use
@@ -49,8 +69,11 @@ in Java).
 
 **Enums** — `StringToEnumSerializer`.
 
-**Sanitising** — `JsonRloRemoverHtmlScapeDeserializer` removes bidi override characters and
-HTML-escapes the value on the way in, so stored text cannot carry a rendering attack.
+**Sanitising** — `JsonRloRemoverHtmlScapeDeserializer` neutralises Unicode bidi-override characters
+(`U+202E`) on the way in, so stored text cannot render as something other than what it is.
+
+> Despite its name this deserializer does **not** HTML-escape. If you need escaping as well, layer it
+> in your own deserializer or escape at render time.
 
 ```java
 public class ArticleDto {
