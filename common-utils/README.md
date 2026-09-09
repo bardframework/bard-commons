@@ -1,7 +1,7 @@
 common-utils
 ============
 
-[![Maven Central](https://img.shields.io/badge/maven--central-5.3.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-utils/)
+[![Maven Central](https://img.shields.io/badge/maven--central-6.1.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-utils/)
 [![License](http://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Framework-agnostic Java utilities. Apache Commons is the only dependency — no Spring, no Jackson, no servlet API. This is the base every other Bard module builds on.
@@ -12,7 +12,7 @@ Part of [**Bard Commons**](../README.md) · [Bard Framework](https://github.com/
 <dependency>
     <groupId>org.bardframework.commons</groupId>
     <artifactId>common-utils</artifactId>
-    <version>5.3.1</version>
+    <version>6.1.1</version>
 </dependency>
 ```
 

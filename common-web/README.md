@@ -1,7 +1,7 @@
 common-web
 ==========
 
-[![Maven Central](https://img.shields.io/badge/maven--central-5.3.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-web/)
+[![Maven Central](https://img.shields.io/badge/maven--central-6.1.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-web/)
 [![License](http://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Servlet-layer building blocks: a wildcard message source, consistent exception handling, cookie management and CORS.
@@ -12,7 +12,7 @@ Part of [**Bard Commons**](../README.md) · [Bard Framework](https://github.com/
 <dependency>
     <groupId>org.bardframework.commons</groupId>
     <artifactId>common-web</artifactId>
-    <version>5.3.1</version>
+    <version>6.1.1</version>
 </dependency>
 ```
 

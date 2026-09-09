@@ -1,7 +1,7 @@
 common-security-redis
 =====================
 
-[![Maven Central](https://img.shields.io/badge/maven--central-5.3.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-security-redis/)
+[![Maven Central](https://img.shields.io/badge/maven--central-6.1.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-security-redis/)
 [![License](http://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Redis-backed `TokenManager` — the same authentication model as [`common-security`](../common-security), shared across nodes and surviving restarts.
@@ -12,7 +12,7 @@ Part of [**Bard Commons**](../README.md) · [Bard Framework](https://github.com/
 <dependency>
     <groupId>org.bardframework.commons</groupId>
     <artifactId>common-security-redis</artifactId>
-    <version>5.3.1</version>
+    <version>6.1.1</version>
 </dependency>
 ```
 
