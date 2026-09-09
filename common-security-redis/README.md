@@ -12,7 +12,7 @@ Part of [**Bard Commons**](../README.md) · [Bard Framework](https://github.com/
 <dependency>
     <groupId>org.bardframework.commons</groupId>
     <artifactId>common-security-redis</artifactId>
-    <version>6.1.1</version>
+    <version>5.6.1</version>
 </dependency>
 ```
 

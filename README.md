@@ -8,7 +8,7 @@ Fifteen small, independently consumable libraries that the rest of [Bard Framewo
 is built on. Each is its own artifact so you only pull in what you use — `common-utils` has no Spring
 dependency at all, and nothing here forces you to adopt the rest of the framework.
 
-`groupId` is `org.bardframework.commons` for every artifact, version **6.1.1** (managed by
+`groupId` is `org.bardframework.commons` for every artifact, version **5.6.1** (managed by
 [`bard-bom`](https://github.com/bardframework/bard-bom)).
 
 ```xml
