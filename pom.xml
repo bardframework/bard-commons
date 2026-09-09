@@ -15,6 +15,31 @@
     <packaging>pom</packaging>
     <name>Bard Framework - Commons</name>
 
+    <scm>
+        <connection>scm:git:git://github.com/bardframework/bard-commons.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:bardframework/bard-commons.git</developerConnection>
+        <url>https://github.com/bardframework/bard-commons/tree/master</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Vahid Zafari</name>
+            <email>va.zafari@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <url>https://github.com/bardframework/bard-commons</url>
+
+    <description>Small, dependency-light utility libraries shared by Bard Framework: reflection and text helpers, token security, rate limiting, captcha, SMS, Redis, Jackson converters and observability.</description>
+
     <modules>
         <module>common-apm</module>
         <module>common-captcha</module>
