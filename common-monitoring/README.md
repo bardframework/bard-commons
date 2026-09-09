@@ -1,7 +1,7 @@
 common-monitoring
 =================
 
-[![Maven Central](https://img.shields.io/badge/maven--central-6.1.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-monitoring/)
+[![Maven Central](https://img.shields.io/badge/maven--central-5.6.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-monitoring/)
 [![License](http://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Actuator and Prometheus metrics, with `/actuator/**` denied unless explicitly enabled.

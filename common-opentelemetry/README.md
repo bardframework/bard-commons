@@ -1,7 +1,7 @@
 common-opentelemetry
 ====================
 
-[![Maven Central](https://img.shields.io/badge/maven--central-6.1.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-opentelemetry/)
+[![Maven Central](https://img.shields.io/badge/maven--central-5.6.1-blue.svg)](https://repo1.maven.org/maven2/org/bardframework/commons/common-opentelemetry/)
 [![License](http://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 OpenTelemetry tracing, JVM metrics under OTel conventions, and a filter that ties log lines and HTTP responses to the current trace.
